@@ -6,7 +6,7 @@ module.exports = {
     {
       resolve: "gatsby-source-wordpress",
       options: {
-        url: "http://rileyboyd.com/api",
+        url: "http://admin.rileyboyd.com/graphql",
       },
     },
     "gatsby-plugin-emotion",
