@@ -1,0 +1,408 @@
+/* Header */
+.rb-header {
+
+    &.rb-header-over {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1000;
+    }
+
+
+    &.rb-header-opaque {
+        position: relative;
+    }
+}
+
+/* Navbar */
+.rb-navbar {
+    position: relative;
+    padding: 33px 0;
+    font-size: .96rem;
+    transition: .3s background-color;
+    z-index: 1000;
+    will-change: background-color;
+
+    .container-fluid .rb-nav-table {
+        padding-right: 30px;
+        padding-left: 30px;
+    }
+
+    // large navbar
+    &.rb-navbar-lg {
+        padding: 51px 0;
+    }
+
+    // fixed position
+    &.rb-navbar-fixed {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        transition: .2s transform, .2s visibility, .3s background-color;
+        will-change: transform, visibility, background-color;
+
+        // hide on scroll
+        &.rb-onscroll-hide {
+            visibility: hidden;
+            transform: translateY(-100%);
+        }
+        &.rb-onscroll-show {
+            visibility: visible;
+            transform: translateY(0);
+        }
+    }
+
+    // transparent
+    &.rb-navbar-transparent {
+        background-color: transparent;
+    }
+
+    // solid color
+    &,
+    &.rb-navbar-solid {
+        background-color: #fff;
+    }
+
+    // transparent always
+    &.rb-navbar-transparent-always {
+        background-color: transparent;
+    }
+
+    // center content
+    &.rb-navbar-align-center {
+        text-align: center;
+    }
+
+    // right content
+    &.rb-navbar-align-right {
+        text-align: right;
+    }
+
+    // table content
+    .rb-nav-table {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+
+        > * {
+            flex: 0 0 auto;
+        }
+
+        > .rb-nav,
+        > .rb-nav-row-full {
+            flex: 1 1 100%;
+        }
+        > .rb-nav-row-full {
+            min-height: 0;
+            overflow: hidden;
+            overflow-y: auto;
+
+            > .rb-nav {
+                overflow: auto;
+            }
+        }
+        > .rb-nav-row-center {
+            display: flex;
+            flex-direction: column;
+
+            > * {
+                margin-top: auto;
+                margin-bottom: auto;
+            }
+        }
+        > .rb-nav-row-bottom {
+            display: flex;
+
+            > * {
+                margin-top: auto;
+            }
+        }
+
+        > .rb-nav-icons,
+        > .rb-nav-logo {
+            display: flex;
+            flex: 0 0 auto;
+            align-items: center;
+        }
+        > .rb-nav-icons {
+            margin-right: -15px;
+            margin-left: auto;
+        }
+    }
+    &.rb-navbar-top .rb-nav-table {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    // logo img
+    .rb-nav-logo {
+        margin-left: 5px;
+
+        img {
+            height: auto;
+        }
+
+    }
+
+    // right nav with icons
+    .rb-nav-icons {
+        white-space: nowrap;
+        > * {
+            white-space: initial;
+        }
+    }
+
+    a {
+        color: inherit;
+        transition: .3s color;
+    }
+
+    ul {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+
+        > li > a {
+            white-space: nowrap;
+            &:hover,
+            &:focus {
+                text-decoration: none;
+            }
+        }
+    }
+
+    // background image
+    .rb-navbar-bg {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+    }
+
+    // main menu items
+    .rb-nav {
+        position: relative;
+        padding-left: 20px;
+
+        > li:last-of-type > a,
+        > li.single-icon:last-of-type > a {
+            padding-right: 0;
+        }
+
+        + .rb-nav {
+            padding-left: 0;
+
+            > li:first-child {
+                padding-left: 20px;
+            }
+        }
+
+        .rb-nav {
+            padding-right: 0;
+            padding-left: 0;
+        }
+
+        // single icon item
+        li.single-icon {
+            > a {
+                padding: 0 15px;
+
+                &::before {
+                    content: none;
+                }
+
+                > i,
+                > span {
+                    height: 32px;
+                    font-size: 1.1rem;
+                    line-height: 32px;
+                    vertical-align: middle;
+                }
+            }
+        }
+
+        // item descriptions
+        li > a .rb-item-descr {
+            display: block;
+            font-size: .7em;
+            font-style: italic;
+            opacity: .7;
+        }
+
+        // top items
+        > li {
+            position: relative;
+            display: inline-block;
+            vertical-align: middle;
+
+            > a {
+                position: relative;
+                display: block;
+                padding: 6px 14.6px;
+                font-weight: 500;
+                text-transform: uppercase;
+            }
+
+            > a:hover,
+            &.active > a {
+                color: #0e0e0e;
+            }
+        }
+
+        // dropdown
+        .dropdown {
+            position: absolute;
+            display: none;
+            padding: 15px 0;
+            margin-top: 12px;
+            margin-left: -15px;
+            font-size: 1rem;
+            background-color: $color_dark_1;
+            opacity: 0;
+            z-index: 1;
+
+            &::before {
+                content: "";
+                position: absolute;
+                display: block;
+                top: -20px;
+                left: 0;
+                width: 100%;
+                height: 90px;
+                z-index: -1;
+            }
+
+            > li {
+                position: relative;
+
+                > a {
+                    display: block;
+                    padding: 6px 30px;
+                    padding-right: 75px;
+                    color: #c5c5c5;
+                    text-decoration: none;
+                }
+
+                > a:hover,
+                &.active > a {
+                    color: #fff;
+                }
+            }
+        }
+
+        // sub-dropdown
+        .rb-drop-item .rb-drop-item {
+            > a::after {
+                content: "";
+                position: absolute;
+                display: block;
+                top: 50%;
+                right: 20px;
+                width: 0;
+                height: 0;
+                margin-top: -1px;
+                color: inherit;
+                border-top: 2px solid transparent;
+                border-bottom: 2px solid transparent;
+                border-left: 2px solid;
+            }
+
+            .dropdown {
+                top: 0;
+                margin-top: -15px;
+                margin-left: 100%;
+            }
+        }
+    }
+
+    // white on top
+    .rb-nav-logo .rb-nav-logo-onscroll {
+        display: none;
+    }
+    &.rb-navbar-white-text-on-top {
+        .rb-nav > li > a {
+            // color: $color_gray_4;
+            color:  $color_dark_3;
+        }
+        .rb-nav > li > a:hover,
+        .rb-nav > li.active > a {
+            color: #fff;
+        }
+
+        &.rb-navbar-solid {
+            .rb-nav > li > a {
+                color: inherit;
+            }
+            .rb-nav > li > a:hover,
+            .rb-nav > li.active > a {
+                color: #0e0e0e;
+            }
+        }
+
+        .rb-nav-logo .rb-nav-logo-onscroll {
+            display: block;
+
+            + img {
+                display: none;
+            }
+        }
+        &.rb-navbar-solid .rb-nav-logo .rb-nav-logo-onscroll {
+            display: none;
+
+            + img {
+                display: block;
+            }
+        }
+    }
+
+    // right menu items
+    .rb-nav-right {
+        text-align: right;
+        > * {
+            text-align: left;
+        }
+
+        .rb-navbar-full-toggle {
+
+            margin-right: 27px;        
+
+            @media only screen and (min-width: 576px) {
+                margin-right: 0;                        
+            }
+
+            @media only screen and (min-width: 768px) {
+                margin-right: 15px;                        
+            }
+
+        }
+
+    }
+
+    // center menu items
+    .rb-nav-center {
+        text-align: center;
+        > * {
+            text-align: left;
+        }
+    }
+
+    // right dropdown
+    .rb-drop-item.rb-drop-left {
+
+        > a::after {
+            border-top: 2px solid transparent;
+            border-right: 2px solid;
+            border-bottom: 2px solid transparent;
+            border-left: none;
+        }
+
+        .dropdown {
+            margin-left: -100%;
+        }
+    }
+}
