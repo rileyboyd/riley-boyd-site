@@ -159,9 +159,9 @@ const IndexPage = ({ data }) => {
         <div className="blog-posts">
 
           <h4>Wordpress Posts</h4>
-          
+
           {data.allWpPost.edges.map(({ node }) => (
-            <div>
+            <div key={node.slug}>
               <p>{node.title}</p>
               <div dangerouslySetInnerHTML={{ __html: node.excerpt }} />
             </div>
