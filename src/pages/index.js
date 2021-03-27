@@ -1,5 +1,6 @@
 import React, {useEffect,useRef} from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
+import { graphql } from 'gatsby';
 
 /** From index.js -- */
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -26,9 +27,22 @@ import SassIcon from '../assets/images/icons/sass-brands.svg';
 import GitIcon from '../assets/images/icons/git-brands.svg';
 import Css3Icon from '../assets/images/icons/css3-brands.svg';
 
+export const pageQuery = graphql`
+  query {
+    allWpPost(sort: { fields: [date] }) {
+      edges {
+        node {
+          title
+          excerpt
+          slug
+        }
+      }
+    }
+  }
+`
 
 // markup
-const IndexPage = () => {
+const IndexPage = ({ data }) => {
 
   let timeline = new TimelineMax({repeat:0});
 
@@ -141,6 +155,18 @@ const IndexPage = () => {
             <div>
                <a onClick={scrollDownHandler} id="scroll-btn" className="rb-header-title-scroll-down text-white" href="#rb-header-title-scroll-down"><span className="pe-7s-angle-down"></span></a>
             </div>
+        </div>
+        <div className="blog-posts">
+
+          <h4>Wordpress Posts</h4>
+          
+          {data.allWpPost.edges.map(({ node }) => (
+            <div>
+              <p>{node.title}</p>
+              <div dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+            </div>
+          ))}
+
         </div>
         <div id="rb-header-title-scroll-down"></div>
         <div className="bg-white" id="about" ref={aboutRef}>
