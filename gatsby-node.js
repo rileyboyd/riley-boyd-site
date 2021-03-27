@@ -1,4 +1,3 @@
-Copygatsby-node.js: copy code to clipboard
 const path = require(`path`)
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
