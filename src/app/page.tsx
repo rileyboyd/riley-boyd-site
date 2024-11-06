@@ -6,6 +6,8 @@ import Image from "next/image";
 import Button from "@/components/Button";
 import ContactSection from "@/components/ContactSection";
 
+import { getNumberOfYearsSinceDate } from "@/utils/getNumberOfYearsSinceDate";
+
 export default function Home() {
   const timeline = gsap.timeline({ repeat: 0 });
 
@@ -86,6 +88,39 @@ export default function Home() {
   //   }
   // }, [location.pathname]);
 
+  const numberOfYearsSinceIStartedWorking = getNumberOfYearsSinceDate(
+    "2011-07-11T00:00:00"
+  );
+
+  const mainContent = (
+    <>
+      <p>
+        I build rich user interfaces for the web using modern tools like
+        React/Vue, SASS/CSS3, HTML5, NPM, and Git, and I can write great vanilla
+        Javascript code. I build responsive websites and web apps that are
+        well-tested, work well across browsers, and are optimized to provide a
+        great user experience for mobile, tablet, and desktop users.
+      </p>
+      <p>
+        I have strong design skills, and I am skilled with Figma and the Adobe
+        Creative Suite of applications, including Photoshop, Illustrator, and
+        InDesign.
+      </p>
+      <p>
+        My most recent role was as a Frontend Engineer at Amazon, where I worked
+        on applications for Amazon Marketing Cloud. I have also worked for a
+        variety of agencies/companies in the digital advertising industry, and
+        have had the opportunity to work on websites for some major brands
+        (e.g., Sony, General Motors, Nestle, Volkswagen).
+      </p>
+      <p>
+        I hold a Master of Arts in Humanities Computing (University of Alberta),
+        and an Honours Bachelor of Arts in Multimedia and Fine Art (McMaster
+        University).
+      </p>
+    </>
+  );
+
   return (
     <div className="page-home">
       <div className="rb-header-title rb-header-title-full rb-header-title-parallax-opacity">
@@ -135,35 +170,11 @@ export default function Home() {
             <div className="col-md-8 order-md-2 text-left about-me-text">
               <div className="rb-gap-1"></div>
               <h2 className="text-center">
-                Ten Years of Professional Experience.
+                {numberOfYearsSinceIStartedWorking} Years of Professional
+                Experience.
               </h2>
               <div className="rb-gap-1"></div>
-              <div className="d-none d-md-block">
-                <p>
-                  I build rich user interfaces for the web using modern tools
-                  like React/Vue, SASS/CSS3, HTML5, NPM, and Git, and I can
-                  write great vanilla Javascript code. I build responsive
-                  websites and web apps that work well across browsers and
-                  devices, and are optimized to provide a great user experience
-                  for mobile, tablet, and desktop users.
-                </p>
-                <p>
-                  I have strong design skills, and I am skilled with the Adobe
-                  Creative Suite of applications, including Photoshop,
-                  Illustrator, and InDesign.
-                </p>
-                <p>
-                  I have worked for a variety of agencies/companies in the
-                  digital advertising industry, and have had the opportunity to
-                  work on websites for some major brands (e.g., Sony, General
-                  Motors, Nestle, Volkswagen).
-                </p>
-                <p>
-                  I hold a Master of Arts in Humanities Computing (University of
-                  Alberta), and an Honours Bachelor of Arts in Multimedia and
-                  Fine Art (McMaster University).
-                </p>
-              </div>
+              <div className="d-none d-md-block">{mainContent}</div>
             </div>
             <div className="col-md-4 order-md-1 pull-md-8 text-left about-me-photo-col">
               <div className="rb-gap-3 mnt-6 d-none d-md-block d-lg-none" />
@@ -177,30 +188,7 @@ export default function Home() {
             </div>
             <div className="col-md-12 text-left d-md-none">
               <div className="rb-gap-1"></div>
-              <p>
-                I build rich user interfaces for the web using modern tools like
-                React/Vue, SASS/CSS3, HTML5, NPM, and Git, and I can write great
-                vanilla Javascript code. I build responsive websites and web
-                apps that work well across browsers and devices, and are
-                optimized to provide a great user experience for mobile, tablet,
-                and desktop users.
-              </p>
-              <p>
-                I have strong design skills, and I am skilled with the Adobe
-                Creative Suite of applications, including Photoshop,
-                Illustrator, and InDesign.
-              </p>
-              <p>
-                I have worked for a variety of agencies/companies in the digital
-                advertising industry, and have had the opportunity to work on
-                websites for some major brands (e.g., Sony, General Motors,
-                Nestle, Volkswagen).
-              </p>
-              <p>
-                I hold a Master of Arts in Humanities Computing (University of
-                Alberta), and an Honours Bachelor of Arts in Multimedia and Fine
-                Art (McMaster University).
-              </p>
+              {mainContent}
               <div className="rb-gap-1"></div>
             </div>
           </div>

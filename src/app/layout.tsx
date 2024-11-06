@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import "./globals.css";
 import "@/styles/index.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "pixeden-stroke-7-icon/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css";
