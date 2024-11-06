@@ -3,10 +3,11 @@ import React, { useEffect, useRef, MutableRefObject, UIEvent } from "react";
 import gsap from "gsap";
 import Image from "next/image";
 
-import Button from "@/components/Button";
+import { Button } from "@/components/Button";
 import ContactSection from "@/components/ContactSection";
 
 import { getNumberOfYearsSinceDate } from "@/utils/getNumberOfYearsSinceDate";
+import { skillIcons } from "./skillIcons";
 
 export default function Home() {
   const timeline = gsap.timeline({ repeat: 0 });
@@ -109,7 +110,7 @@ export default function Home() {
       <p>
         My most recent role was as a Frontend Engineer at Amazon, where I worked
         on applications for Amazon Marketing Cloud. I have also worked for a
-        variety of agencies/companies in the digital advertising industry, and
+        variety of companies/agencies in the digital advertising sector, and
         have had the opportunity to work on websites for some major brands
         (e.g., Sony, General Motors, Nestle, Volkswagen).
       </p>
@@ -140,11 +141,9 @@ export default function Home() {
                   web&nbsp;developer.
                 </span>
               </h1>
-              <Button
-                text="View My Work"
-                onClick={btnHandler}
-                className="mt-15 hero-btn"
-              />
+              <Button onClick={btnHandler} className="mt-15 hero-btn">
+                View My Work
+              </Button>
               <div className="rb-gap"></div>
               <div className="rb-header-text text-white">
                 <div className="rb-gap-4"></div>
@@ -204,96 +203,23 @@ export default function Home() {
             </div>
           </div>
           <div className="row">
-            <div className="col-6 col-lg-4 skill-box">
-              <div className="rb-ibox-1">
-                <div className="rb-ibox-cont">
-                  <div className="rb-ibox-title">Javascript</div>
-                </div>
-                <div className="rb-ibox-icon js-icon">
-                  <Image
-                    width="200"
-                    height="200"
-                    src="/images/icons/js-square-brands.svg"
-                    alt="Javascript Icon"
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="col-6 col-lg-4 skill-box">
-              <div className="rb-ibox-1">
-                <div className="rb-ibox-cont">
-                  <div className="rb-ibox-title">React</div>
-                </div>
-                <div className="rb-ibox-icon react-icon">
-                  <Image
-                    width="200"
-                    height="200"
-                    src="/images/icons/react-brands.svg"
-                    alt="React Icon"
-                  />
+            {skillIcons.map(({ fileName, title, altText, className }) => (
+              <div className="col-6 col-lg-4 skill-box" key={className}>
+                <div className="rb-ibox-1">
+                  <div className="rb-ibox-cont">
+                    <div className="rb-ibox-title">{title}</div>
+                  </div>
+                  <div className={`rb-ibox-icon ${className}`}>
+                    <Image
+                      width="200"
+                      height="200"
+                      src={`/images/icons/${fileName}`}
+                      alt={altText}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="col-6 col-lg-4 skill-box">
-              <div className="rb-ibox-1">
-                <div className="rb-ibox-cont">
-                  <div className="rb-ibox-title">SASS</div>
-                </div>
-                <div className="rb-ibox-icon sass-icon">
-                  <Image
-                    width="200"
-                    height="200"
-                    src="/images/icons/sass-brands.svg"
-                    alt="SASS Icon"
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="col-6 col-lg-4 skill-box">
-              <div className="rb-ibox-1">
-                <div className="rb-ibox-cont">
-                  <div className="rb-ibox-title">HTML5</div>
-                </div>
-                <div className="rb-ibox-icon html5-icon">
-                  <Image
-                    width="200"
-                    height="200"
-                    src="/images/icons/html5-brands.svg"
-                    alt="HTML5 Icon"
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="col-6 col-lg-4 skill-box">
-              <div className="rb-ibox-1">
-                <div className="rb-ibox-cont">
-                  <div className="rb-ibox-title">CSS3</div>
-                </div>
-                <div className="rb-ibox-icon css3-icon">
-                  <Image
-                    width="200"
-                    height="200"
-                    src="/images/icons/css3-brands.svg"
-                    alt="CSS3 Icon"
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="col-6 col-lg-4 skill-box">
-              <div className="rb-ibox-1">
-                <div className="rb-ibox-cont">
-                  <div className="rb-ibox-title">Git</div>
-                </div>
-                <div className="rb-ibox-icon git-icon">
-                  <Image
-                    width="200"
-                    height="200"
-                    src="/images/icons/git-brands.svg"
-                    alt="Git Icon"
-                  />
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
