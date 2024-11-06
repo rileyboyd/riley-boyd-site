@@ -1,0 +1,27 @@
+.page-portfolio {
+	
+	.rb-isotope {
+	    &.rb-isotope-3-cols {
+	        .rb-isotope-item {
+	        	padding: 10px;
+
+	        	@media only screen and (min-width: 992px) {
+	        		padding: 0
+	        	}
+
+	        	.rb-portfolio-item {
+	        		
+			    -webkit-box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.15);
+			    -moz-box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.15);
+			    box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.15);
+				
+	        	}
+	        }
+		}
+	}
+
+}
+
+.rb-portfolio-single {
+	// padding-bottom: 30px;
+}

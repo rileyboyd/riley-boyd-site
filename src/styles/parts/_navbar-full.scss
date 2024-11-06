@@ -1,0 +1,222 @@
+.rb-navbar-full {
+    position: fixed;
+    display: none;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0;
+    overflow: hidden;
+    background: $color_dark_1;
+    opacity: 0;
+    z-index: 1002;
+
+    // header
+    .rb-nav-header {
+        padding: 33px 0;
+        margin-right: -22px;
+
+        &::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .rb-nav-logo {
+            float: left;
+        }
+
+        .rb-nav-close {
+
+            color: #d8d8d8;
+            cursor: pointer;
+            float: right;
+            padding: 6px 25px;
+            margin-right: 12px;
+            z-index: 1;
+
+            @media only screen and (min-width: 576px) {
+                margin-right: 0;                        
+            }
+
+            @media only screen and (min-width: 768px) {
+                margin-right: 0px;                        
+            }
+
+            &:hover {
+                color: #fff;
+            }
+        }
+    }
+
+    .container-fluid .rb-nav-header {
+        padding-right: 8px;
+        padding-left: 30px;
+        margin-right: 0;
+    }
+
+    // navigation
+    .nano {
+        overflow-y: auto;
+    }
+    .rb-nav {
+        position: relative;
+        width: 100%;
+        padding: 0;
+        padding-top: 25px;
+        margin: 0 auto;
+        overflow: hidden;
+
+        // item descriptions
+        li > a .rb-item-descr {
+            font-size: .5em;
+        }
+
+        .dropdown > li,
+        > li {
+            position: static;
+            display: block;
+            max-width: 450px;
+            margin: 0 auto;
+
+            &:last-of-type > a,
+            > a {
+                padding: 10px 80px;
+                font-family: $font_headings;
+                font-size: 1.7rem;
+                font-weight: 600;
+                line-height: 1.1;
+                color: #d8d8d8;
+                text-transform: none;
+                white-space: normal;
+
+                @media (max-width: 400px) {
+                    font-size: 1.3rem;
+                }
+                @media (max-width: 550px) {
+                    padding-right: 40px;
+                    padding-left: 40px;
+                }
+            }
+
+            &.active > a,
+            > a:hover {
+                color: #fff;
+            }
+
+            > a::before,
+            > a::after {
+                content: none;
+            }
+        }
+
+        // drop item icon
+        .rb-drop-item > a,
+        > .rb-drop-item > a,
+        .bropdown-back > a {
+            position: relative;
+        }
+        .rb-drop-item > a::after,
+        .rb-drop-item .rb-drop-item > a::after,
+        > .rb-drop-item > a::after {
+            content: "";
+            position: absolute;
+            display: block;
+            top: 50%;
+            right: 30px;
+            left: auto;
+            width: 0;
+            height: 0;
+            margin-top: -2px;
+            color: inherit;
+            border: none;
+            border-top: 3px solid transparent;
+            border-bottom: 3px solid transparent;
+            border-left: 3px solid;
+            opacity: .6 !important; // stylelint-disable-line
+            transition: .3s opacity;
+            transform: none;
+            will-change: opacity;
+        }
+        .rb-drop-item > a:hover::after,
+        .rb-drop-item > a.hover::after,
+        > .rb-drop-item > a:hover::after,
+        > .rb-drop-item > a.hover::after {
+            width: 0;
+            height: 0;
+            opacity: 1 !important; // stylelint-disable-line
+        }
+    }
+
+    // dropdown
+    .rb-nav .dropdown {
+        display: block;
+        padding: 0;
+        visibility: inherit;
+        background-color: transparent;
+        opacity: 1;
+        transform: none;
+
+        &::before {
+            content: none;
+        }
+
+        > li > a {
+            display: none;
+        }
+    }
+    .rb-nav .rb-drop-item .dropdown,
+    .rb-nav .rb-drop-item .rb-drop-item .dropdown {
+        top: 0;
+        left: 0;
+        width: 100%;
+        margin-top: 0;
+        margin-left: 0;
+    }
+
+    // back icon
+    .dropdown > .bropdown-back > a::after {
+        content: "" !important; // stylelint-disable-line
+        position: absolute;
+        display: block;
+        top: 50%;
+        left: 30px;
+        width: 0;
+        height: 0;
+        margin-top: -2px;
+        color: inherit;
+        border: none;
+        border-top: 3px solid transparent;
+        border-right: 3px solid;
+        border-bottom: 3px solid transparent;
+        opacity: .6;
+        transition: .3s opacity;
+        transform: none;
+        will-change: opacity;
+    }
+    .dropdown > .bropdown-back > a:hover::after,
+    .dropdown > .bropdown-back > a.hover::after {
+        opacity: 1;
+    }
+
+
+    // social
+    .rb-nav-social {
+        padding: 51px 20px;
+
+        > ul li {
+            display: inline-block;
+            > a {
+                display: block;
+                margin: 3px 6px;
+                font-size: 1.75em;                
+                color: #d8d8d8;
+
+                &:hover,
+                &.hover {
+                    color: #fff;
+                }
+            }
+        }
+    }
+}

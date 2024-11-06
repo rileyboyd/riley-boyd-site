@@ -1,0 +1,83 @@
+.rb-footer {
+    position: relative;
+    overflow: hidden;
+    background-color: $color_bg_footer;
+    z-index: 1;
+
+    // transparent
+    &.rb-footer-transparent {
+        background-color: transparent;
+    }
+
+    // container
+    .rb-footer-cont {
+        padding-top: 44px;
+        padding-bottom: 25px;
+    }
+    .rb-footer-cont-sm {
+        padding-top: 22px;
+        padding-bottom: 2px;
+    }
+
+    // widgets
+    .rb-footer-widgets {
+        padding-top: 90px;
+        padding-bottom: 90px;
+
+        + .rb-footer-cont {
+            border-top: 1px solid rgba(140, 140, 140, .2);
+        }
+    }
+
+    // social
+    .rb-footer-social {
+        padding-bottom: 12px;
+        color: $color_titles;
+
+        > ul {
+            padding: 0;
+            margin: 0;
+        }
+
+        > ul li {
+            display: block;
+
+            svg {
+                margin-right: 10px;
+            }
+            > a {
+                display: block;
+                padding: 6px 6px;                
+                font-size: 1.13rem;
+                color: inherit;
+                opacity: .4;
+                transition: .5s opacity;
+
+                &:hover,
+                &.hover {
+                    opacity: 1;
+                }
+
+                .social-handle {
+                    color: #1faeaa;
+                }
+
+            }
+        }
+
+        &.text-white > ul li > a {
+            opacity: .9;
+
+            &:hover,
+            &.hover {
+                opacity: .5;
+            }
+        }
+    }
+
+    // text
+    .rb-footer-text {
+        font-size: .95rem;
+    }
+}
+

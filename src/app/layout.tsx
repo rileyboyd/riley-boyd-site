@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "@/styles/index.scss";
 
 export const metadata: Metadata = {
   title: "Riley Boyd: Senior Frontend Engineer",
