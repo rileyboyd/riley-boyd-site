@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, MutableRefObject, UIEvent } from "react";
 import gsap from "gsap";
 import Image from "next/image";
 
@@ -9,55 +9,58 @@ import ContactSection from "@/components/ContactSection";
 export default function Home() {
   const timeline = gsap.timeline({ repeat: 0 });
 
-  const breakpointCheckRef = useRef();
+  const breakpointCheckRef = useRef(null);
+  const aboutRef = useRef(null);
+  const contactRef = useRef(null);
 
-  const aboutRef = useRef();
+  const getBreakpoint = (checkerEle: HTMLElement): string => {
+    let breakpointOpacity = Number(
+      window.getComputedStyle(checkerEle).getPropertyValue("opacity")
+    );
 
-  const contactRef = useRef();
-
-  const getBreakpoint = (checkerEle) => {
-    let breakpoint = "xs";
-
-    let breakpointOpacity = window
-      .getComputedStyle(checkerEle)
-      .getPropertyValue("opacity");
-
-    if (breakpointOpacity >= 0.6) {
-      breakpoint = "sm";
+    if (breakpointOpacity == 1) {
+      return "lg";
     }
 
-    if (breakpointOpacity >= 0.8) {
-      breakpoint = "md";
+    if (breakpointOpacity == 0.8) {
+      return "md";
     }
 
-    if (breakpointOpacity >= 0.8) {
-      breakpoint = "lg";
+    if (breakpointOpacity == 0.6) {
+      return "sm";
     }
 
-    return breakpoint;
+    return "xs";
   };
 
-  const scrollToRef = (ref) => {
+  const scrollToRef = (
+    refToScrollTo: MutableRefObject<HTMLElement | null>
+  ): void => {
+    if (!refToScrollTo.current || !breakpointCheckRef.current) {
+      return;
+    }
+
+    const currentBreakpoint = getBreakpoint(breakpointCheckRef.current);
+    const offset = currentBreakpoint == "lg" ? 101 : 98;
+
     window.scrollTo({
-      top:
-        ref.current.offsetTop -
-        (getBreakpoint(breakpointCheckRef.current) == "lg" ? 101 : 98),
+      top: refToScrollTo.current.offsetTop - offset,
       behavior: "smooth",
     });
   };
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
+  // const scrollToTop = () => {
+  //   window.scrollTo({
+  //     top: 0,
+  //     behavior: "smooth",
+  //   });
+  // };
 
   const btnHandler = () => {
     // history.push("/portfolio");
   };
 
-  const scrollDownHandler = (event) => {
+  const scrollDownHandler = (event: UIEvent<HTMLElement>): void => {
     event.preventDefault();
     scrollToRef(aboutRef);
   };
