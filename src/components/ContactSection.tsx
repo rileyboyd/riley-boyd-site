@@ -1,9 +1,9 @@
-import React, { useState, useRef, forwardRef } from "react";
+import React, { forwardRef } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
-let ContactForm = (props, ref) => {
+const ContactSection = forwardRef<HTMLDivElement, {}>((props, ref) => {
   return (
     <div className="container rb-contact-section" id="contact" ref={ref}>
       <div className="rb-gap-5 d-none d-md-block" />
@@ -13,14 +13,6 @@ let ContactForm = (props, ref) => {
           <h2 className="display-4">Contact Me</h2>
           <div className="rb-gap mnt-3" />
           <p>Get in touch! Connect with me and say hi.</p>
-          {/*
-            <ul className="rb-contact-info">
-              <li><strong>Address:</strong> 10111 Santa Monica Boulevard, LA</li>
-              <li><strong>Phone:</strong> +44 987 065 908</li>
-              <li><strong>Email:</strong> info@Example.com</li>
-              <li><strong>Fax:</strong> +44 987 065 909</li>
-            </ul>
-           */}
         </div>
         <div className="col-lg-7 rb-contact-section-widgets text-white">
           <div className="rb-widget">
@@ -54,8 +46,6 @@ let ContactForm = (props, ref) => {
       <div className="rb-gap-5" />
     </div>
   );
-};
+});
 
-ContactForm = forwardRef(ContactForm);
-
-export default ContactForm;
+export default ContactSection;
