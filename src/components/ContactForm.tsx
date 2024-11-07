@@ -1,4 +1,4 @@
-import React, { useState, useRef, forwardRef } from "react";
+import React, { useState /*, useRef */ } from "react";
 
 // import axios from "axios";
 
@@ -11,11 +11,11 @@ export const ContactForm: React.FC<ContactFormProps> = (props, ref) => {
   const [emailError, setEmailError] = useState(false);
   const [msgError, setMsgError] = useState(false);
 
-  const [showSuccessMsg, setShowSuccessMsg] = useState(false);
-  const [showFailureMsg, setShowFailureMsg] = useState(false);
+  const [showSuccessMsg /*, setShowSuccessMsg */] = useState(false);
+  const [showFailureMsg /*, setShowFailureMsg */] = useState(false);
 
   const isFormValid = () => {
-    let hasError = false;
+    const hasError = false;
 
     /*
 	TODO: This should all be using React state, as controlled components
@@ -67,10 +67,10 @@ export const ContactForm: React.FC<ContactFormProps> = (props, ref) => {
     event.preventDefault();
 
     if (isFormValid()) {
-      const bodyFormData = new FormData();
-
       /* TODO: This should be validating against React state */
       /*
+		const bodyFormData = new FormData();
+  
       axios({
         method: "post",
 		// TODO: Create a submission endpoint using nextJS to handle form mailer. This php endpoint no longer exists

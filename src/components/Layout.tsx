@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 import Header from "./Header";
-import Nav from "./Nav";
 import MobileNav from "./MobileNav";
 import Footer from "./Footer";
 
@@ -10,7 +9,7 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-  let [fullscreenMenuIsOpened, setFullscreenMenuIsOpened] = useState(false);
+  const [fullscreenMenuIsOpened, setFullscreenMenuIsOpened] = useState(false);
 
   const menuIconClickHandler = () => {
     setFullscreenMenuIsOpened(true);

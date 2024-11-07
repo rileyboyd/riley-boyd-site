@@ -3,7 +3,7 @@ import React, { useState /*, useEffect*/ } from "react";
 import Nav from "./Nav";
 
 interface HeaderProps {
-  menuIconClickHandler: (event: string) => void;
+  menuIconClickHandler: (event: React.MouseEvent) => void;
 }
 
 const Header: React.FC<HeaderProps> = ({ menuIconClickHandler }) => {

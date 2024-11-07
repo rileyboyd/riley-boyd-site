@@ -1,5 +1,6 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
@@ -11,7 +12,7 @@ interface MobileNavProps {
 }
 
 const MobileNav: React.FC<MobileNavProps> = ({ closeBtnHandler, isOpened }) => {
-  let showNavbarStyles = {
+  const showNavbarStyles = {
     display: "block",
     opacity: 1,
     transform: "translate3d(0px, 0px, 0px)",
@@ -24,7 +25,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ closeBtnHandler, isOpened }) => {
   const navbar = navbarFullRef.current;
   const navbarSocial = navSociallRef.current;
 
-  let navbarMenuItems = document.querySelectorAll(
+  const navbarMenuItems = document.querySelectorAll(
     ".rb-navbar-mobile-content >.rb-nav > li > a"
   );
 
@@ -86,7 +87,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ closeBtnHandler, isOpened }) => {
     } else {
       closeFullscreenNavbar();
     }
-  }, [isOpened]);
+  }, [isOpened, openFullscreenNavbar, closeFullscreenNavbar]);
 
   return (
     <nav
@@ -106,9 +107,9 @@ const MobileNav: React.FC<MobileNavProps> = ({ closeBtnHandler, isOpened }) => {
           <div className="container">
             <div className="rb-nav-header">
               <div className="rb-nav-logo">
-                <a href="/" className="rb-nav-logo">
+                <Link href="/" className="rb-nav-logo">
                   <Image src="/images/logo-light.svg" alt="" width="85" />
-                </a>
+                </Link>
               </div>
               <button
                 className={`rb-nav-close rb-navbar-full-toggle ${
@@ -128,22 +129,13 @@ const MobileNav: React.FC<MobileNavProps> = ({ closeBtnHandler, isOpened }) => {
                 <div className="rb-nav-row rb-nav-row-full rb-nav-row-center rb-navbar-mobile-content">
                   <ul className="rb-nav">
                     <li>
-                      <a href="/" onClick={closeBtnHandler}>
-                        {" "}
-                        Home{" "}
-                      </a>
+                      <Link href="/">Home</Link>
                     </li>
                     <li>
-                      <a href="/portfolio/" onClick={closeBtnHandler}>
-                        {" "}
-                        Portfolio{" "}
-                      </a>
+                      <Link href="/portfolio/">Portfolio</Link>
                     </li>
                     <li>
-                      <a href="/contact/" onClick={closeBtnHandler}>
-                        {" "}
-                        Contact{" "}
-                      </a>
+                      <Link href="/contact/">Contact</Link>
                     </li>
                   </ul>
                 </div>
@@ -156,17 +148,17 @@ const MobileNav: React.FC<MobileNavProps> = ({ closeBtnHandler, isOpened }) => {
             <div className="rb-nav-social" ref={navSociallRef}>
               <ul>
                 <li>
-                  <a
+                  <Link
                     href="https://www.linkedin.com/in/rileyboyd/"
                     target="_blank"
                   >
                     <FontAwesomeIcon icon={faLinkedin} />
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="https://twitter.com/riley_boyd" target="_blank">
+                  <Link href="https://twitter.com/riley_boyd" target="_blank">
                     <FontAwesomeIcon icon={faTwitter} />
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
