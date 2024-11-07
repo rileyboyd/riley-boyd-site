@@ -1,27 +1,33 @@
-import React, {useState,useEffect} from 'react';
-import Nav from './Nav';
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
 
-import {useLocation} from 'react-router-dom';
+import Nav from "./Nav";
 
-const Header = (props) => {
-	let location = useLocation();
-
-	// If the page is the home page (location == '/'), add sticky nav
-	const [hasStickyNav,setHasStickyNav] = useState();
-
-	useEffect(()=>{
-		setHasStickyNav((location.pathname == '/' || location.pathname == '/contact/' || location.pathname == '/contact'));
-	},[location.pathname]);
-
-	return (
-	    <header className={`rb-header ${hasStickyNav ? 'rb-header-over':''}`}>
-	        <Nav sticky={hasStickyNav} menuIconClickHandler={props.menuIconClickHandler} />
-	    </header>
-	);
+interface HeaderProps {
+  menuIconClickHandler: (event: string) => void;
 }
 
-Header.defaultProps = {
-	menuIconClickHandler: null
-}
+const Header: React.FC<HeaderProps> = ({ menuIconClickHandler }) => {
+  // If the page is the home page (location == '/'), add sticky nav
+  const [hasStickyNav /*, setHasStickyNav*/] = useState(false);
+
+  /*
+  useEffect(() => {
+    setHasStickyNav(
+      location.pathname == "/" ||
+        location.pathname == "/contact/" ||
+        location.pathname == "/contact"
+    );
+  }, [location.pathname]);
+  */
+  return (
+    <header className={`rb-header ${hasStickyNav ? "rb-header-over" : ""}`}>
+      <Nav
+        useSticky={hasStickyNav}
+        menuIconClickHandler={menuIconClickHandler}
+      />
+    </header>
+  );
+};
 
 export default Header;

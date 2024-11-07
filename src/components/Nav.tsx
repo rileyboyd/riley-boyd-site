@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 
-import logo from "../assets/images/rb-logo.svg";
-import logoLight from "../assets/images/rb-logo-light.svg";
+import { debounce } from "@/utils/debounce";
 
 interface NavProps {
+  useSticky: boolean;
   menuIconClickHandler: (event: string) => void;
 }
 
-const Nav: React.FC<NavProps> = ({ menuIconClickHandler }) => {
+const Nav: React.FC<NavProps> = ({ menuIconClickHandler, useSticky }) => {
   const [isSticky, setSticky] = useState(false);
   const stickyRef = useRef<HTMLElement | null>(null);
 
@@ -43,21 +44,12 @@ const Nav: React.FC<NavProps> = ({ menuIconClickHandler }) => {
     getSelectedNavIndex()
   );
 
-  const debounce = (fn: Function, wait = 20, immediate = true) => {
-    let timeout: ReturnType<typeof setTimeout>;
-
-    return function (...args: any[]) {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => fn(...args), wait);
-    };
-  };
-
   useEffect(() => {
     window.addEventListener("scroll", debounce(handleScroll));
     return () => {
       window.removeEventListener("scroll", () => handleScroll);
     };
-  }, [debounce, handleScroll]);
+  }, [handleScroll]);
 
   useEffect(() => {
     setSelectedNavIndex(getSelectedNavIndex());
@@ -67,21 +59,21 @@ const Nav: React.FC<NavProps> = ({ menuIconClickHandler }) => {
     <nav
       ref={stickyRef}
       className={`rb-navbar rb-navbar-top ${
-        props.sticky
+        useSticky
           ? "rb-navbar-autohide rb-navbar-transparent rb-navbar-white-text-on-top rb-onscroll-show"
           : ""
-      } ${props.sticky && isSticky ? "rb-navbar-solid rb-navbar-fixed" : ""}`}
+      } ${useSticky && isSticky ? "rb-navbar-solid rb-navbar-fixed" : ""}`}
     >
       <div className="container">
         <div className="rb-nav-table">
           <a href="#" className="rb-nav-logo">
-            <img
-              src={logoLight}
+            <Image
+              src="/images/rb-logo-light.svg"
               alt=""
               width="140"
               className="rb-nav-logo-onscroll"
             />
-            <img src={logo} alt="" width="140" />
+            <Image src="/images/rb-logo.svg" alt="" width="140" />
           </a>
           <ul
             className="rb-nav rb-nav-right d-none d-lg-block"
