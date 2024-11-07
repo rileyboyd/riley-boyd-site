@@ -38,3 +38,15 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Cypress folders and screenshots
+cypress/screenshots/
+cypress/videos/
+cypress/downloads/
+
+# Cypress configuration cache files
+.cypress_cache/
+
+# Cypress example files
+cypress/e2e/examples
+cypress/fixtures/examples
