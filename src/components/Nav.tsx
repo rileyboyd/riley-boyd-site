@@ -1,59 +1,54 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 import { debounce } from "@/utils/debounce";
 
 interface NavProps {
   useSticky: boolean;
-  menuIconClickHandler: (event: string) => void;
+  menuIconClickHandler: (event: React.MouseEvent) => void;
 }
 
 const Nav: React.FC<NavProps> = ({ menuIconClickHandler, useSticky }) => {
   const [isSticky, setSticky] = useState(false);
   const stickyRef = useRef<HTMLElement | null>(null);
 
-  const handleScroll = () => {
-    if (stickyRef.current) {
-      window.pageYOffset > stickyRef.current.getBoundingClientRect().bottom
-        ? setSticky(true)
-        : setSticky(false);
+  const getSelectedNavIndex = (pathname = "") => {
+    if (pathname == "/") {
+      return 0;
+    } else if (pathname.substring(0, 10) == "/portfolio") {
+      return 1;
+    } else if (pathname == "/contact/" || pathname == "/contact") {
+      return 2;
     }
+    return 3;
   };
 
-  const navbarToggleHandler = (event: React.MouseEvent) => {
-    event.preventDefault();
-    menuIconClickHandler("test");
-  };
-
-  const getSelectedNavIndex = () => {
-    let selectedIndex = 3;
-    if (location.pathname == "/") {
-      selectedIndex = 0;
-    } else if (location.pathname.substring(0, 10) == "/portfolio") {
-      selectedIndex = 1;
-    } else if (
-      location.pathname == "/contact/" ||
-      location.pathname == "/contact"
-    ) {
-      selectedIndex = 2;
-    }
-    return selectedIndex;
-  };
-
-  const [selectedNavIndex, setSelectedNavIndex] = useState(
+  const [selectedNavIndex /*, setSelectedNavIndex*/] = useState(
     getSelectedNavIndex()
   );
 
   useEffect(() => {
+    const handleScroll = () => {
+      if (!stickyRef.current) {
+        return;
+      }
+
+      const shouldSetSticky = window.pageYOffset > stickyRef.current.offsetTop;
+      setSticky(shouldSetSticky);
+    };
+
     window.addEventListener("scroll", debounce(handleScroll));
     return () => {
       window.removeEventListener("scroll", () => handleScroll);
     };
-  }, [handleScroll]);
+  }, []);
 
+  /*
   useEffect(() => {
-    setSelectedNavIndex(getSelectedNavIndex());
+    setSelectedNavIndex(getSelectedNavIndex("location.pathname"));
   }, [location.pathname]);
+  */
 
   return (
     <nav
@@ -66,7 +61,7 @@ const Nav: React.FC<NavProps> = ({ menuIconClickHandler, useSticky }) => {
     >
       <div className="container">
         <div className="rb-nav-table">
-          <a href="#" className="rb-nav-logo">
+          <Link href="/" className="rb-nav-logo">
             <Image
               src="/images/rb-logo-light.svg"
               alt=""
@@ -74,7 +69,7 @@ const Nav: React.FC<NavProps> = ({ menuIconClickHandler, useSticky }) => {
               className="rb-nav-logo-onscroll"
             />
             <Image src="/images/rb-logo.svg" alt="" width="140" />
-          </a>
+          </Link>
           <ul
             className="rb-nav rb-nav-right d-none d-lg-block"
             data-nav-mobile="#rb-nav-mobile"
@@ -84,36 +79,35 @@ const Nav: React.FC<NavProps> = ({ menuIconClickHandler, useSticky }) => {
                 selectedNavIndex == 0 ? "active" : ""
               }`}
             >
-              <a href="/">Home</a>
+              <Link href="/">Home</Link>
             </li>
             <li
               className={`rb-drop-item ${
                 selectedNavIndex == 1 ? "active" : ""
               }`}
             >
-              <a href="/portfolio/">Portfolio</a>
+              <Link href="/portfolio/">Portfolio</Link>
             </li>
             <li
               className={`rb-drop-item ${
                 selectedNavIndex == 2 ? "active" : ""
               }`}
             >
-              <a href="/contact/">Contact</a>
+              <Link href="/contact/">Contact</Link>
             </li>
           </ul>
           <ul className="rb-nav rb-nav-right rb-nav-icons">
             <li className="single-icon d-lg-none">
-              <a
-                href="#"
+              <button
                 className="rb-navbar-full-toggle"
-                onClick={navbarToggleHandler}
+                onClick={menuIconClickHandler}
               >
                 <span className="rb-icon-burger">
                   <span className="rb-t-1"></span>
                   <span className="rb-t-2"></span>
                   <span className="rb-t-3"></span>
                 </span>
-              </a>
+              </button>
             </li>
           </ul>
         </div>

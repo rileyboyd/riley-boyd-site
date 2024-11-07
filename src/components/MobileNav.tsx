@@ -107,7 +107,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ closeBtnHandler, isOpened }) => {
             <div className="rb-nav-header">
               <div className="rb-nav-logo">
                 <a href="/" className="rb-nav-logo">
-                  <img src="/images/logo-light.svg" alt="" width="85" />
+                  <Image src="/images/logo-light.svg" alt="" width="85" />
                 </a>
               </div>
               <button

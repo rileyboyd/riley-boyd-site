@@ -132,11 +132,11 @@ export default function Home() {
             <div className="container">
               <h1 className="rb-title display-3">
                 <span id="hero-text-1" className="hero-text-line">
-                  Hello, I'm{" "}
+                  Hello, I&apos;m{" "}
                   <span className="hero-text-name">Riley&nbsp;Boyd</span>.
                 </span>
                 <span id="hero-text-2" className="hero-text-line">
-                  I'm a senior front-end
+                  I&apos;m a senior front-end
                   <br />
                   web&nbsp;developer.
                 </span>

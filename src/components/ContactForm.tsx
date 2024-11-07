@@ -1,6 +1,6 @@
 import React, { useState, useRef, forwardRef } from "react";
 
-import axios from "axios";
+// import axios from "axios";
 
 interface ContactFormProps {
   className?: string;
@@ -14,14 +14,14 @@ export const ContactForm: React.FC<ContactFormProps> = (props, ref) => {
   const [showSuccessMsg, setShowSuccessMsg] = useState(false);
   const [showFailureMsg, setShowFailureMsg] = useState(false);
 
-  const emailRegExp =
-    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-
-  const validateForm = () => {
+  const isFormValid = () => {
     let hasError = false;
 
     /*
 	TODO: This should all be using React state, as controlled components
+
+	  const emailRegExp =
+    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
     // Name
     if (nameInputRef.current.value.length === 0) {
@@ -45,11 +45,7 @@ export const ContactForm: React.FC<ContactFormProps> = (props, ref) => {
     }
 	*/
 
-    if (hasError) {
-      return false;
-    } else {
-      return true;
-    }
+    return !hasError;
   };
 
   const onChangeHandlerName = (event: React.FormEvent) => {
@@ -70,7 +66,7 @@ export const ContactForm: React.FC<ContactFormProps> = (props, ref) => {
   const contactFormSubmitHandler = (event: React.FormEvent) => {
     event.preventDefault();
 
-    if (validateForm()) {
+    if (isFormValid()) {
       const bodyFormData = new FormData();
 
       /* TODO: This should be validating against React state */

@@ -19,10 +19,10 @@ const Footer: React.FC = () => (
             <div className="rb-widget">
               <h4 className="rb-widget-title text-white">About Me</h4>
               <p className="rb-heading-font">
-                My name's Riley Boyd, I'm a senior front-end web developer with
-                over ten years of professional experience. I have an M.A. in
-                Humanities Computing, and an Hons. B.A. in Multimedia and
-                Fine&nbsp;Art. I live in Toronto, Ontario,&nbsp;Canada.
+                My name&apos;s Riley Boyd, I&apos;m a senior front-end web
+                developer with over ten years of professional experience. I have
+                an M.A. in Humanities Computing, and an Hons. B.A. in Multimedia
+                and Fine&nbsp;Art. I live in Toronto, Ontario,&nbsp;Canada.
               </p>
             </div>
           </div>
