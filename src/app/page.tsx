@@ -17,7 +17,7 @@ export default function Home() {
   const contactRef = useRef(null);
 
   const getBreakpoint = (checkerEle: HTMLElement): string => {
-    let breakpointOpacity = Number(
+    const breakpointOpacity = Number(
       window.getComputedStyle(checkerEle).getPropertyValue("opacity")
     );
 
@@ -78,7 +78,7 @@ export default function Home() {
       .to(".hero-btn", 0.15, { top: 0, opacity: 1 }, 3)
       .to("#scroll-btn", 0, { display: "block" }, 3)
       .to("#scroll-btn", 0.15, { opacity: 1 }, 3.5);
-  }, []);
+  }, [timeline]);
 
   // If the URL is for the contact form (which is on the home page), scroll down the page to the form
   // useEffect(() => {
