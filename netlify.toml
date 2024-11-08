@@ -11,6 +11,10 @@ publish = "build"
 [[plugins]]
 # runs Cypress tests against the deployed URL
 package = "netlify-plugin-cypress"
-  [plugins.inputs]
+  # Testing the built production version
+  [plugins.inputs.postBuild]
+    enable = true
     record = true
-    postBuild = true  # Ensure tests run before deployment
+    group = '1: testing built site'
+
+# Config reference examples: https://www.npmjs.com/package/netlify-plugin-cypress/v/1.9.1
