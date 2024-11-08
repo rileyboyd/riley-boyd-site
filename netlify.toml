@@ -13,3 +13,6 @@ publish = "build"
 package = "netlify-plugin-cypress"
   [plugins.inputs]
     record = true
+    build = "preBuild"  # Ensure tests run before deployment
+    command = "npm run test:cypress"
+    continueAfterFail = false  # Fail the build if tests fail
