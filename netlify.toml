@@ -12,9 +12,13 @@ publish = "build"
 # runs Cypress tests against the deployed URL
 package = "netlify-plugin-cypress"
   # Testing the built production version
-  [plugins.inputs.postBuild]
+  [plugins.inputs.preBuild]
     enable = true
     record = true
-    group = '1: testing built site'
+    group = '1: testing dev site'
+    start = 'npm run dev'
+    wait-on = 'http://localhost:3000'
+    wait-on-timeout = '30' # seconds
 
 # Config reference examples: https://www.npmjs.com/package/netlify-plugin-cypress/v/1.9.1
+# Example config with preBuild and postBuild: https://github.com/cypress-io/netlify-plugin-prebuild-example/blob/master/netlify.toml
