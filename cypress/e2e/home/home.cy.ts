@@ -8,6 +8,6 @@ describe("Home Page Tests", () => {
   });
 
   it('should display the "View My Work" button', () => {
-    cy.contains("button", "View My Work").should("be.visible");
+    cy.contains("button", "View Mys Work").should("be.visible");
   });
 });
