@@ -20,5 +20,9 @@ package = "netlify-plugin-cypress"
     wait-on = 'http://localhost:3000'
     wait-on-timeout = '30' # seconds
 
+  # We do not want to run tests against the deployed site
+  [plugins.inputs]
+    enable = false
+
 # Config reference examples: https://www.npmjs.com/package/netlify-plugin-cypress/v/1.9.1
 # Example config with preBuild and postBuild: https://github.com/cypress-io/netlify-plugin-prebuild-example/blob/master/netlify.toml
