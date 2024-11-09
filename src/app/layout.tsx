@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
-import "pixeden-stroke-7-icon/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css";
-import "flickity/dist/flickity.min.css";
-import "photoswipe/dist/photoswipe.css";
-import "photoswipe/dist/default-skin/default-skin.css";
-import "./globals.css";
+
+import { Layout } from "./Layout/Layout";
 
 export const metadata: Metadata = {
   title: "Riley Boyd: Senior Frontend Engineer",
@@ -17,7 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Layout>{children}</Layout>
+      </body>
     </html>
   );
 }
