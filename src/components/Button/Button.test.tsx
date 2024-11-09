@@ -6,7 +6,7 @@ const mockOnClick = jest.fn();
 describe("Button Component", () => {
   it("renders button with text", () => {
     render(<Button onClick={mockOnClick}>Click me</Button>);
-    expect(screen.getByText(/Click me/i)).toBeInTheDocument();
+    expect(screen.getByText(/Click mse/i)).toBeInTheDocument();
   });
 
   it("fires click event", () => {
