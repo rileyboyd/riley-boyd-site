@@ -11,7 +11,10 @@ interface MobileNavProps {
   isOpened: boolean;
 }
 
-const MobileNav: React.FC<MobileNavProps> = ({ closeBtnHandler, isOpened }) => {
+export const MobileNav: React.FC<MobileNavProps> = ({
+  closeBtnHandler,
+  isOpened,
+}) => {
   const showNavbarStyles = {
     display: "block",
     opacity: 1,
@@ -108,7 +111,12 @@ const MobileNav: React.FC<MobileNavProps> = ({ closeBtnHandler, isOpened }) => {
             <div className="rb-nav-header">
               <div className="rb-nav-logo">
                 <Link href="/" className="rb-nav-logo">
-                  <Image src="/images/logo-light.svg" alt="" width="85" />
+                  <Image
+                    src="/images/logo-light.svg"
+                    alt=""
+                    width="85"
+                    height="85"
+                  />
                 </Link>
               </div>
               <button

@@ -1,6 +1,6 @@
 import React from "react";
 
-const Footer: React.FC = () => (
+export const Footer: React.FC = () => (
   <footer className="rb-footer">
     <div className="bg-image">
       <div

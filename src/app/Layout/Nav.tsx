@@ -9,7 +9,10 @@ interface NavProps {
   menuIconClickHandler: (event: React.MouseEvent) => void;
 }
 
-const Nav: React.FC<NavProps> = ({ menuIconClickHandler, useSticky }) => {
+export const Nav: React.FC<NavProps> = ({
+  menuIconClickHandler,
+  useSticky,
+}) => {
   const [isSticky, setSticky] = useState(false);
   const stickyRef = useRef<HTMLElement | null>(null);
 
@@ -66,9 +69,10 @@ const Nav: React.FC<NavProps> = ({ menuIconClickHandler, useSticky }) => {
               src="/images/rb-logo-light.svg"
               alt=""
               width="140"
+              height="140"
               className="rb-nav-logo-onscroll"
             />
-            <Image src="/images/rb-logo.svg" alt="" width="140" />
+            <Image src="/images/rb-logo.svg" alt="" width="140" height="140" />
           </Link>
           <ul
             className="rb-nav rb-nav-right d-none d-lg-block"

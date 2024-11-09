@@ -6,7 +6,7 @@ interface HeaderProps {
   menuIconClickHandler: (event: React.MouseEvent) => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ menuIconClickHandler }) => {
+export const Header: React.FC<HeaderProps> = ({ menuIconClickHandler }) => {
   // If the page is the home page (location == '/'), add sticky nav
   const [hasStickyNav /*, setHasStickyNav*/] = useState(false);
 
