@@ -176,5 +176,3 @@ export const MobileNav: React.FC<MobileNavProps> = ({
     </nav>
   );
 };
-
-export default MobileNav;

@@ -119,5 +119,3 @@ export const Nav: React.FC<NavProps> = ({
     </nav>
   );
 };
-
-export default Nav;

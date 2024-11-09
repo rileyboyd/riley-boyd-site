@@ -28,5 +28,3 @@ export const Header: React.FC<HeaderProps> = ({ menuIconClickHandler }) => {
     </header>
   );
 };
-
-export default Header;
