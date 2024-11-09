@@ -1,6 +1,7 @@
 import React, { useState /*, useRef */ } from "react";
-
 // import axios from "axios";
+
+import { Button } from "@/components/Button";
 
 interface ContactFormProps {
   className?: string;
@@ -101,14 +102,6 @@ export const ContactForm: React.FC<ContactFormProps> = (props, ref) => {
           <h2 className="display-4">Contact Me</h2>
           <div className="rb-gap mnt-3" />
           <p>Get in touch! Use this form to send me an email.</p>
-          {/*
-            <ul className="rb-contact-info">
-              <li><strong>Address:</strong> 10111 Santa Monica Boulevard, LA</li>
-              <li><strong>Phone:</strong> +44 987 065 908</li>
-              <li><strong>Email:</strong> info@Example.com</li>
-              <li><strong>Fax:</strong> +44 987 065 909</li>
-            </ul>
-           */}
         </div>
         <div className="col-lg-7">
           {/* START: Form */}
@@ -172,9 +165,7 @@ export const ContactForm: React.FC<ContactFormProps> = (props, ref) => {
               This field is required.
             </div>
             <div className="rb-gap-1" />
-            <button className="rb-btn" id="form-submit-btn">
-              Send Message
-            </button>
+            <Button type="submit">Send Message</Button>
             <div
               className="rb-form-response rb-form-response-success"
               style={{ display: showSuccessMsg ? "block" : "none" }}
