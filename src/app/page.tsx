@@ -4,7 +4,7 @@ import gsap from "gsap";
 import Image from "next/image";
 
 import { Button } from "@/components/Button";
-import ContactSection from "@/components/ContactSection";
+import ContactSection from "./ContactSection";
 
 import { getNumberOfYearsSinceDate } from "@/utils/getNumberOfYearsSinceDate";
 import { skillIcons } from "./skillIcons";
