@@ -1,6 +1,6 @@
 import React, { useState /*, useEffect*/ } from "react";
 
-import Nav from "./Nav";
+import { Nav } from "./Nav";
 
 interface HeaderProps {
   menuIconClickHandler: (event: React.MouseEvent) => void;
