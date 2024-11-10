@@ -22,14 +22,15 @@ export const MobileNav: React.FC<MobileNavProps> = ({
   };
 
   const navbarFullRef = useRef<HTMLElement | null>(null);
-  const navSociallRef = useRef<HTMLElement | null>(null);
+  const navSocialRef = useRef<HTMLDivElement | null>(null);
 
   // Use Refs to get the DOM elements needed for the menu animations
   const navbar = navbarFullRef.current;
-  const navbarSocial = navSociallRef.current;
+  const navbarSocial = navSocialRef.current;
 
-  const openFullscreenNavbar = () => {
-    if (!navbarFullRef.current) {
+  // When the "isOpened" prop on the parent changes, call the appropriate menu function
+  useEffect(() => {
+    if (!navbarFullRef.current || !navSocialRef.current) {
       return;
     }
 
@@ -37,64 +38,46 @@ export const MobileNav: React.FC<MobileNavProps> = ({
       ".rb-navbar-mobile-content >.rb-nav > li > a"
     );
 
-    // Animate in the links in the menu
-    tween.set(navbarMenuItems, {
-      opacity: 0,
-      force3D: true,
-    });
+    const openFullscreenNavbar = () => {
+      // Animate in the links in the menu
+      tween.set(navbarMenuItems, {
+        opacity: 0,
+        force3D: true,
+      });
 
-    if (!navbarSocial || !navbar) {
-      return;
-    }
+      tween.set(navbarSocial, {
+        opacity: 0,
+        force3D: true,
+      });
 
-    tween.set(navbarSocial, {
-      opacity: 0,
-      force3D: true,
-    });
+      tween.to(navbar, 0.5, {
+        opacity: 1,
+        force3D: true,
+        display: "block",
+        onComplete() {},
+      });
 
-    tween.to(navbar, 0.5, {
-      opacity: 1,
-      force3D: true,
-      display: "block",
-      onComplete() {},
-    });
-
-    /*
-    tween.staggerTo(
-      navbarMenuItems,
-      0.2,
-      {
+      tween.to(navbarSocial, 0.3, {
         y: 0,
         opacity: 1,
-        delay: 0.2,
-      },
-      0.05
-    );
-    */
+        delay: 0.4,
+      });
+    };
 
-    tween.to(navbarSocial, 0.3, {
-      y: 0,
-      opacity: 1,
-      delay: 0.4,
-    });
-  };
+    const closeFullscreenNavbar = () => {
+      // Set the opacity of the links in the menu back to 0
+      tween.set([navbarMenuItems, navbarSocial], {
+        opacity: 0,
+        force3D: true,
+      });
+    };
 
-  const closeFullscreenNavbar = () => {
-    // Set the opacity of the links in the menu back to 0
-    tween.set([navbarMenuItems, navbarSocial], {
-      opacity: 0,
-      force3D: true,
-    });
-  };
-
-  // When the "isOpened" prop on the parent changes, call the appropriate menu function
-  useEffect(() => {
     if (isOpened) {
       openFullscreenNavbar();
     } else {
       closeFullscreenNavbar();
     }
-  }, [isOpened, openFullscreenNavbar, closeFullscreenNavbar]);
+  }, [isOpened, navbarFullRef.current]);
 
   return (
     <nav
@@ -157,7 +140,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({
         </div>
         <div className="rb-nav-row">
           <div className="container">
-            <div className="rb-nav-social" ref={navSociallRef}>
+            <div className="rb-nav-social" ref={navSocialRef}>
               <ul>
                 <li>
                   <Link
