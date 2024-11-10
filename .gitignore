@@ -19,6 +19,7 @@
 
 # production
 /build
+/dist
 
 # misc
 .DS_Store
@@ -50,3 +51,9 @@ cypress/downloads/
 # Cypress example files
 cypress/e2e/examples
 cypress/fixtures/examples
+
+# Log files
+*.log
+
+# Storybook static build output
+/storybook-static/
