@@ -21,18 +21,22 @@ export const MobileNav: React.FC<MobileNavProps> = ({
     transform: "translate3d(0px, 0px, 0px)",
   };
 
-  const navbarFullRef = useRef(null);
-  const navSociallRef = useRef(null);
+  const navbarFullRef = useRef<HTMLElement | null>(null);
+  const navSociallRef = useRef<HTMLElement | null>(null);
 
   // Use Refs to get the DOM elements needed for the menu animations
   const navbar = navbarFullRef.current;
   const navbarSocial = navSociallRef.current;
 
-  const navbarMenuItems = document.querySelectorAll(
-    ".rb-navbar-mobile-content >.rb-nav > li > a"
-  );
-
   const openFullscreenNavbar = () => {
+    if (!navbarFullRef.current) {
+      return;
+    }
+
+    const navbarMenuItems = navbarFullRef.current.querySelectorAll(
+      ".rb-navbar-mobile-content >.rb-nav > li > a"
+    );
+
     // Animate in the links in the menu
     tween.set(navbarMenuItems, {
       opacity: 0,
