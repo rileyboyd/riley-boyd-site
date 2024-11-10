@@ -24,17 +24,17 @@ export const MobileNav: React.FC<MobileNavProps> = ({
   const navbarFullRef = useRef<HTMLElement | null>(null);
   const navSocialRef = useRef<HTMLDivElement | null>(null);
 
-  // Use Refs to get the DOM elements needed for the menu animations
-  const navbar = navbarFullRef.current;
-  const navbarSocial = navSocialRef.current;
-
   // When the "isOpened" prop on the parent changes, call the appropriate menu function
   useEffect(() => {
-    if (!navbarFullRef.current || !navSocialRef.current) {
+    // Use Refs to get the DOM elements needed for the menu animations
+    const navbar = navbarFullRef.current;
+    const navbarSocial = navSocialRef.current;
+
+    if (!navbar || !navbarSocial) {
       return;
     }
 
-    const navbarMenuItems = navbarFullRef.current.querySelectorAll(
+    const navbarMenuItems = navbar.querySelectorAll(
       ".rb-navbar-mobile-content >.rb-nav > li > a"
     );
 
@@ -77,7 +77,11 @@ export const MobileNav: React.FC<MobileNavProps> = ({
     } else {
       closeFullscreenNavbar();
     }
-  }, [isOpened, navbarFullRef.current]);
+
+    return () => {
+      tween.killTweensOf([navbar, navbarMenuItems, navbarSocial]);
+    };
+  }, [isOpened, navbarFullRef.current, navSocialRef.current]);
 
   return (
     <nav
