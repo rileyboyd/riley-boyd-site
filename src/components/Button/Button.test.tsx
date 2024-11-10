@@ -4,6 +4,12 @@ import { Button } from "./Button";
 const mockOnClick = jest.fn();
 
 describe("Button Component", () => {
+  it("renders without error", () => {
+    expect(() =>
+      render(<Button onClick={mockOnClick}>Click me</Button>)
+    ).not.toThrow();
+  });
+
   it("renders button with text", () => {
     render(<Button onClick={mockOnClick}>Click me</Button>);
     expect(screen.getByText(/Click me/i)).toBeInTheDocument();

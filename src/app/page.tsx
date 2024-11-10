@@ -4,6 +4,7 @@ import gsap from "gsap";
 import Image from "next/image";
 
 import { Button } from "@/components/Button";
+import { Text } from "@/components/Text";
 import ContactSection from "./ContactSection";
 
 import { getNumberOfYearsSinceDate } from "@/utils/getNumberOfYearsSinceDate";
@@ -95,30 +96,30 @@ export default function Home() {
 
   const mainContent = (
     <>
-      <p>
+      <Text>
         I build rich user interfaces for the web using modern tools like
         React/Vue, SASS/CSS3, HTML5, NPM, and Git, and I can write great vanilla
         Javascript code. I build responsive websites and web apps that are
         well-tested, work well across browsers, and are optimized to provide a
         great user experience for mobile, tablet, and desktop users.
-      </p>
-      <p>
+      </Text>
+      <Text>
         I have strong design skills, and I am skilled with Figma and the Adobe
         Creative Suite of applications, including Photoshop, Illustrator, and
         InDesign.
-      </p>
-      <p>
+      </Text>
+      <Text>
         My most recent role was as a Frontend Engineer at Amazon, where I worked
         on applications for Amazon Marketing Cloud. I have also worked for a
         variety of companies/agencies in the digital advertising sector, and
         have had the opportunity to work on websites for some major brands
         (e.g., Sony, General Motors, Nestle, Volkswagen).
-      </p>
-      <p>
+      </Text>
+      <Text>
         I hold a Master of Arts in Humanities Computing (University of Alberta),
         and an Honours Bachelor of Arts in Multimedia and Fine Art (McMaster
         University).
-      </p>
+      </Text>
     </>
   );
 
@@ -130,17 +131,16 @@ export default function Home() {
         <div className="rb-header-table">
           <div className="rb-header-table-cell">
             <div className="container">
-              <h1 className="rb-title display-3">
-                <span id="hero-text-1" className="hero-text-line">
-                  Hello, I&apos;m{" "}
-                  <span className="hero-text-name">Riley&nbsp;Boyd</span>.
-                </span>
+              <Text variant="h1" className="text-center">
+                <span>
+                  Hello, I&apos;m <span>Riley&nbsp;Boyd</span>.
+                </span>{" "}
                 <span id="hero-text-2" className="hero-text-line">
                   I&apos;m a senior front-end
                   <br />
                   web&nbsp;developer.
                 </span>
-              </h1>
+              </Text>
               <Button onClick={btnHandler} className="mt-15 hero-btn">
                 View My Work
               </Button>
@@ -168,10 +168,10 @@ export default function Home() {
           <div className="row">
             <div className="col-md-8 order-md-2 text-left about-me-text">
               <div className="rb-gap-1"></div>
-              <h2 className="text-center">
+              <Text variant="h2" className="text-center">
                 {numberOfYearsSinceIStartedWorking} Years of Professional
                 Experience.
-              </h2>
+              </Text>
               <div className="rb-gap-1"></div>
               <div className="d-none d-md-block">{mainContent}</div>
             </div>
