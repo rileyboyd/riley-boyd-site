@@ -16,7 +16,6 @@
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
     "@fortawesome/free-brands-svg-icons": "^6.6.0",
     "@fortawesome/react-fontawesome": "^0.2.2",
-    "@storybook/nextjs": "^8.4.2",
     "axios": "^1.7.7",
     "bootstrap": "^4.2.1",
     "clsx": "^2.1.1",
