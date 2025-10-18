@@ -61,7 +61,7 @@ export default function Home() {
   // };
 
   const btnHandler = () => {
-    // history.push("/portfolio");
+    window.location.href = "/portfolio";
   };
 
   const scrollDownHandler = (event: UIEvent<HTMLElement>): void => {
@@ -131,16 +131,17 @@ export default function Home() {
         <div className="rb-header-table">
           <div className="rb-header-table-cell">
             <div className="container">
-              <Text variant="h1" className="text-center">
-                <span>
-                  Hello, I&apos;m <span>Riley&nbsp;Boyd</span>.
-                </span>{" "}
+              <h1 className="rb-title display-3">
+                <span id="hero-text-1" className="hero-text-line">
+                  Hello, I&apos;m{" "}
+                  <span className="hero-text-name">Riley&nbsp;Boyd</span>.
+                </span>
                 <span id="hero-text-2" className="hero-text-line">
                   I&apos;m a senior front-end
                   <br />
                   web&nbsp;developer.
                 </span>
-              </Text>
+              </h1>
               <Button onClick={btnHandler} className="mt-15 hero-btn">
                 View My Work
               </Button>
