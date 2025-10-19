@@ -1,4 +1,4 @@
-import React, { useState /*, useEffect*/ } from 'react'
+import { usePathname } from 'next/navigation'
 
 import { Nav } from './Nav'
 
@@ -7,18 +7,9 @@ interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({ menuIconClickHandler }) => {
-  // If the page is the home page (location == '/'), add sticky nav
-  const [hasStickyNav /*, setHasStickyNav*/] = useState(false)
+  const pathname = usePathname()
 
-  /*
-  useEffect(() => {
-    setHasStickyNav(
-      location.pathname == "/" ||
-        location.pathname == "/contact/" ||
-        location.pathname == "/contact"
-    );
-  }, [location.pathname]);
-  */
+  const hasStickyNav = pathname === '/' // Use sticky nav only on home page
   return (
     <header className={`rb-header ${hasStickyNav ? 'rb-header-over' : ''}`}>
       <Nav
