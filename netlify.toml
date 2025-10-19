@@ -16,6 +16,8 @@
     startCommand = "npx next start -p 8888"
     # Run tests against that local server
     baseUrl = "http://localhost:8888"
+    wait-on = "http://localhost:8888"
+    wait-on-timeout = "30" # seconds
     # Fail the Netlify build when tests fail
     failBuild = true
 
