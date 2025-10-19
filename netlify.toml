@@ -1,20 +1,18 @@
 [build]
+  # Build your Next.js site
   command = "next build"
-  # publish directory is handled by the Next.js plugin, so you can omit it
-  # publish = ".next"
   [build.environment]
     CYPRESS_CACHE_FOLDER = "./node_modules/CypressBinary"
     TERM = "xterm"
 
-# Use the official Next.js Netlify plugin
+# Next.js plugin handles static assets, SSR pages, and serverless functions
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-# Use the Cypress Netlify plugin
+# Cypress plugin runs tests before the build
 [[plugins]]
   package = "netlify-plugin-cypress"
 
-  # Run Cypress tests *before* the build (optional)
   [plugins.inputs.preBuild]
     enable = true
     record = true
@@ -22,8 +20,26 @@
     start = "npm run dev"
     wait-on = "http://localhost:3000"
     wait-on-timeout = 30
-    failBuild = true
+    failBuild = true   # Stop the build if any test fails
 
-  # Run Cypress tests *after* the site is deployed (optional)
   [plugins.inputs.postBuild]
-    enable = false
+    enable = false      # Optional: you can enable this if you want tests on the deployed site
+
+# Optional: cache static chunks for better performance
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Optional: image optimization redirects
+[[redirects]]
+  from = "/_next/image"
+  to = "/.netlify/images?url=:url&w=:width&q=:quality"
+  status = 200
+  query = { url = ":url", w = ":width", q = ":quality" }
+
+[[redirects]]
+  from = "/_ipx/*"
+  to = "/.netlify/images?url=:url&w=:width&q=:quality"
+  status = 200
+  query = { url = ":url", w = ":width", q = ":quality" }
