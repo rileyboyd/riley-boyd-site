@@ -14,7 +14,7 @@
     enable = true
     record = true
     group = "1: testing deployed site"
-    baseUrl = "https://rileyboyd.com"
+    baseUrl = "rileyboyd.netlify.app"
     failBuild = true
 
 # Optional: cache static chunks for better performance
