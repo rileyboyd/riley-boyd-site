@@ -1,15 +1,9 @@
 'use client'
-import React, { useEffect } from 'react'
 import Link from 'next/link'
 import getPortfolioData from '../../data/portfolioData'
 
 const PortfolioPage = () => {
   const portfolioData = getPortfolioData()
-
-  // When the page loads, start the scroll at the top of the page
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
 
   return (
     <div className="page-portfolio">
@@ -21,8 +15,6 @@ const PortfolioPage = () => {
           style={{ position: 'relative', height: '1109.95px' }}
         >
           {portfolioData.map((item, index) => {
-            const testURL = "url('" + item.thumbnail + "')"
-
             return (
               <div
                 key={'portfolio-item-' + index}
@@ -35,7 +27,9 @@ const PortfolioPage = () => {
                     className="rb-portfolio-item-link"
                   ></Link>
                   <div className="rb-portfolio-item-image">
-                    <div style={{ backgroundImage: testURL }} />
+                    <div
+                      style={{ backgroundImage: `url('${item.thumbnail}')` }}
+                    />
                   </div>
                   <div className="rb-portfolio-item-info rb-portfolio-item-info-center text-center">
                     <div>
