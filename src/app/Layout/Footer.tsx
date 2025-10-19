@@ -11,9 +11,6 @@ export const Footer: React.FC = () => {
     <footer className="rb-footer">
       <div className="bg-image">
         <div
-          style={{ backgroundImage: "url('assets/images/footer-1.jpg')" }}
-        ></div>
-        <div
           className="bg-image-overlay"
           style={{ backgroundColor: 'rgba(12, 12, 12, 0.9)' }}
         ></div>

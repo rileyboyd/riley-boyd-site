@@ -35,19 +35,6 @@ export default function ClientScripts() {
             return
           }
 
-          // Initialize Isotope for portfolio
-          if ($('.rb-isotope').length) {
-            // Import isotope dynamically
-            import('isotope-layout').then(() => {
-              // initialize isotope on the elements
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              ;($('.rb-isotope') as any).isotope({
-                itemSelector: '.rb-isotope-item',
-                layoutMode: 'masonry',
-              })
-            })
-          }
-
           // Initialize other components as needed
           // Add more initialization code here as needed
         }
