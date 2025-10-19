@@ -4,7 +4,7 @@ describe('Home Page Tests', () => {
   })
 
   it('should display the correct introductory text', () => {
-    cy.contains(/Hello, I'm Riley Boyd./).should('be.visible')
+    cy.contains(/Hellooooo, I'm Riley Boyd./).should('be.visible')
   })
 
   it('should display the "View My Work" button', () => {

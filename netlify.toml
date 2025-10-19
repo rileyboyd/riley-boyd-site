@@ -22,6 +22,7 @@
     start = "npm run dev"
     wait-on = "http://localhost:3000"
     wait-on-timeout = 30
+    failBuild = true
 
   # Run Cypress tests *after* the site is deployed (optional)
   [plugins.inputs.postBuild]
