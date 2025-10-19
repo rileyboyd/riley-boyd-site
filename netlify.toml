@@ -12,10 +12,17 @@
 
   [plugins.inputs.postBuild]
     enable = true
-    baseUrl = "https://rileyboyd.netlify.app"
+    # Start a local production server for the built site (plugin will run this before tests)
+    startCommand = "npx next start -p 8888"
+    # Run tests against that local server
+    baseUrl = "http://localhost:8888"
+    # Fail the Netlify build when tests fail
     failBuild = true
-    record = true
-    group = "1: testing deployed site"
+    # Which specs to run
+    specPattern = "cypress/e2e/**/*.cy.{js,ts}"
+    browser = "chrome"
+    # Optional: increase timeouts so Cypress waits longer for UI elements
+    config = { defaultCommandTimeout = 10000, pageLoadTimeout = 60000 }
 
 # Optional: cache static chunks for better performance
 [[headers]]
