@@ -12,11 +12,10 @@
 
   [plugins.inputs.postBuild]
     enable = true
-    start = 'npm run dev'
-    baseUrl = "http://localhost:3000"
-    wait-on = 'http://localhost:3000'
-    wait-on-timeout = '30' # seconds
+    baseUrl = "https://rileyboyd.netlify.app"
     failBuild = true
+    record = true
+    group = "1: testing deployed site"
 
 # Optional: cache static chunks for better performance
 [[headers]]
