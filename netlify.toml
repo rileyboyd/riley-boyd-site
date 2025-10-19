@@ -14,6 +14,7 @@
     enable = true
     record = true
     group = "1: testing deployed site"
+    baseUrl = "https://rileyboyd.com"
     failBuild = true
 
 # Optional: cache static chunks for better performance
