@@ -15,7 +15,8 @@
 
   [plugins.inputs.preBuild]
     enable = true
-    start = 'npm start'
+    baseUrl = "http://localhost:3000"
+    start = 'npm run dev'
     wait-on = 'http://localhost:3000'
     wait-on-timeout = '30' # seconds
 
