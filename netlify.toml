@@ -13,11 +13,6 @@
 [[plugins]]
   package = "netlify-plugin-cypress"
 
-  # do not run tests after deploy (testing)
-  [plugins.inputs]
-    enable = false
-
-  # run tests preBuild
   [plugins.inputs.preBuild]
     enable = true
     start = "npm run dev"
