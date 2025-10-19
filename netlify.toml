@@ -18,11 +18,6 @@
     baseUrl = "http://localhost:8888"
     # Fail the Netlify build when tests fail
     failBuild = true
-    # Which specs to run
-    specPattern = "cypress/e2e/**/*.cy.{js,ts}"
-    browser = "chrome"
-    # Optional: increase timeouts so Cypress waits longer for UI elements
-    config = { defaultCommandTimeout = 10000, pageLoadTimeout = 60000 }
 
 # Optional: cache static chunks for better performance
 [[headers]]
