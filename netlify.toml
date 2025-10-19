@@ -10,11 +10,10 @@
 [[plugins]]
   package = "netlify-plugin-cypress"
 
-  [plugins.inputs.postBuild]
+  [plugins.inputs.start]
     enable = true
     record = true
-    group = "1: testing deployed site"
-    baseUrl = "https://rileyboyd.netlify.app"
+    group = "1: testing local build"
     failBuild = true
 
 # Optional: cache static chunks for better performance
