@@ -1,28 +1,28 @@
 [build]
-command = "npm run build"
-publish = "build"
+  command = "next build"
+  # publish directory is handled by the Next.js plugin, so you can omit it
+  # publish = ".next"
   [build.environment]
-    # cache Cypress binary in local "node_modules" folder
-    # so Netlify caches it
     CYPRESS_CACHE_FOLDER = "./node_modules/CypressBinary"
-    # set TERM variable for terminal output
     TERM = "xterm"
 
+# Use the official Next.js Netlify plugin
 [[plugins]]
-# runs Cypress tests against the deployed URL
-package = "netlify-plugin-cypress"
-  # Testing the built production version
+  package = "@netlify/plugin-nextjs"
+
+# Use the Cypress Netlify plugin
+[[plugins]]
+  package = "netlify-plugin-cypress"
+
+  # Run Cypress tests *before* the build (optional)
   [plugins.inputs.preBuild]
     enable = true
     record = true
-    group = '1: testing dev site'
-    start = 'npm run dev'
-    wait-on = 'http://localhost:3000'
-    wait-on-timeout = '30' # seconds
+    group = "1: testing dev site"
+    start = "npm run dev"
+    wait-on = "http://localhost:3000"
+    wait-on-timeout = 30
 
-  # We do not want to run tests against the deployed site
-  [plugins.inputs]
+  # Run Cypress tests *after* the site is deployed (optional)
+  [plugins.inputs.postBuild]
     enable = false
-
-# Config reference examples: https://www.npmjs.com/package/netlify-plugin-cypress/v/1.9.1
-# Example config with preBuild and postBuild: https://github.com/cypress-io/netlify-plugin-prebuild-example/blob/master/netlify.toml
