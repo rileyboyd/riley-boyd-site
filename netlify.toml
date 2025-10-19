@@ -20,9 +20,6 @@
     wait-on-timeout = '30' # seconds
     failBuild = true
 
-  [plugins.inputs.postBuild]
-    enable = false
-
 # Optional: cache static chunks for better performance
 [[headers]]
   for = "/_next/static/*"
