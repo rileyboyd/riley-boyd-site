@@ -4,7 +4,7 @@ import Link from "next/link";
 import getPortfolioData from "../../data/portfolioData";
 
 const PortfolioPage = () => {
-  let portfolioData = getPortfolioData();
+  const portfolioData = getPortfolioData();
 
   // When the page loads, start the scroll at the top of the page
   useEffect(() => {
@@ -21,7 +21,7 @@ const PortfolioPage = () => {
           style={{ position: "relative", height: "1109.95px" }}
         >
           {portfolioData.map((item, index) => {
-            let testURL = "url('" + item.thumbnail + "')";
+            const testURL = "url('" + item.thumbnail + "')";
 
             return (
               <div

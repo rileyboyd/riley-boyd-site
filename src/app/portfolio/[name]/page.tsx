@@ -1,9 +1,9 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import getPortfolioData, { PortfolioItem } from "../../../data/portfolioData";
+import getPortfolioData from "../../../data/portfolioData";
 
 const PortfolioItemPage = () => {
   const router = useRouter();
