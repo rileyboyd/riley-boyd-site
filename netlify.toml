@@ -1,29 +1,20 @@
 [build]
-  # Build your Next.js site
   command = "next build"
   [build.environment]
     CYPRESS_CACHE_FOLDER = "./node_modules/CypressBinary"
     TERM = "xterm"
 
-# Next.js plugin handles static assets, SSR pages, and serverless functions
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-# Cypress plugin runs tests before the build
 [[plugins]]
   package = "netlify-plugin-cypress"
 
-  [plugins.inputs.preBuild]
+  [plugins.inputs.postBuild]
     enable = true
     record = true
-    group = "1: testing dev site"
-    start = "npm run dev"
-    wait-on = "http://localhost:3000"
-    wait-on-timeout = 30
-    failBuild = true   # Stop the build if any test fails
-
-  [plugins.inputs.postBuild]
-    enable = false      # Optional: you can enable this if you want tests on the deployed site
+    group = "1: testing deployed site"
+    failBuild = true
 
 # Optional: cache static chunks for better performance
 [[headers]]
