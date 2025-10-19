@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 import { debounce } from '@/utils/debounce'
 
@@ -15,6 +16,7 @@ export const Nav: React.FC<NavProps> = ({
 }) => {
   const [isSticky, setSticky] = useState(false)
   const stickyRef = useRef<HTMLElement | null>(null)
+  const pathname = usePathname()
 
   const getSelectedNavIndex = (pathname = '') => {
     if (pathname == '/') {
@@ -22,12 +24,10 @@ export const Nav: React.FC<NavProps> = ({
     } else if (pathname.substring(0, 10) == '/portfolio') {
       return 1
     }
-    return -1
+    return null
   }
 
-  const [selectedNavIndex /*, setSelectedNavIndex*/] = useState(
-    getSelectedNavIndex()
-  )
+  const selectedNavIndex = getSelectedNavIndex(pathname)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,12 +44,6 @@ export const Nav: React.FC<NavProps> = ({
       window.removeEventListener('scroll', () => handleScroll)
     }
   }, [])
-
-  /*
-  useEffect(() => {
-    setSelectedNavIndex(getSelectedNavIndex("location.pathname"));
-  }, [location.pathname]);
-  */
 
   return (
     <nav
@@ -90,7 +84,6 @@ export const Nav: React.FC<NavProps> = ({
             >
               <Link href="/portfolio/">Portfolio</Link>
             </li>
-            {/* Contact removed from nav while ContactSection is hidden */}
           </ul>
           <ul className="rb-nav rb-nav-right rb-nav-icons">
             <li className="single-icon d-lg-none">

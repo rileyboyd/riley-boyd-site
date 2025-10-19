@@ -133,7 +133,6 @@ export const MobileNav: React.FC<MobileNavProps> = ({
                     <li>
                       <Link href="/portfolio/">Portfolio</Link>
                     </li>
-                    {/* Contact removed from mobile nav while ContactSection is hidden */}
                   </ul>
                 </div>
               </div>

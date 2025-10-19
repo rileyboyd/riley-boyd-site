@@ -52,13 +52,6 @@ export default function Home() {
     })
   }
 
-  // const scrollToTop = () => {
-  //   window.scrollTo({
-  //     top: 0,
-  //     behavior: "smooth",
-  //   });
-  // };
-
   const btnHandler = () => {
     window.location.href = '/portfolio'
   }
@@ -79,15 +72,6 @@ export default function Home() {
       .to('#scroll-btn', 0, { display: 'block' }, 3)
       .to('#scroll-btn', 0.15, { opacity: 1 }, 3.5)
   }, [timeline])
-
-  // If the URL is for the contact form (which is on the home page), scroll down the page to the form
-  // useEffect(() => {
-  //   if (location.pathname == "/contact/" || location.pathname == "/contact") {
-  //     scrollToRef(contactRef);
-  //   } else {
-  //     scrollToTop();
-  //   }
-  // }, [location.pathname]);
 
   const numberOfYearsSinceIStartedWorking = getNumberOfYearsSinceDate(
     '2011-07-11T00:00:00'
@@ -125,8 +109,6 @@ export default function Home() {
   return (
     <div className="page-home">
       <div className="rb-header-title rb-header-title-full rb-header-title-parallax-opacity">
-        <div className="wave" />
-        <div className="wave" />
         <div className="rb-header-table">
           <div className="rb-header-table-cell">
             <div className="container">
