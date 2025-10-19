@@ -10,10 +10,11 @@
 [[plugins]]
   package = "netlify-plugin-cypress"
 
-  [plugins.inputs.start]
+  [plugins.inputs.preBuild]
     enable = true
-    record = true
-    group = "1: testing local build"
+    start = 'npm start'
+    wait-on = 'http://localhost:3000'
+    wait-on-timeout = '30' # seconds
     failBuild = true
 
 # Optional: cache static chunks for better performance
