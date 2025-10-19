@@ -1,6 +1,6 @@
 describe('Home Page Tests', () => {
   beforeEach(() => {
-    cy.visit('/')
+    cy.visit('http://localhost:3000')
   })
 
   it('should display the correct introductory text', () => {
