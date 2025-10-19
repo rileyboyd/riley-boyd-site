@@ -13,6 +13,7 @@
   [plugins.inputs.postBuild]
     enable = true
     start = 'npm run dev'
+    baseUrl = "http://localhost:3000"
     wait-on = 'http://localhost:3000'
     wait-on-timeout = '30' # seconds
     failBuild = true
