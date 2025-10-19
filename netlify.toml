@@ -20,7 +20,7 @@
   # run tests postBuild
   [plugins.inputs.postBuild]
     enable = true
-    start = "npm run start"
+    start = "npm run build && npm run start"
     wait-on = "http://localhost:3000"
     wait-on-timeout = "30" # seconds
 
