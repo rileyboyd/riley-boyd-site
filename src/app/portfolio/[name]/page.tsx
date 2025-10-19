@@ -1,46 +1,46 @@
-"use client";
-import React, { useEffect } from "react";
-import { useRouter, useParams } from "next/navigation";
-import Link from "next/link";
-import Image from "next/image";
-import getPortfolioData from "../../../data/portfolioData";
+'use client'
+import React, { useEffect } from 'react'
+import { useRouter, useParams } from 'next/navigation'
+import Link from 'next/link'
+import Image from 'next/image'
+import getPortfolioData from '../../../data/portfolioData'
 
 const PortfolioItemPage = () => {
-  const router = useRouter();
-  const params = useParams();
+  const router = useRouter()
+  const params = useParams()
 
   // Load portfolio data directly
-  const portfolioData = getPortfolioData();
+  const portfolioData = getPortfolioData()
 
   // When the page loads, start the scroll at the top of the page
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    window.scrollTo(0, 0)
+  }, [])
 
   const getPortfolioItemData = (id: string): number => {
     for (let i = 0; i < portfolioData.length; i++) {
       if (portfolioData[i].id === id) {
-        return i;
+        return i
       }
     }
-    return -1; // Return -1 if not found
-  };
-
-  const goToItemHandler = (event: React.MouseEvent, url: string) => {
-    event.preventDefault();
-    router.push(url);
-    window.scrollTo(0, 0);
-  };
-
-  if (!params?.name) {
-    return <div>Loading...</div>;
+    return -1 // Return -1 if not found
   }
 
-  const itemIndex = getPortfolioItemData(params.name as string);
-  const currentItem = portfolioData[itemIndex];
+  const goToItemHandler = (event: React.MouseEvent, url: string) => {
+    event.preventDefault()
+    router.push(url)
+    window.scrollTo(0, 0)
+  }
+
+  if (!params?.name) {
+    return <div>Loading...</div>
+  }
+
+  const itemIndex = getPortfolioItemData(params.name as string)
+  const currentItem = portfolioData[itemIndex]
 
   if (!currentItem) {
-    return <div>Portfolio item not found</div>;
+    return <div>Portfolio item not found</div>
   }
 
   return (
@@ -114,7 +114,7 @@ const PortfolioItemPage = () => {
                     alt={`${currentItem.title} - Image ${index + 1}`}
                     width={800}
                     height={600}
-                    style={{ width: "100%", height: "auto" }}
+                    style={{ width: '100%', height: 'auto' }}
                   />
                 ))}
               </div>
@@ -151,7 +151,7 @@ const PortfolioItemPage = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default PortfolioItemPage;
+export default PortfolioItemPage

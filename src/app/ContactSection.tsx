@@ -1,7 +1,7 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef } from 'react'
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTwitter, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTwitter, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
 const ContactSection = forwardRef<HTMLDivElement, Record<string, unknown>>(
   (props, ref) => {
@@ -26,7 +26,7 @@ const ContactSection = forwardRef<HTMLDivElement, Record<string, unknown>>(
                       target="_blank"
                     >
                       <FontAwesomeIcon icon={faLinkedin} />
-                      Connect with me on&nbsp;LinkedIn:{" "}
+                      Connect with me on&nbsp;LinkedIn:{' '}
                       <span className="social-handle">
                         www.linkedin.com/in/rileyboyd
                       </span>
@@ -35,7 +35,7 @@ const ContactSection = forwardRef<HTMLDivElement, Record<string, unknown>>(
                   <li>
                     <a href="https://twitter.com/riley_boyd" target="_blank">
                       <FontAwesomeIcon icon={faTwitter} />
-                      Follow me on Twitter:{" "}
+                      Follow me on Twitter:{' '}
                       <span className="social-handle">@riley_boyd</span>
                     </a>
                   </li>
@@ -46,10 +46,10 @@ const ContactSection = forwardRef<HTMLDivElement, Record<string, unknown>>(
         </div>
         <div className="rb-gap-5" />
       </div>
-    );
+    )
   }
-);
+)
 
-ContactSection.displayName = "ContactSection";
+ContactSection.displayName = 'ContactSection'
 
-export default ContactSection;
+export default ContactSection

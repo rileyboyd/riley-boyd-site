@@ -1,379 +1,379 @@
 /* List */
 .rb-portfolio-list {
-    .rb-portfolio-item {
-        position: relative;
-        overflow: hidden;
+  .rb-portfolio-item {
+    position: relative;
+    overflow: hidden;
 
-        // image
-        div.rb-portfolio-item-image,
-        a.rb-portfolio-item-image {
-            position: relative;
-            display: block;
-            width: 100%;
-            padding-bottom: 80.34%;
-            overflow: hidden;
-            background-position: 50% 50%;
-            background-size: cover;
+    // image
+    div.rb-portfolio-item-image,
+    a.rb-portfolio-item-image {
+      position: relative;
+      display: block;
+      width: 100%;
+      padding-bottom: 80.34%;
+      overflow: hidden;
+      background-position: 50% 50%;
+      background-size: cover;
 
-            img {
-                display: none;
-            }
-        }
-        img.rb-portfolio-item-image {
-            width: 100%;
-        }
-        div.rb-portfolio-item-image > div {
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            background-position: 50% 50%;
-            background-size: cover;
-        }
-
-        // image height
-        &.rb-portfolio-item-xxs div.rb-portfolio-item-image,
-        &.rb-portfolio-item-xxs a.rb-portfolio-item-image {
-            padding-bottom: 40%;
-        }
-        &.rb-portfolio-item-xs div.rb-portfolio-item-image,
-        &.rb-portfolio-item-xs a.rb-portfolio-item-image {
-            padding-bottom: 50%;
-        }
-        &.rb-portfolio-item-sm div.rb-portfolio-item-image,
-        &.rb-portfolio-item-sm a.rb-portfolio-item-image {
-            padding-bottom: 67%;
-        }
-        &.rb-portfolio-item-square div.rb-portfolio-item-image,
-        &.rb-portfolio-item-square a.rb-portfolio-item-image {
-            padding-bottom: 100%;
-        }
-        &.rb-portfolio-item-lg div.rb-portfolio-item-image,
-        &.rb-portfolio-item-lg a.rb-portfolio-item-image {
-            padding-top: 30px;
-            padding-bottom: 134%;
-        }
-        &.rb-portfolio-item-lg-0 div.rb-portfolio-item-image,
-        &.rb-portfolio-item-lg-0 a.rb-portfolio-item-image {
-            padding-bottom: 134%;
-        }
-        &.rb-portfolio-item-xl div.rb-portfolio-item-image,
-        &.rb-portfolio-item-xl a.rb-portfolio-item-image {
-            padding-bottom: 200%;
-        }
-
-        // link
-        .rb-portfolio-item-link {
-            position: absolute;
-            display: block;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            z-index: 1;
-        }
-
-        // title
-        .portfolio-item-title {
-            margin-bottom: 1.2rem;
-            color: inherit;
-        }
-
-        // category
-        .portfolio-item-category {
-            font-size: .95rem;
-            font-weight: 500;
-            line-height: 1;
-            text-transform: uppercase;
-        }
-
-        // icon
-        .portfolio-item-icon {
-            font-size: 3rem;
-
-            > span {
-                display: block;
-            }
-        }
-
-        // style 1 & 2
-        &.rb-portfolio-item-info-style-1,
-        &.rb-portfolio-item-info-style-2 {
-            .rb-portfolio-item-info {
-                position: absolute;
-                display: flex;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-                padding: 50px;
-                color: #fff;
-                background-color: rgba(#000, .85);
-                opacity: 0;
-                transition: .5s opacity, .5s background-color;
-
-                > div {
-                    width: 100%;
-                }
-                &.rb-portfolio-item-info-center {
-                    align-items: center;
-                    justify-content: center;
-                }
-                &.rb-portfolio-item-info-bottom {
-                    align-items: flex-end;
-                }
-            }
-            &:hover .rb-portfolio-item-info,
-            &.hover .rb-portfolio-item-info {
-                opacity: 1;
-            }
-            &.hover .rb-portfolio-item-info {
-                background-color: rgba(#000, .6);
-            }
-            &.hover:hover .rb-portfolio-item-info {
-                background-color: rgba(#000, .85);
-            }
-            .portfolio-item-title {
-                opacity: 0;
-                transition: .4s transform .2s, .4s opacity .2s;
-                transform: translateY(10px);
-            }
-            .portfolio-item-category {
-                opacity: 0;
-                transition: .4s transform .3s, .4s opacity .3s;
-                transform: translateY(10px);
-            }
-            &:hover,
-            &.hover {
-                .portfolio-item-title,
-                .portfolio-item-category {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-        }
-        &.rb-portfolio-item-info-style-2 {
-            .rb-portfolio-item-info {
-                color: #000;
-                background-color: rgba(#fff, .85);
-            }
-            &.hover .rb-portfolio-item-info {
-                background-color: rgba(#fff, .6);
-            }
-            &.hover:hover .rb-portfolio-item-info {
-                background-color: rgba(#fff, .85);
-            }
-        }
-
-        // style 3
-        &.rb-portfolio-item-info-style-3 {
-            .rb-portfolio-item-info {
-                position: absolute;
-                right: 0;
-                bottom: 0;
-                left: 0;
-                padding: 25px 50px;
-                color: #000;
-                background-color: #fff;
-                transition: .4s transform;
-                transform: translateY(100%);
-
-                > div {
-                    width: 100%;
-                }
-            }
-            &:hover .rb-portfolio-item-info,
-            &.hover .rb-portfolio-item-info {
-                transform: translateY(0%);
-            }
-
-            .portfolio-item-title {
-                margin-bottom: .85rem;
-            }
-        }
-
-        // style 4
-        &.rb-portfolio-item-info-style-4 {
-            .rb-portfolio-item-info {
-                padding: 21px 0;
-                color: #000;
-            }
-            &:hover .rb-portfolio-item-info,
-            &.hover .rb-portfolio-item-info {
-                transform: translateY(0%);
-            }
-
-            .portfolio-item-title {
-                margin-bottom: .85rem;
-            }
-
-            .rb-portfolio-item-image > div {
-                transition: .5s transform;
-            }
-            &:hover,
-            &.hover {
-                .rb-portfolio-item-image > div {
-                    transform: scale(1.05);
-                }
-            }
-        }
+      img {
+        display: none;
+      }
     }
-}
+    img.rb-portfolio-item-image {
+      width: 100%;
+    }
+    div.rb-portfolio-item-image > div {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-position: 50% 50%;
+      background-size: cover;
+    }
 
+    // image height
+    &.rb-portfolio-item-xxs div.rb-portfolio-item-image,
+    &.rb-portfolio-item-xxs a.rb-portfolio-item-image {
+      padding-bottom: 40%;
+    }
+    &.rb-portfolio-item-xs div.rb-portfolio-item-image,
+    &.rb-portfolio-item-xs a.rb-portfolio-item-image {
+      padding-bottom: 50%;
+    }
+    &.rb-portfolio-item-sm div.rb-portfolio-item-image,
+    &.rb-portfolio-item-sm a.rb-portfolio-item-image {
+      padding-bottom: 67%;
+    }
+    &.rb-portfolio-item-square div.rb-portfolio-item-image,
+    &.rb-portfolio-item-square a.rb-portfolio-item-image {
+      padding-bottom: 100%;
+    }
+    &.rb-portfolio-item-lg div.rb-portfolio-item-image,
+    &.rb-portfolio-item-lg a.rb-portfolio-item-image {
+      padding-top: 30px;
+      padding-bottom: 134%;
+    }
+    &.rb-portfolio-item-lg-0 div.rb-portfolio-item-image,
+    &.rb-portfolio-item-lg-0 a.rb-portfolio-item-image {
+      padding-bottom: 134%;
+    }
+    &.rb-portfolio-item-xl div.rb-portfolio-item-image,
+    &.rb-portfolio-item-xl a.rb-portfolio-item-image {
+      padding-bottom: 200%;
+    }
+
+    // link
+    .rb-portfolio-item-link {
+      position: absolute;
+      display: block;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    // title
+    .portfolio-item-title {
+      margin-bottom: 1.2rem;
+      color: inherit;
+    }
+
+    // category
+    .portfolio-item-category {
+      font-size: 0.95rem;
+      font-weight: 500;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    // icon
+    .portfolio-item-icon {
+      font-size: 3rem;
+
+      > span {
+        display: block;
+      }
+    }
+
+    // style 1 & 2
+    &.rb-portfolio-item-info-style-1,
+    &.rb-portfolio-item-info-style-2 {
+      .rb-portfolio-item-info {
+        position: absolute;
+        display: flex;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        padding: 50px;
+        color: #fff;
+        background-color: rgba(#000, 0.85);
+        opacity: 0;
+        transition:
+          0.5s opacity,
+          0.5s background-color;
+
+        > div {
+          width: 100%;
+        }
+        &.rb-portfolio-item-info-center {
+          align-items: center;
+          justify-content: center;
+        }
+        &.rb-portfolio-item-info-bottom {
+          align-items: flex-end;
+        }
+      }
+      &:hover .rb-portfolio-item-info,
+      &.hover .rb-portfolio-item-info {
+        opacity: 1;
+      }
+      &.hover .rb-portfolio-item-info {
+        background-color: rgba(#000, 0.6);
+      }
+      &.hover:hover .rb-portfolio-item-info {
+        background-color: rgba(#000, 0.85);
+      }
+      .portfolio-item-title {
+        opacity: 0;
+        transition:
+          0.4s transform 0.2s,
+          0.4s opacity 0.2s;
+        transform: translateY(10px);
+      }
+      .portfolio-item-category {
+        opacity: 0;
+        transition:
+          0.4s transform 0.3s,
+          0.4s opacity 0.3s;
+        transform: translateY(10px);
+      }
+      &:hover,
+      &.hover {
+        .portfolio-item-title,
+        .portfolio-item-category {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+    &.rb-portfolio-item-info-style-2 {
+      .rb-portfolio-item-info {
+        color: #000;
+        background-color: rgba(#fff, 0.85);
+      }
+      &.hover .rb-portfolio-item-info {
+        background-color: rgba(#fff, 0.6);
+      }
+      &.hover:hover .rb-portfolio-item-info {
+        background-color: rgba(#fff, 0.85);
+      }
+    }
+
+    // style 3
+    &.rb-portfolio-item-info-style-3 {
+      .rb-portfolio-item-info {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        padding: 25px 50px;
+        color: #000;
+        background-color: #fff;
+        transition: 0.4s transform;
+        transform: translateY(100%);
+
+        > div {
+          width: 100%;
+        }
+      }
+      &:hover .rb-portfolio-item-info,
+      &.hover .rb-portfolio-item-info {
+        transform: translateY(0%);
+      }
+
+      .portfolio-item-title {
+        margin-bottom: 0.85rem;
+      }
+    }
+
+    // style 4
+    &.rb-portfolio-item-info-style-4 {
+      .rb-portfolio-item-info {
+        padding: 21px 0;
+        color: #000;
+      }
+      &:hover .rb-portfolio-item-info,
+      &.hover .rb-portfolio-item-info {
+        transform: translateY(0%);
+      }
+
+      .portfolio-item-title {
+        margin-bottom: 0.85rem;
+      }
+
+      .rb-portfolio-item-image > div {
+        transition: 0.5s transform;
+      }
+      &:hover,
+      &.hover {
+        .rb-portfolio-item-image > div {
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+}
 
 /*
  *    Single Portfolio Item
  */
 .rb-portfolio-single {
+  // title
+  .rb-portfolio-title {
+    margin-bottom: 1.9rem;
+    letter-spacing: 0.012em;
+  }
 
-    // title
-    .rb-portfolio-title {
-        margin-bottom: 1.9rem;
-        letter-spacing: .012em;
-    }
-
-    // details
-    .rb-portfolio-details {
-        width: 100%;
-
-        tr {
-        }
-
-        tr td {
-            width: 100px;
-            padding-bottom: 5px;
-
-            padding-right: 7px;
-            vertical-align: top;
-        }
-        tr td + td {
-            width: auto;
-            padding-right: 0;
-        }
-        tr + tr td {
-            padding-top: 5px;
-        }
-        strong {
-            font-weight: 500;
-            color: $color_titles;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-            transition: .5s opacity;
-        }
-        a:hover {
-            opacity: .6;
-        }
-    }
-
-    .rb-portfolio-text + .rb-portfolio-details {
-        margin-top: 46px;
-    }
-
-    .rb-portfolio-text p:last-of-type {
-        margin-bottom: 0;
-    }
-
-    // half style
-    &.rb-portfolio-single-half {
-        .rb-portfolio-images {
-
-            .container-fluid & {
-                margin-right: -15px;
-                margin-left: -15px;
-            }
-
-        }
-
-        .rb-portfolio-info {
-            max-width: 540px;
-            padding-top: 92px;
-            padding-right: 60px;
-            padding-bottom: 92px;
-            padding-left: 90px;
-
-            @media #{$media_xs} {
-                padding: 70px 40px;
-            }
-
-            @media #{$media_xxs} {
-                padding: 50px 20px;
-            }
-        }
-    }
-}
-.rb-portfolio-images img {
+  // details
+  .rb-portfolio-details {
     width: 100%;
-    height: auto;
-    margin-bottom: 2em;
-    -webkit-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.2);
-    -moz-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.2);
-    box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.2);
 
-}
-.rb-portfolio-launch-site {
-    padding-top: 48px;
-    padding-bottom: 54px;
-    font-family: $font_headings;
-    text-align: center;
+    tr {
+    }
+
+    tr td {
+      width: 100px;
+      padding-bottom: 5px;
+
+      padding-right: 7px;
+      vertical-align: top;
+    }
+    tr td + td {
+      width: auto;
+      padding-right: 0;
+    }
+    tr + tr td {
+      padding-top: 5px;
+    }
+    strong {
+      font-weight: 500;
+      color: $color_titles;
+    }
 
     a {
-        color: inherit;
-        text-decoration: none;
-        transition: .5s opacity;
+      color: inherit;
+      text-decoration: none;
+      transition: 0.5s opacity;
+    }
+    a:hover {
+      opacity: 0.6;
+    }
+  }
 
-        &:hover,
-        &.hover {
-            opacity: .6;
-        }
+  .rb-portfolio-text + .rb-portfolio-details {
+    margin-top: 46px;
+  }
+
+  .rb-portfolio-text p:last-of-type {
+    margin-bottom: 0;
+  }
+
+  // half style
+  &.rb-portfolio-single-half {
+    .rb-portfolio-images {
+      .container-fluid & {
+        margin-right: -15px;
+        margin-left: -15px;
+      }
     }
 
-    > a {
-        display: inline-block;
-        font-size: 1.68rem;
-        font-weight: 600;
-        color: $color_titles;
+    .rb-portfolio-info {
+      max-width: 540px;
+      padding-top: 92px;
+      padding-right: 60px;
+      padding-bottom: 92px;
+      padding-left: 90px;
 
-        &::after {
-            content: "";
-            display: block;
-            margin-top: -4px;
-            border-bottom: 1px solid;
-        }
-    }
+      @media #{$media_xs} {
+        padding: 70px 40px;
+      }
 
-    > div {
-        margin-top: 24px;
-        font-size: 1.05rem;
+      @media #{$media_xxs} {
+        padding: 50px 20px;
+      }
     }
+  }
 }
+.rb-portfolio-images img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 2em;
+  -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
+}
+.rb-portfolio-launch-site {
+  padding-top: 48px;
+  padding-bottom: 54px;
+  font-family: $font_headings;
+  text-align: center;
 
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: 0.5s opacity;
+
+    &:hover,
+    &.hover {
+      opacity: 0.6;
+    }
+  }
+
+  > a {
+    display: inline-block;
+    font-size: 1.68rem;
+    font-weight: 600;
+    color: $color_titles;
+
+    &::after {
+      content: '';
+      display: block;
+      margin-top: -4px;
+      border-bottom: 1px solid;
+    }
+  }
+
+  > div {
+    margin-top: 24px;
+    font-size: 1.05rem;
+  }
+}
 
 /*
  * Single Portfolio Header
  */
 .rb-portfolio-single-header {
-    display: table;
-    width: 100%;
-    min-height: 570px;
-    padding-top: 60px;
-    padding-bottom: 60px;
-    background-color: #e8e8e8;
+  display: table;
+  width: 100%;
+  min-height: 570px;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  background-color: #e8e8e8;
 
-    > div {
-        display: table-cell;
-        width: 50%;
-        vertical-align: middle;
+  > div {
+    display: table-cell;
+    width: 50%;
+    vertical-align: middle;
 
-        > .container > .row {
-            align-items: center;
-        }
+    > .container > .row {
+      align-items: center;
     }
+  }
 
-    .rb-portfolio-title + .lead {
-        margin-top: 24px;
-    }
+  .rb-portfolio-title + .lead {
+    margin-top: 24px;
+  }
 }

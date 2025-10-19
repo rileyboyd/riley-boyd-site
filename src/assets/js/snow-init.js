@@ -1,8 +1,8 @@
-import { options } from './parts/_options';
+import { options } from './parts/_options'
 
-console.log(window.Snow);
+console.log(window.Snow)
 
 if (typeof window.Snow !== 'undefined') {
-    window.Snow.setOptions(options);
-    window.Snow.init();
+  window.Snow.setOptions(options)
+  window.Snow.init()
 }

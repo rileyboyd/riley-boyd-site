@@ -1,10 +1,10 @@
-import { $, $doc } from './_utility';
+import { $, $doc } from './_utility'
 
 /* Nano Scroller */
 function initPluginNano($context) {
-    if (typeof $.fn.nanoScroller !== 'undefined') {
-        ($context || $doc).find('.nano').nanoScroller();
-    }
+  if (typeof $.fn.nanoScroller !== 'undefined') {
+    ;($context || $doc).find('.nano').nanoScroller()
+  }
 }
 
-export { initPluginNano };
+export { initPluginNano }

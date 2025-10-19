@@ -1,133 +1,113 @@
 .page-home {
+  #scroll-btn {
+    display: none;
+    opacity: 0;
+  }
 
-	#scroll-btn {
-		display: none;
-		opacity: 0;
-	}
+  #about {
+    padding: 30px 0;
 
-	#about {
+    @media only screen and (min-width: 992px) {
+      padding: 60px 0;
+    }
 
-		padding: 30px 0;
+    .about-me-photo-col {
+      padding: 0;
 
-		@media only screen and (min-width: 992px) {
-			padding: 60px 0;			
-		}
+      .about-me-photo {
+        width: 100%;
+        height: auto;
+      }
+    }
 
-		.about-me-photo-col {
+    .about-me-text {
+      @media only screen and (min-width: 768px) {
+        padding-left: 60px;
+      }
+    }
+  }
 
-			padding: 0;
+  #skills {
+    padding-bottom: 60px;
 
-			.about-me-photo {
-				width: 100%;
-				height: auto;
-			}
-		}
+    @media only screen and (min-width: 992px) {
+      padding-bottom: 90px;
+    }
 
-		.about-me-text {
-			@media only screen and (min-width: 768px) {
-				padding-left: 60px;
-			}
-		}
-	}
+    .skill-box {
+      padding-top: 40px;
 
-	#skills {
+      .rb-ibox-1 {
+        height: 160px;
 
-		padding-bottom: 60px;
+        .rb-ibox-cont {
+          width: 100%;
+          margin: 0;
+          text-align: center;
 
-		@media only screen and (min-width: 992px) {
-			padding-bottom: 90px;
-		}
+          .rb-ibox-title {
+            font-size: 1.5em;
+          }
+        }
 
-		.skill-box {
+        .rb-ibox-icon {
+          width: 100%;
 
-			padding-top: 40px;
+          img {
+            width: 120px;
+          }
 
-			.rb-ibox-1 {
-			
-			    height: 160px;
-			
-				.rb-ibox-cont {
+          &.js-icon {
+            img {
+              width: 98px;
+            }
+          }
 
-					width: 100%;
-					margin: 0;
-					text-align: center;
+          &.sass-icon {
+            img {
+              width: 120px;
+              margin-top: 10px;
+            }
+          }
 
-					.rb-ibox-title {
-					    font-size: 1.5em;
-					}
+          &.react-icon {
+            img {
+              // width: 98px;
+            }
+          }
 
-				}
+          &.html5-icon {
+            img {
+              width: 96px;
+            }
+          }
 
-				.rb-ibox-icon {
+          &.css3-icon {
+            img {
+              width: 115px;
+              margin-top: 5px;
+            }
+          }
 
-					width: 100%;
+          &.git-icon {
+            img {
+              width: 112px;
+            }
+          }
+        }
+      }
+    }
+  }
 
-					img {
-						width: 120px;
-					}
+  #contact {
+    #form-submit-btn {
+      @media only screen and (min-width: 768px) {
+        float: left;
+      }
+    }
+  }
 
-
-					&.js-icon {
-						img {
-					    	width: 98px;						
-						}
-					}
-
-					&.sass-icon {
-						img {
-						    width: 120px;
-						    margin-top: 10px;						
-						}
-					}
-
-					&.react-icon {
-						img {
-					    	// width: 98px;						
-						}
-					}
-
-					&.html5-icon {
-						img {
-	    					width: 96px;					
-						}
-						
-					}
-
-					&.css3-icon {
-						img {
-						    width: 115px;
-						    margin-top: 5px;						
-						}
-						
-					}
-
-					&.git-icon {
-						img {
-							width: 112px;					
-						}
-						
-					}
-
-				}
-			}
-		}
-
-	}
-
-	#contact {
-
-		#form-submit-btn {
-
-			@media only screen and (min-width: 768px) {
-				float: left;
-			}
-
-		}
-
-	}
-
-	#projects {
-		background-color: $color_bg;
-	}
-
+  #projects {
+    background-color: $color_bg;
+  }
 }

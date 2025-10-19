@@ -1,81 +1,71 @@
 .rb-header-title {
-    background: #1faeaa;    
-    position: relative;
-    display: block;
-    overflow: hidden;
-    text-align: center;
-    z-index: 0;
+  background: #1faeaa;
+  position: relative;
+  display: block;
+  overflow: hidden;
+  text-align: center;
+  z-index: 0;
 
-    // NOTE; Maybe add some gently moving circles
+  // NOTE; Maybe add some gently moving circles
 
+  .wave {
+    background: url('/wave.svg') repeat-x;
+    width: 23040px;
+    height: 932px;
+    // padding-top: 18%;
+    position: absolute;
+    bottom: -75%;
+    // height: 518px;
+    animation: wave 170s infinite;
+    animation-timing-function: linear;
+    opacity: 0.2;
+    transform-origin: 50% 0%;
+    z-index: -1;
+
+    &:nth-child(2) {
+      // display:none;
+      right: 0;
+      top: 20%;
+      bottom: auto;
+      animation: wave2 170s infinite;
+      // animation: wave2 31s cubic-bezier(0.3, 0.42, 0.7, 0.5) infinite;
+    }
+  }
+
+  @media only screen and (min-width: 768px) {
     .wave {
-
-        background: url('/wave.svg') repeat-x;
-        width: 23040px;
-        height: 932px;
-        // padding-top: 18%;
-        position: absolute;
-        bottom: -75%;
-        // height: 518px;
-        animation: wave 170s infinite;
-        animation-timing-function: linear;
-        opacity: 0.2;
-        transform-origin: 50% 0%;        
-        z-index: -1;
-
-        &:nth-child(2) {
-            // display:none;
-            right: 0;
-            top: 20%;
-            bottom: auto;
-            animation: wave2 170s infinite;
-            // animation: wave2 31s cubic-bezier(0.3, 0.42, 0.7, 0.5) infinite;
-          
-        }
-
+      bottom: -70%;
     }
+  }
 
+  @media only screen and (min-width: 992px) {
+  }
 
-    @media only screen and (min-width: 768px) {
-
-        .wave {
-            bottom: -70%;
-        }
-
+  @keyframes wave {
+    0% {
+      transform: translate(0%) rotate(0deg);
     }
-
-    @media only screen and (min-width: 992px) {
-        
+    50% {
+      transform: translate(-25%) rotate(2deg);
     }
-
-    
-    @keyframes wave {
-      0% {
-        transform: translate(0%) rotate(0deg);
-      }
-      50% {
-        transform: translate(-25%) rotate(2deg);
-      }
-      100% {
-        transform: translate(-50%) rotate(0deg);
-      }
+    100% {
+      transform: translate(-50%) rotate(0deg);
     }
+  }
 
+  @keyframes wave2 {
+    0% {
+      transform: translate(20%) rotate(180deg);
+    }
+    50% {
+      transform: translate(45%) rotate(180deg);
+    }
+    100% {
+      transform: translate(70%) rotate(180deg);
+    }
+  }
 
-    @keyframes wave2 {
-      0% {
-        transform: translate(20%) rotate(180deg);
-      }
-      50% {
-        transform: translate(45%) rotate(180deg);
-      }
-      100% {
-        transform: translate(70%) rotate(180deg);
-      }
-
-    }    
-    
-        /*
+  /*
         @keyframes swell {
           0%, 100% {
             transform: translate3d(0,-25px,0);
@@ -85,115 +75,112 @@
           }
         }*/
 
-    // size default
-    .rb-header-table {
-        display: flex;
-        align-items: center;
-        width: 100%;
-        min-height: 470px;
-        padding-top: 75px;
+  // size default
+  .rb-header-table {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 470px;
+    padding-top: 75px;
+  }
+
+  // size small
+  &.rb-header-title-sm .rb-header-table {
+    min-height: 370px;
+  }
+
+  // size mid
+  &.rb-header-title-md .rb-header-table {
+    min-height: 570px;
+  }
+
+  // size large
+  &.rb-header-title-lg .rb-header-table {
+    min-height: 670px;
+  }
+
+  // size x-large
+  &.rb-header-title-xl .rb-header-table {
+    min-height: 770px;
+  }
+
+  // size full
+  &.rb-header-title-full .rb-header-table {
+    min-height: 100vh;
+  }
+
+  .rb-header-table-cell {
+    flex: 1;
+    width: 100%;
+    padding: 80px 0;
+  }
+
+  // text bottom
+  .rb-header-text-bottom {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: rgba($color_dark_1, 0.4);
+  }
+  &.rb-header-title-full .rb-header-text-bottom {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  // scroll down button
+  .rb-header-title-scroll-down {
+    position: absolute;
+    display: block;
+    bottom: 65px;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    margin-left: -25px;
+    font-size: 2rem;
+    line-height: 54px;
+    color: inherit;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid;
+    border-radius: 50%;
+    opacity: 0.6;
+    transition: 0.5s opacity;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .hero-btn {
+    opacity: 0;
+    position: relative;
+    top: 40px;
+  }
+
+  // title
+  h1.rb-title {
+    color: #ffffff;
+    font-size: 2.2em;
+    line-height: 1.18;
+
+    .hero-text-line {
+      display: block;
+      opacity: 0;
+      position: relative;
+      top: 100px;
     }
 
-    // size small
-    &.rb-header-title-sm .rb-header-table {
-        min-height: 370px;
+    span.hero-text-name {
+      color: $color_dark_1;
     }
 
-    // size mid
-    &.rb-header-title-md .rb-header-table {
-        min-height: 570px;
+    @media only screen and (min-width: 768px) {
+      font-size: 3.4em;
     }
 
-    // size large
-    &.rb-header-title-lg .rb-header-table {
-        min-height: 670px;
+    @media only screen and (min-width: 992px) {
+      font-size: 3.6em;
     }
-
-    // size x-large
-    &.rb-header-title-xl .rb-header-table {
-        min-height: 770px;
-    }
-
-    // size full
-    &.rb-header-title-full .rb-header-table {
-        min-height: 100vh;
-    }
-
-    .rb-header-table-cell {
-        flex: 1;
-        width: 100%;
-        padding: 80px 0;
-    }
-
-    // text bottom
-    .rb-header-text-bottom {
-        padding-top: 30px;
-        padding-bottom: 30px;
-        background-color: rgba($color_dark_1, .4);
-    }
-    &.rb-header-title-full .rb-header-text-bottom {
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        left: 0;
-    }
-
-    // scroll down button
-    .rb-header-title-scroll-down {
-        position: absolute;
-        display: block;
-        bottom: 65px;
-        left: 50%;
-        width: 50px;
-        height: 50px;
-        margin-left: -25px;
-        font-size: 2rem;
-        line-height: 54px;
-        color: inherit;
-        text-align: center;
-        text-decoration: none;
-        border: 1px solid;
-        border-radius: 50%;
-        opacity: .6;
-        transition: .5s opacity;
-
-        &:hover {
-            opacity: 1;
-        }
-    }
-
-    .hero-btn {
-        opacity: 0;
-        position: relative;
-        top: 40px;        
-    }
-
-    // title
-    h1.rb-title {
-
-        color: #ffffff;
-        font-size: 2.2em;
-        line-height: 1.18;
-
-        .hero-text-line {
-            display: block;
-            opacity: 0;
-            position: relative;
-            top: 100px;
-        }
-
-
-        span.hero-text-name {
-            color: $color_dark_1;
-        }
-
-        @media only screen and (min-width: 768px) {
-            font-size: 3.4em;
-        }
-
-        @media only screen and (min-width: 992px) {
-            font-size: 3.6em;
-        }
-
-    }
+  }
 }

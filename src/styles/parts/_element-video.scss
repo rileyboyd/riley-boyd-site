@@ -1,109 +1,108 @@
-
 /* FullScreen Video */
 .rb-video-fullscreen {
-    position: fixed;
-    display: none;
+  position: fixed;
+  display: none;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  background-color: $color_dark_1;
+  background-color: rgba($color_dark_1, 0.9);
+  z-index: 1200;
+
+  .rb-video-fullscreen-cont {
+    position: absolute;
+
+    > iframe {
+      position: absolute;
+      display: block;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .rb-video-fullscreen-close {
+    position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    overflow: hidden;
-    background-color: $color_dark_1;
-    background-color: rgba($color_dark_1, .9);
-    z-index: 1200;
-
-    .rb-video-fullscreen-cont {
-        position: absolute;
-
-        > iframe {
-            position: absolute;
-            display: block;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-    }
-
-    .rb-video-fullscreen-close {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        padding: 30px;
-        color: #fff;
-        text-align: right;
-        cursor: pointer;
-        z-index: -1;
-    }
+    padding: 30px;
+    color: #fff;
+    text-align: right;
+    cursor: pointer;
+    z-index: -1;
+  }
 }
 
 /* Toggle Video Button */
 .rb-video-fullscreen-toggle,
 .rb-video-plain-toggle {
-    display: inline-block;
-    cursor: pointer;
+  display: inline-block;
+  cursor: pointer;
 
-    .rb-video-icon {
-        text-decoration: none;
-    }
+  .rb-video-icon {
+    text-decoration: none;
+  }
 }
 
 /* toggle button on the right/left half of rb-box blocks */
 .rb-video-fullscreen-toggle-right,
 .rb-video-fullscreen-toggle-left {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 2;
+
+  > .rb-video-fullscreen-toggle {
     position: absolute;
-    top: 0;
-    width: 50%;
-    height: 100%;
-    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 
-    > .rb-video-fullscreen-toggle {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-
-    @media #{$media_sm} {
-        width: 100%;
-        height: 0;
-        padding-top: 56.25%;
-    }
+  @media #{$media_sm} {
+    width: 100%;
+    height: 0;
+    padding-top: 56.25%;
+  }
 }
 .rb-video-fullscreen-toggle-right {
-    right: 0;
+  right: 0;
 }
 .rb-video-fullscreen-toggle-left {
-    left: 0;
+  left: 0;
 }
 
 /* Plain Video */
 .rb-plain-video {
-    position: relative;
-    display: block;
+  position: relative;
+  display: block;
+  width: 100%;
+  padding-top: 56.25%;
+  overflow: hidden;
+  cursor: pointer;
+  background-position: 50% 50%;
+  background-size: cover;
+
+  > iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    padding-top: 56.25%;
-    overflow: hidden;
-    cursor: pointer;
-    background-position: 50% 50%;
-    background-size: cover;
+    height: 100%;
+    z-index: 1;
+  }
 
-    > iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-    }
-
-    > .rb-video-plain-toggle {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 0;
-    }
+  > .rb-video-plain-toggle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+  }
 }

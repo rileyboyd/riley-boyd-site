@@ -1,44 +1,44 @@
 .rb-counter,
 .rb-counter-2,
 .rb-counter-3 {
-    position: relative;
+  position: relative;
 
-    .rb-count {
-        font-family: $font_headings;
-        font-weight: 600;
-    }
+  .rb-count {
+    font-family: $font_headings;
+    font-weight: 600;
+  }
 }
 
 /* Style 1 */
 .rb-counter {
-    .rb-count {
-        font-size: 4rem;
-    }
+  .rb-count {
+    font-size: 4rem;
+  }
 }
 
 /* Style 2 */
 .rb-counter-2 {
-    .rb-count {
-        font-size: 4rem;
-        line-height: 1;
-        color: $color_main_1;
-    }
+  .rb-count {
+    font-size: 4rem;
+    line-height: 1;
+    color: $color_main_1;
+  }
 }
 
 /* Style 3 */
 .rb-counter-3 {
-    .rb-counter-icon {
-        font-size: 3rem;
-        line-height: 1;
-        color: $color_main_1;
-    }
-    .rb-count {
-        font-size: 3rem;
-        line-height: 2;
-    }
-    .rb-counter-title {
-        font-family: $font_body;
-        font-weight: 400;
-        line-height: 1;
-    }
+  .rb-counter-icon {
+    font-size: 3rem;
+    line-height: 1;
+    color: $color_main_1;
+  }
+  .rb-count {
+    font-size: 3rem;
+    line-height: 2;
+  }
+  .rb-counter-title {
+    font-family: $font_body;
+    font-weight: 400;
+    line-height: 1;
+  }
 }

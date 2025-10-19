@@ -1,22 +1,22 @@
-import React, { useState /*, useRef */ } from "react";
+import React, { useState /*, useRef */ } from 'react'
 // import axios from "axios";
 
-import { Button } from "@/components/Button";
+import { Button } from '@/components/Button'
 
 interface ContactFormProps {
-  className?: string;
+  className?: string
 }
 
 export const ContactForm: React.FC<ContactFormProps> = (props, ref) => {
-  const [nameError, setNameError] = useState(false);
-  const [emailError, setEmailError] = useState(false);
-  const [msgError, setMsgError] = useState(false);
+  const [nameError, setNameError] = useState(false)
+  const [emailError, setEmailError] = useState(false)
+  const [msgError, setMsgError] = useState(false)
 
-  const [showSuccessMsg /*, setShowSuccessMsg */] = useState(false);
-  const [showFailureMsg /*, setShowFailureMsg */] = useState(false);
+  const [showSuccessMsg /*, setShowSuccessMsg */] = useState(false)
+  const [showFailureMsg /*, setShowFailureMsg */] = useState(false)
 
   const isFormValid = () => {
-    const hasError = false;
+    const hasError = false
 
     /*
 	TODO: This should all be using React state, as controlled components
@@ -46,26 +46,26 @@ export const ContactForm: React.FC<ContactFormProps> = (props, ref) => {
     }
 	*/
 
-    return !hasError;
-  };
+    return !hasError
+  }
 
   const onChangeHandlerName = (event: React.FormEvent) => {
-    event.preventDefault();
-    setNameError(false);
-  };
+    event.preventDefault()
+    setNameError(false)
+  }
 
   const onChangeHandlerEmail = (event: React.FormEvent) => {
-    event.preventDefault();
-    setEmailError(false);
-  };
+    event.preventDefault()
+    setEmailError(false)
+  }
 
   const onChangeHandlerMsg = (event: React.FormEvent) => {
-    event.preventDefault();
-    setMsgError(false);
-  };
+    event.preventDefault()
+    setMsgError(false)
+  }
 
   const contactFormSubmitHandler = (event: React.FormEvent) => {
-    event.preventDefault();
+    event.preventDefault()
 
     if (isFormValid()) {
       /* TODO: This should be validating against React state */
@@ -91,7 +91,7 @@ export const ContactForm: React.FC<ContactFormProps> = (props, ref) => {
         });
 		*/
     }
-  };
+  }
 
   return (
     <div className="container" id="contact" ref={ref}>
@@ -114,7 +114,7 @@ export const ContactForm: React.FC<ContactFormProps> = (props, ref) => {
                 <input
                   type="text"
                   className={`form-control required ${
-                    nameError ? "rb-error" : ""
+                    nameError ? 'rb-error' : ''
                   }`}
                   name="name"
                   placeholder="Your Name"
@@ -123,7 +123,7 @@ export const ContactForm: React.FC<ContactFormProps> = (props, ref) => {
                 <div
                   id="name-error"
                   className="rb-error"
-                  style={{ display: nameError ? "block" : "none" }}
+                  style={{ display: nameError ? 'block' : 'none' }}
                 >
                   This field is required.
                 </div>
@@ -132,7 +132,7 @@ export const ContactForm: React.FC<ContactFormProps> = (props, ref) => {
                 <input
                   type="email"
                   className={`form-control required ${
-                    emailError ? "rb-error" : ""
+                    emailError ? 'rb-error' : ''
                   }`}
                   name="email"
                   placeholder="Your Email"
@@ -141,7 +141,7 @@ export const ContactForm: React.FC<ContactFormProps> = (props, ref) => {
                 <div
                   id="email-error"
                   className="rb-error"
-                  style={{ display: emailError ? "block" : "none" }}
+                  style={{ display: emailError ? 'block' : 'none' }}
                 >
                   Please enter a valid email address.
                 </div>
@@ -149,18 +149,18 @@ export const ContactForm: React.FC<ContactFormProps> = (props, ref) => {
             </div>
             <div className="rb-gap-1" />
             <textarea
-              className={`form-control required ${msgError ? "rb-error" : ""}`}
+              className={`form-control required ${msgError ? 'rb-error' : ''}`}
               name="message"
               rows={8}
               placeholder="Your Comment"
               aria-required="true"
-              defaultValue={""}
+              defaultValue={''}
               onChange={onChangeHandlerMsg}
             />
             <div
               id="name-error"
               className="rb-error"
-              style={{ display: msgError ? "block" : "none" }}
+              style={{ display: msgError ? 'block' : 'none' }}
             >
               This field is required.
             </div>
@@ -168,13 +168,13 @@ export const ContactForm: React.FC<ContactFormProps> = (props, ref) => {
             <Button type="submit">Send Message</Button>
             <div
               className="rb-form-response rb-form-response-success"
-              style={{ display: showSuccessMsg ? "block" : "none" }}
+              style={{ display: showSuccessMsg ? 'block' : 'none' }}
             >
               Message sent!
             </div>
             <div
               className="rb-form-response rb-form-response-error"
-              style={{ display: showFailureMsg ? "block" : "none" }}
+              style={{ display: showFailureMsg ? 'block' : 'none' }}
             >
               Oops, something went wrong. Message not sent.
             </div>
@@ -184,5 +184,5 @@ export const ContactForm: React.FC<ContactFormProps> = (props, ref) => {
       </div>
       <div className="rb-gap-5" />
     </div>
-  );
-};
+  )
+}

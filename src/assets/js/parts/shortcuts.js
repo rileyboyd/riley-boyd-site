@@ -1,4 +1,4 @@
-import { $ } from './_utility';
+import { $ } from './_utility'
 
 /*------------------------------------------------------------------
 
@@ -7,79 +7,89 @@ import { $ } from './_utility';
 
 -------------------------------------------------------------------*/
 function key(name, fn) {
-    if (typeof window.key === 'undefined') {
-        return;
-    }
-    name = this.options && this.options.shortcuts && this.options.shortcuts[name];
+  if (typeof window.key === 'undefined') {
+    return
+  }
+  name = this.options && this.options.shortcuts && this.options.shortcuts[name]
 
-    if (name) {
-        window.key(name, fn);
-    }
+  if (name) {
+    window.key(name, fn)
+  }
 }
 function initShortcuts() {
-    if (typeof window.key === 'undefined' || !this.options.enableShortcuts) {
-        return;
+  if (typeof window.key === 'undefined' || !this.options.enableShortcuts) {
+    return
+  }
+
+  const self = this
+
+  // FullScreen Video
+  self.key('closeFullscreenVideo', () => {
+    if (self.closeFullScreenVideo) {
+      self.closeFullScreenVideo()
     }
+  })
 
-    const self = this;
+  // post single
+  self.key('postScrollToComments', () => {
+    const $comments = $('#comments')
+    if ($comments.length) {
+      self.scrollTo($comments)
+    }
+  })
 
-    // FullScreen Video
-    self.key('closeFullscreenVideo', () => {
-        if (self.closeFullScreenVideo) {
-            self.closeFullScreenVideo();
-        }
-    });
+  // Side Left Navbar
+  const $leftSide = $('.rb-navbar-left-side')
+  self.key('toggleSideLeftNavbar', () => {
+    self.toggleSide($leftSide)
+  })
+  self.key('openSideLeftNavbar', () => {
+    self.openSide($leftSide)
+  })
+  self.key('closeSideLeftNavbar', () => {
+    self.closeSide($leftSide)
+  })
 
-    // post single
-    self.key('postScrollToComments', () => {
-        const $comments = $('#comments');
-        if ($comments.length) {
-            self.scrollTo($comments);
-        }
-    });
+  // Side Right Navbar
+  const $rightSide = $('.rb-navbar-right-side')
+  self.key('toggleSideRightNavbar', () => {
+    self.toggleSide($rightSide)
+  })
+  self.key('openSideRightNavbar', () => {
+    self.openSide($rightSide)
+  })
+  self.key('closeSideRightNavbar', () => {
+    self.closeSide($rightSide)
+  })
 
-    // Side Left Navbar
-    const $leftSide = $('.rb-navbar-left-side');
-    self.key('toggleSideLeftNavbar', () => {
-        self.toggleSide($leftSide);
-    });
-    self.key('openSideLeftNavbar', () => {
-        self.openSide($leftSide);
-    });
-    self.key('closeSideLeftNavbar', () => {
-        self.closeSide($leftSide);
-    });
+  // Fullscreen Navbar
+  self.key('toggleFullscreenNavbar', () => {
+    self.toggleFullscreenNavbar()
+  })
+  self.key('openFullscreenNavbar', () => {
+    self.openFullscreenNavbar()
+  })
+  self.key('closeFullscreenNavbar', () => {
+    self.closeFullscreenNavbar()
+  })
 
-    // Side Right Navbar
-    const $rightSide = $('.rb-navbar-right-side');
-    self.key('toggleSideRightNavbar', () => {
-        self.toggleSide($rightSide);
-    });
-    self.key('openSideRightNavbar', () => {
-        self.openSide($rightSide);
-    });
-    self.key('closeSideRightNavbar', () => {
-        self.closeSide($rightSide);
-    });
-
-    // Fullscreen Navbar
-    self.key('toggleFullscreenNavbar', () => {
-        self.toggleFullscreenNavbar();
-    });
-    self.key('openFullscreenNavbar', () => {
-        self.openFullscreenNavbar();
-    });
-    self.key('closeFullscreenNavbar', () => {
-        self.closeFullscreenNavbar();
-    });
-
-    // ESC - use also inside form elements
-    window.key.filter = (event) => {
-        const tagName = (event.target || event.srcElement).tagName;
-        const isContentEditable = (event.target || event.srcElement).getAttribute('contenteditable');
-        const isESC = window.key.isPressed('esc');
-        return isESC || !(isContentEditable || tagName === 'INPUT' || tagName === 'SELECT' || tagName === 'TEXTAREA');
-    };
+  // ESC - use also inside form elements
+  window.key.filter = (event) => {
+    const tagName = (event.target || event.srcElement).tagName
+    const isContentEditable = (event.target || event.srcElement).getAttribute(
+      'contenteditable'
+    )
+    const isESC = window.key.isPressed('esc')
+    return (
+      isESC ||
+      !(
+        isContentEditable ||
+        tagName === 'INPUT' ||
+        tagName === 'SELECT' ||
+        tagName === 'TEXTAREA'
+      )
+    )
+  }
 }
 
-export { key, initShortcuts };
+export { key, initShortcuts }

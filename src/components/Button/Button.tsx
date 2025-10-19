@@ -1,17 +1,17 @@
-import React from "react";
+import React from 'react'
 
 type ButtonProps = {
-  onClick?: () => void;
-  className?: string;
-  children: React.ReactNode;
-  type?: "button" | "submit" | "reset";
-};
+  onClick?: () => void
+  className?: string
+  children: React.ReactNode
+  type?: 'button' | 'submit' | 'reset'
+}
 
 export const Button: React.FC<ButtonProps> = ({
   children,
   onClick,
   className,
-  type = "button",
+  type = 'button',
 }) => {
   return (
     <button
@@ -21,5 +21,5 @@ export const Button: React.FC<ButtonProps> = ({
     >
       {children}
     </button>
-  );
-};
+  )
+}

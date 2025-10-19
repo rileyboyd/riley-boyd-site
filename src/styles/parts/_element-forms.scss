@@ -1,57 +1,53 @@
 /* Placeholders */
 ::placeholder,
 .form-control::placeholder {
-    color: #858585;
-    opacity: 1;
+  color: #858585;
+  opacity: 1;
 }
 
 /* From Style 1 */
 .form-control {
-    padding: 16px 22px;
-    font-size: .95rem;
-    font-weight: 400;
-    line-height: 1.2;
-    background-color: #fff;
-    border: none;
-    border-radius: 0;
+  padding: 16px 22px;
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.2;
+  background-color: #fff;
+  border: none;
+  border-radius: 0;
 }
 select.form-control {
-    padding: 6px 20px;
+  padding: 6px 20px;
 }
 
 /* Validation */
 div.rb-error {
-    padding: 0;
-    margin: 5px 0;
-    font-weight: 400;
-    color: #f00;
-    background-color: transparent;
-    z-index: 1;
+  padding: 0;
+  margin: 5px 0;
+  font-weight: 400;
+  color: #f00;
+  background-color: transparent;
+  z-index: 1;
 }
 .form-control.rb-error,
 .rb-form-style-1 .form-control.rb-error {
-    background-color: rgba(#f00, .4);
+  background-color: rgba(#f00, 0.4);
 }
 
 .rb-form-response {
-
-    @media only screen and (min-width: 768px) {
-
-        float: left;
-        height: 53px;
-        line-height: 53px;
-        margin: 0 0 0 15px;
-
-    }
-
+  @media only screen and (min-width: 768px) {
+    float: left;
+    height: 53px;
+    line-height: 53px;
+    margin: 0 0 0 15px;
+  }
 }
 
 .rb-form-response-success {
-    display: none;
-    color: #008000;
+  display: none;
+  color: #008000;
 }
 
 .rb-form-response-error {
-    display: none;
-    color: #f00;
+  display: none;
+  color: #f00;
 }

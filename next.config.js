@@ -10,6 +10,6 @@ const nextConfig = {
     // Temporarily allow type errors during build so we can incrementally fix them
     ignoreBuildErrors: true,
   },
-};
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig

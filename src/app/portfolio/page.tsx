@@ -1,15 +1,15 @@
-"use client";
-import React, { useEffect } from "react";
-import Link from "next/link";
-import getPortfolioData from "../../data/portfolioData";
+'use client'
+import React, { useEffect } from 'react'
+import Link from 'next/link'
+import getPortfolioData from '../../data/portfolioData'
 
 const PortfolioPage = () => {
-  const portfolioData = getPortfolioData();
+  const portfolioData = getPortfolioData()
 
   // When the page loads, start the scroll at the top of the page
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    window.scrollTo(0, 0)
+  }, [])
 
   return (
     <div className="page-portfolio">
@@ -18,14 +18,14 @@ const PortfolioPage = () => {
 
         <div
           className="rb-portfolio-list rb-isotope rb-isotope-3-cols"
-          style={{ position: "relative", height: "1109.95px" }}
+          style={{ position: 'relative', height: '1109.95px' }}
         >
           {portfolioData.map((item, index) => {
-            const testURL = "url('" + item.thumbnail + "')";
+            const testURL = "url('" + item.thumbnail + "')"
 
             return (
               <div
-                key={"portfolio-item-" + index}
+                key={'portfolio-item-' + index}
                 className="rb-isotope-item"
                 data-filter="Design"
               >
@@ -45,13 +45,13 @@ const PortfolioPage = () => {
                   </div>
                 </div>
               </div>
-            );
+            )
           })}
         </div>
         <div className="rb-gap-4"></div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default PortfolioPage;
+export default PortfolioPage

@@ -1,14 +1,14 @@
-import React, { useEffect, useRef } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTwitter, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import React, { useEffect, useRef } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTwitter, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
-import tween from "gsap";
+import tween from 'gsap'
 
 interface MobileNavProps {
-  closeBtnHandler: () => void;
-  isOpened: boolean;
+  closeBtnHandler: () => void
+  isOpened: boolean
 }
 
 export const MobileNav: React.FC<MobileNavProps> = ({
@@ -16,72 +16,72 @@ export const MobileNav: React.FC<MobileNavProps> = ({
   isOpened,
 }) => {
   const showNavbarStyles = {
-    display: "block",
+    display: 'block',
     opacity: 1,
-    transform: "translate3d(0px, 0px, 0px)",
-  };
+    transform: 'translate3d(0px, 0px, 0px)',
+  }
 
-  const navbarFullRef = useRef<HTMLElement | null>(null);
-  const navSocialRef = useRef<HTMLDivElement | null>(null);
+  const navbarFullRef = useRef<HTMLElement | null>(null)
+  const navSocialRef = useRef<HTMLDivElement | null>(null)
 
   // When the "isOpened" prop on the parent changes, call the appropriate menu function
   useEffect(() => {
     // Use Refs to get the DOM elements needed for the menu animations
-    const navbar = navbarFullRef.current;
-    const navbarSocial = navSocialRef.current;
+    const navbar = navbarFullRef.current
+    const navbarSocial = navSocialRef.current
 
     if (!navbar || !navbarSocial) {
-      return;
+      return
     }
 
     const navbarMenuItems = navbar.querySelectorAll(
-      ".rb-navbar-mobile-content >.rb-nav > li > a"
-    );
+      '.rb-navbar-mobile-content >.rb-nav > li > a'
+    )
 
     const openFullscreenNavbar = () => {
       // Animate in the links in the menu
       tween.set(navbarMenuItems, {
         opacity: 0,
         force3D: true,
-      });
+      })
 
       tween.set(navbarSocial, {
         opacity: 0,
         force3D: true,
-      });
+      })
 
       tween.to(navbar, 0.5, {
         opacity: 1,
         force3D: true,
-        display: "block",
+        display: 'block',
         onComplete() {},
-      });
+      })
 
       tween.to(navbarSocial, 0.3, {
         y: 0,
         opacity: 1,
         delay: 0.4,
-      });
-    };
+      })
+    }
 
     const closeFullscreenNavbar = () => {
       // Set the opacity of the links in the menu back to 0
       tween.set([navbarMenuItems, navbarSocial], {
         opacity: 0,
         force3D: true,
-      });
-    };
+      })
+    }
 
     if (isOpened) {
-      openFullscreenNavbar();
+      openFullscreenNavbar()
     } else {
-      closeFullscreenNavbar();
+      closeFullscreenNavbar()
     }
 
     return () => {
-      tween.killTweensOf([navbar, navbarMenuItems, navbarSocial]);
-    };
-  }, [isOpened, navbarFullRef.current, navSocialRef.current]);
+      tween.killTweensOf([navbar, navbarMenuItems, navbarSocial])
+    }
+  }, [isOpened, navbarFullRef.current, navSocialRef.current])
 
   return (
     <nav
@@ -112,7 +112,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({
               </div>
               <button
                 className={`rb-nav-close rb-navbar-full-toggle ${
-                  isOpened ? "active" : ""
+                  isOpened ? 'active' : ''
                 }`}
                 onClick={closeBtnHandler}
               >
@@ -163,5 +163,5 @@ export const MobileNav: React.FC<MobileNavProps> = ({
         </div>
       </div>
     </nav>
-  );
-};
+  )
+}

@@ -1,122 +1,120 @@
 .rb-pagination {
-    width: 100%;
-    padding: 20px 0;
-    background-color: #fff;
+  width: 100%;
+  padding: 20px 0;
+  background-color: #fff;
 
-    &.rb-pagination-nobg {
-        background-color: transparent;
+  &.rb-pagination-nobg {
+    background-color: transparent;
+  }
+
+  // links
+  &,
+  .container {
+    display: flex;
+
+    > * {
+      flex: 1;
     }
 
-    // links
-    &,
-    .container {
-        display: flex;
+    > a {
+      display: inline-block;
+      padding: 19px;
+      font-size: 0.97rem;
+      color: $color_titles;
+      text-decoration: none;
+      text-transform: uppercase;
+      vertical-align: middle;
+      transition: 0.5s opacity;
 
-        > * {
-            flex: 1;
+      @media only screen and (min-width: 992px) {
+        &:hover {
+          opacity: 0.6;
         }
+      }
+    }
+    > span {
+      display: inline-block;
+      padding: 19px;
+      font-size: 0.97rem;
+      color: $color_titles;
+      text-transform: uppercase;
+      vertical-align: middle;
+    }
 
-        > a {
-            display: inline-block;
-            padding: 19px;
-            font-size: .97rem;
-            color: $color_titles;
-            text-decoration: none;
-            text-transform: uppercase;
-            vertical-align: middle;
-            transition: .5s opacity;
+    // arrows
+    .rb-pagination-prev,
+    .rb-pagination-next {
+      min-width: 190px;
 
-            @media only screen and (min-width: 992px) {
-                &:hover {
-                    opacity: .6;
-                }                
-            }
-
+      > span {
+        &.arrow {
+          margin-top: -1px;
+          font-size: 1.6rem;
+          line-height: 1;
+          vertical-align: middle;
         }
+      }
+    }
+    .rb-pagination-prev {
+      padding-left: 0;
+      text-align: left;
+
+      > span {
+        &.arrow {
+          margin-left: -8px;
+        }
+      }
+    }
+    .rb-pagination-next {
+      padding-right: 0;
+      text-align: right;
+
+      > span {
+        &.arrow {
+          margin-right: -8px;
+        }
+      }
+    }
+
+    .rb-pagination-center {
+      width: 100%;
+    }
+
+    // mobile
+    @media #{$media_smaller_sm} {
+      .rb-pagination-prev,
+      .rb-pagination-next {
+        min-width: 60px;
+
         > span {
-            display: inline-block;
-            padding: 19px;
-            font-size: .97rem;
-            color: $color_titles;
-            text-transform: uppercase;
-            vertical-align: middle;
+          &.arrow {
+            font-size: 1.6rem;
+          }
+
+          &.hide-text {
+            font-size: 0;
+          }
         }
-
-        // arrows
-        .rb-pagination-prev,
-        .rb-pagination-next {
-            min-width: 190px;
-
-            > span {
-                &.arrow {
-                    margin-top: -1px;
-                    font-size: 1.6rem;
-                    line-height: 1;
-                    vertical-align: middle;
-                }
-            }
-        }
-        .rb-pagination-prev {
-            padding-left: 0;
-            text-align: left;
-
-            > span {
-                &.arrow {
-                    margin-left: -8px;
-                }
-            }
-        }
-        .rb-pagination-next {
-            padding-right: 0;
-            text-align: right;
-
-            > span {
-                &.arrow {
-                    margin-right: -8px;
-                }
-            }
-        }
-
-        .rb-pagination-center {
-            width: 100%;
-        }
-
-        // mobile
-        @media #{$media_smaller_sm} {
-            .rb-pagination-prev,
-            .rb-pagination-next {
-                min-width: 60px;
-
-                > span {
-
-                    &.arrow {
-                        font-size: 1.6rem;                        
-                    }
-
-                    &.hide-text {
-                        font-size: 0;
-                    }
-                }
-            }
-        }
+      }
     }
+  }
 
-    .container {
-        flex: initial;
+  .container {
+    flex: initial;
 
-        @media #{$media_xxs} {
-            width: 100%;
-        }
+    @media #{$media_xxs} {
+      width: 100%;
     }
+  }
 
-    // position
-    &.rb-pagination-center {
-        text-align: center;
-    }
-    &.rb-pagination-left {
-        text-align: left;
-    }
-    &.rb-pagination-right {
-        text-align: right;
-    }
+  // position
+  &.rb-pagination-center {
+    text-align: center;
+  }
+  &.rb-pagination-left {
+    text-align: left;
+  }
+  &.rb-pagination-right {
+    text-align: right;
+  }
 }

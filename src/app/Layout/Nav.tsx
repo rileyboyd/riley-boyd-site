@@ -1,49 +1,49 @@
-import React, { useState, useEffect, useRef } from "react";
-import Image from "next/image";
-import Link from "next/link";
+import React, { useState, useEffect, useRef } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
 
-import { debounce } from "@/utils/debounce";
+import { debounce } from '@/utils/debounce'
 
 interface NavProps {
-  useSticky: boolean;
-  menuIconClickHandler: (event: React.MouseEvent) => void;
+  useSticky: boolean
+  menuIconClickHandler: (event: React.MouseEvent) => void
 }
 
 export const Nav: React.FC<NavProps> = ({
   menuIconClickHandler,
   useSticky,
 }) => {
-  const [isSticky, setSticky] = useState(false);
-  const stickyRef = useRef<HTMLElement | null>(null);
+  const [isSticky, setSticky] = useState(false)
+  const stickyRef = useRef<HTMLElement | null>(null)
 
-  const getSelectedNavIndex = (pathname = "") => {
-    if (pathname == "/") {
-      return 0;
-    } else if (pathname.substring(0, 10) == "/portfolio") {
-      return 1;
+  const getSelectedNavIndex = (pathname = '') => {
+    if (pathname == '/') {
+      return 0
+    } else if (pathname.substring(0, 10) == '/portfolio') {
+      return 1
     }
-    return -1;
-  };
+    return -1
+  }
 
   const [selectedNavIndex /*, setSelectedNavIndex*/] = useState(
     getSelectedNavIndex()
-  );
+  )
 
   useEffect(() => {
     const handleScroll = () => {
       if (!stickyRef.current) {
-        return;
+        return
       }
 
-      const shouldSetSticky = window.pageYOffset > stickyRef.current.offsetTop;
-      setSticky(shouldSetSticky);
-    };
+      const shouldSetSticky = window.pageYOffset > stickyRef.current.offsetTop
+      setSticky(shouldSetSticky)
+    }
 
-    window.addEventListener("scroll", debounce(handleScroll));
+    window.addEventListener('scroll', debounce(handleScroll))
     return () => {
-      window.removeEventListener("scroll", () => handleScroll);
-    };
-  }, []);
+      window.removeEventListener('scroll', () => handleScroll)
+    }
+  }, [])
 
   /*
   useEffect(() => {
@@ -56,9 +56,9 @@ export const Nav: React.FC<NavProps> = ({
       ref={stickyRef}
       className={`rb-navbar rb-navbar-top ${
         useSticky
-          ? "rb-navbar-autohide rb-navbar-transparent rb-navbar-white-text-on-top rb-onscroll-show"
-          : ""
-      } ${useSticky && isSticky ? "rb-navbar-solid rb-navbar-fixed" : ""}`}
+          ? 'rb-navbar-autohide rb-navbar-transparent rb-navbar-white-text-on-top rb-onscroll-show'
+          : ''
+      } ${useSticky && isSticky ? 'rb-navbar-solid rb-navbar-fixed' : ''}`}
     >
       <div className="container">
         <div className="rb-nav-table">
@@ -78,14 +78,14 @@ export const Nav: React.FC<NavProps> = ({
           >
             <li
               className={`rb-drop-item ${
-                selectedNavIndex == 0 ? "active" : ""
+                selectedNavIndex == 0 ? 'active' : ''
               }`}
             >
               <Link href="/">Home</Link>
             </li>
             <li
               className={`rb-drop-item ${
-                selectedNavIndex == 1 ? "active" : ""
+                selectedNavIndex == 1 ? 'active' : ''
               }`}
             >
               <Link href="/portfolio/">Portfolio</Link>
@@ -109,5 +109,5 @@ export const Nav: React.FC<NavProps> = ({
         </div>
       </div>
     </nav>
-  );
-};
+  )
+}

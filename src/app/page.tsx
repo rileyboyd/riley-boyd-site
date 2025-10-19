@@ -1,56 +1,56 @@
-"use client";
-import React, { useEffect, useRef, MutableRefObject, UIEvent } from "react";
-import gsap from "gsap";
-import Image from "next/image";
+'use client'
+import React, { useEffect, useRef, MutableRefObject, UIEvent } from 'react'
+import gsap from 'gsap'
+import Image from 'next/image'
 
-import { Button } from "@/components/Button";
-import { Text } from "@/components/Text";
+import { Button } from '@/components/Button'
+import { Text } from '@/components/Text'
 
-import { getNumberOfYearsSinceDate } from "@/utils/getNumberOfYearsSinceDate";
-import { skillIcons } from "./skillIcons";
+import { getNumberOfYearsSinceDate } from '@/utils/getNumberOfYearsSinceDate'
+import { skillIcons } from './skillIcons'
 
 export default function Home() {
-  const timeline = gsap.timeline({ repeat: 0 });
+  const timeline = gsap.timeline({ repeat: 0 })
 
-  const breakpointCheckRef = useRef(null);
-  const aboutRef = useRef(null);
+  const breakpointCheckRef = useRef(null)
+  const aboutRef = useRef(null)
   // contactRef removed while ContactSection is hidden; re-enable when restoring contact section
 
   const getBreakpoint = (checkerEle: HTMLElement): string => {
     const breakpointOpacity = Number(
-      window.getComputedStyle(checkerEle).getPropertyValue("opacity")
-    );
+      window.getComputedStyle(checkerEle).getPropertyValue('opacity')
+    )
 
     if (breakpointOpacity == 1) {
-      return "lg";
+      return 'lg'
     }
 
     if (breakpointOpacity == 0.8) {
-      return "md";
+      return 'md'
     }
 
     if (breakpointOpacity == 0.6) {
-      return "sm";
+      return 'sm'
     }
 
-    return "xs";
-  };
+    return 'xs'
+  }
 
   const scrollToRef = (
     refToScrollTo: MutableRefObject<HTMLElement | null>
   ): void => {
     if (!refToScrollTo.current || !breakpointCheckRef.current) {
-      return;
+      return
     }
 
-    const currentBreakpoint = getBreakpoint(breakpointCheckRef.current);
-    const offset = currentBreakpoint == "lg" ? 101 : 98;
+    const currentBreakpoint = getBreakpoint(breakpointCheckRef.current)
+    const offset = currentBreakpoint == 'lg' ? 101 : 98
 
     window.scrollTo({
       top: refToScrollTo.current.offsetTop - offset,
-      behavior: "smooth",
-    });
-  };
+      behavior: 'smooth',
+    })
+  }
 
   // const scrollToTop = () => {
   //   window.scrollTo({
@@ -60,25 +60,25 @@ export default function Home() {
   // };
 
   const btnHandler = () => {
-    window.location.href = "/portfolio";
-  };
+    window.location.href = '/portfolio'
+  }
 
   const scrollDownHandler = (event: UIEvent<HTMLElement>): void => {
-    event.preventDefault();
-    scrollToRef(aboutRef);
-  };
+    event.preventDefault()
+    scrollToRef(aboutRef)
+  }
 
   useEffect(() => {
     // Hero text animation:
     // Animate in text, then animate in button
 
     timeline
-      .to("#hero-text-1", 1, { top: 0, opacity: 1 }, 0.5)
-      .to("#hero-text-2", 1, { top: 0, opacity: 1 }, 1.75)
-      .to(".hero-btn", 0.15, { top: 0, opacity: 1 }, 3)
-      .to("#scroll-btn", 0, { display: "block" }, 3)
-      .to("#scroll-btn", 0.15, { opacity: 1 }, 3.5);
-  }, [timeline]);
+      .to('#hero-text-1', 1, { top: 0, opacity: 1 }, 0.5)
+      .to('#hero-text-2', 1, { top: 0, opacity: 1 }, 1.75)
+      .to('.hero-btn', 0.15, { top: 0, opacity: 1 }, 3)
+      .to('#scroll-btn', 0, { display: 'block' }, 3)
+      .to('#scroll-btn', 0.15, { opacity: 1 }, 3.5)
+  }, [timeline])
 
   // If the URL is for the contact form (which is on the home page), scroll down the page to the form
   // useEffect(() => {
@@ -90,8 +90,8 @@ export default function Home() {
   // }, [location.pathname]);
 
   const numberOfYearsSinceIStartedWorking = getNumberOfYearsSinceDate(
-    "2011-07-11T00:00:00"
-  );
+    '2011-07-11T00:00:00'
+  )
 
   const mainContent = (
     <>
@@ -120,7 +120,7 @@ export default function Home() {
         University).
       </Text>
     </>
-  );
+  )
 
   return (
     <div className="page-home">
@@ -132,7 +132,7 @@ export default function Home() {
             <div className="container">
               <h1 className="rb-title display-3">
                 <span id="hero-text-1" className="hero-text-line">
-                  Hello, I&apos;m{" "}
+                  Hello, I&apos;m{' '}
                   <span className="hero-text-name">Riley&nbsp;Boyd</span>.
                 </span>
                 <span id="hero-text-2" className="hero-text-line">
@@ -199,7 +199,9 @@ export default function Home() {
         <div className="container">
           <div className="row">
             <div className="col-12">
-              <Text as="h2" variant="h1" className="text-center text-white">Skills</Text>
+              <Text as="h2" variant="h1" className="text-center text-white">
+                Skills
+              </Text>
             </div>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
@@ -209,7 +211,9 @@ export default function Home() {
                   <div className="rb-ibox-cont">
                     <div className="rb-ibox-title mb-2">{title}</div>
                   </div>
-                  <div className={`rb-ibox-icon ${className} flex items-center justify-center`}>
+                  <div
+                    className={`rb-ibox-icon ${className} flex items-center justify-center`}
+                  >
                     <Image
                       width={120}
                       height={120}
@@ -226,5 +230,5 @@ export default function Home() {
       </div>
       <div className="breakpoint-check" ref={breakpointCheckRef} />
     </div>
-  );
+  )
 }

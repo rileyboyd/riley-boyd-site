@@ -1,141 +1,144 @@
-import Power2 from 'power2';
-import jQuery from 'jquery';
-
+import Power2 from 'power2'
+import jQuery from 'jquery'
 
 /*------------------------------------------------------------------
 
   Utility
 
 -------------------------------------------------------------------*/
-const $ = jQuery;
-const tween = window.TweenMax;
-const isIOs = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/g.test(navigator.userAgent || navigator.vendor || window.opera);
-const isFireFox = typeof InstallTrigger !== 'undefined';
+const $ = jQuery
+const tween = window.TweenMax
+const isIOs = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream
+const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/g.test(
+  navigator.userAgent || navigator.vendor || window.opera
+)
+const isFireFox = typeof InstallTrigger !== 'undefined'
 // const isTouch = 'ontouchstart' in window || window.DocumentTouch && document instanceof DocumentTouch;
 
-
 function is_touch_device() {
-    try {
-        let prefixes = ' -webkit- -moz- -o- -ms- '.split(' ');
+  try {
+    let prefixes = ' -webkit- -moz- -o- -ms- '.split(' ')
 
-        let mq = function (query) {
-            return window.matchMedia(query).matches;
-        };
-
-        if (('ontouchstart' in window) || (typeof window.DocumentTouch !== "undefined" && document instanceof window.DocumentTouch)) {
-            return true;
-        }
-
-        return mq(['(', prefixes.join('touch-enabled),('), 'heartz', ')'].join(''));
-    } catch (e) {
-        console.error('(Touch detect failed)', e);
-        return false;
+    let mq = function (query) {
+      return window.matchMedia(query).matches
     }
+
+    if (
+      'ontouchstart' in window ||
+      (typeof window.DocumentTouch !== 'undefined' &&
+        document instanceof window.DocumentTouch)
+    ) {
+      return true
+    }
+
+    return mq(['(', prefixes.join('touch-enabled),('), 'heartz', ')'].join(''))
+  } catch (e) {
+    console.error('(Touch detect failed)', e)
+    return false
+  }
 }
 
-const isTouch = is_touch_device();
+const isTouch = is_touch_device()
 
 // add 'is-mobile' or 'is-desktop' classname to html tag
-$('html').addClass(isMobile ? 'is-mobile' : 'is-desktop');
+$('html').addClass(isMobile ? 'is-mobile' : 'is-desktop')
 
 /**
  * window size
  */
-const $wnd = $(window);
-const $doc = $(document);
-const $body = $('body');
-let wndW = 0;
-let wndH = 0;
-let docH = 0;
+const $wnd = $(window)
+const $doc = $(document)
+const $body = $('body')
+let wndW = 0
+let wndH = 0
+let docH = 0
 function getWndSize() {
-    wndW = $wnd.width();
-    wndH = $wnd.height();
-    docH = $doc.height();
+  wndW = $wnd.width()
+  wndH = $wnd.height()
+  docH = $doc.height()
 }
-getWndSize();
-$wnd.on('resize load orientationchange', getWndSize);
+getWndSize()
+$wnd.on('resize load orientationchange', getWndSize)
 
 /**
  * Debounce resize
  */
-const resizeArr = [];
-let resizeTimeout;
+const resizeArr = []
+let resizeTimeout
 $wnd.on('load resize orientationchange', (e) => {
-    if (resizeArr.length) {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-            for (let k = 0; k < resizeArr.length; k++) {
-                resizeArr[k](e);
-            }
-        }, 50);
-    }
-});
+  if (resizeArr.length) {
+    clearTimeout(resizeTimeout)
+    resizeTimeout = setTimeout(() => {
+      for (let k = 0; k < resizeArr.length; k++) {
+        resizeArr[k](e)
+      }
+    }, 50)
+  }
+})
 function debounceResize(func, forceCall) {
-    if (typeof func === 'function') {
-        resizeArr.push(func);
+  if (typeof func === 'function') {
+    resizeArr.push(func)
 
-        if (forceCall) {
-            func();
-        }
-    } else {
-        window.dispatchEvent(new Event('resize'));
+    if (forceCall) {
+      func()
     }
+  } else {
+    window.dispatchEvent(new Event('resize'))
+  }
 }
 
 /**
  * Throttle scroll
  * thanks: https://jsfiddle.net/mariusc23/s6mLJ/31/
  */
-const hideOnScrollList = [];
-let didScroll;
-let lastST = 0;
+const hideOnScrollList = []
+let didScroll
+let lastST = 0
 
 $wnd.on('scroll load resize orientationchange', () => {
-    if (hideOnScrollList.length) {
-        didScroll = true;
-    }
-});
+  if (hideOnScrollList.length) {
+    didScroll = true
+  }
+})
 
 function hasScrolled() {
-    const ST = $wnd.scrollTop();
+  const ST = $wnd.scrollTop()
 
-    let type = ''; // [up, down, end, start]
+  let type = '' // [up, down, end, start]
 
-    if (ST > lastST) {
-        type = 'down';
-    } else if (ST < lastST) {
-        type = 'up';
-    } else {
-        type = 'none';
+  if (ST > lastST) {
+    type = 'down'
+  } else if (ST < lastST) {
+    type = 'up'
+  } else {
+    type = 'none'
+  }
+
+  if (ST === 0) {
+    type = 'start'
+  } else if (ST >= docH - wndH) {
+    type = 'end'
+  }
+
+  hideOnScrollList.forEach((item) => {
+    if (typeof item === 'function') {
+      item(type, ST, lastST, $wnd)
     }
+  })
 
-    if (ST === 0) {
-        type = 'start';
-    } else if (ST >= docH - wndH) {
-        type = 'end';
-    }
-
-    hideOnScrollList.forEach((item) => {
-        if (typeof item === 'function') {
-            item(type, ST, lastST, $wnd);
-        }
-    });
-
-    lastST = ST;
+  lastST = ST
 }
 
 setInterval(() => {
-    if (didScroll) {
-        didScroll = false;
-        window.requestAnimationFrame(hasScrolled);
-    }
-}, 250);
+  if (didScroll) {
+    didScroll = false
+    window.requestAnimationFrame(hasScrolled)
+  }
+}, 250)
 
 function throttleScroll(callback) {
-    hideOnScrollList.push(callback);
+  hideOnScrollList.push(callback)
 }
-
 
 /**
  * Body Overflow
@@ -147,57 +150,58 @@ function throttleScroll(callback) {
  *    // disable
  *    bodyOverflow(0);
  */
-let bodyOverflowEnabled;
-let isBodyOverflowing;
-let scrollbarWidth;
-let originalBodyPadding;
-const $fullNavbar = $('.rb-navbar-full');
+let bodyOverflowEnabled
+let isBodyOverflowing
+let scrollbarWidth
+let originalBodyPadding
+const $fullNavbar = $('.rb-navbar-full')
 function isBodyOverflowed() {
-    return bodyOverflowEnabled;
+  return bodyOverflowEnabled
 }
 function bodyGetScrollbarWidth() {
-    // thx d.walsh
-    const scrollDiv = document.createElement('div');
-    scrollDiv.className = 'rb-body-scrollbar-measure';
-    $body[0].appendChild(scrollDiv);
-    const result = scrollDiv.offsetWidth - scrollDiv.clientWidth;
-    $body[0].removeChild(scrollDiv);
-    return result;
+  // thx d.walsh
+  const scrollDiv = document.createElement('div')
+  scrollDiv.className = 'rb-body-scrollbar-measure'
+  $body[0].appendChild(scrollDiv)
+  const result = scrollDiv.offsetWidth - scrollDiv.clientWidth
+  $body[0].removeChild(scrollDiv)
+  return result
 }
 function bodyCheckScrollbar() {
-    let fullWindowWidth = window.innerWidth;
-    if (!fullWindowWidth) {
-        // workaround for missing window.innerWidth in IE8
-        const documentElementRect = document.documentElement.getBoundingClientRect();
-        fullWindowWidth = documentElementRect.right - Math.abs(documentElementRect.left);
-    }
-    isBodyOverflowing = $body[0].clientWidth < fullWindowWidth;
-    scrollbarWidth = bodyGetScrollbarWidth();
+  let fullWindowWidth = window.innerWidth
+  if (!fullWindowWidth) {
+    // workaround for missing window.innerWidth in IE8
+    const documentElementRect = document.documentElement.getBoundingClientRect()
+    fullWindowWidth =
+      documentElementRect.right - Math.abs(documentElementRect.left)
+  }
+  isBodyOverflowing = $body[0].clientWidth < fullWindowWidth
+  scrollbarWidth = bodyGetScrollbarWidth()
 }
 function bodySetScrollbar() {
-    if (typeof originalBodyPadding === 'undefined') {
-        originalBodyPadding = $body.css('padding-right') || '';
-    }
+  if (typeof originalBodyPadding === 'undefined') {
+    originalBodyPadding = $body.css('padding-right') || ''
+  }
 
-    if (isBodyOverflowing) {
-        $body.add($fullNavbar).css('paddingRight', `${scrollbarWidth}px`);
-    }
+  if (isBodyOverflowing) {
+    $body.add($fullNavbar).css('paddingRight', `${scrollbarWidth}px`)
+  }
 }
 function bodyResetScrollbar() {
-    $body.css('paddingRight', originalBodyPadding);
-    $fullNavbar.css('paddingRight', '');
+  $body.css('paddingRight', originalBodyPadding)
+  $fullNavbar.css('paddingRight', '')
 }
 function bodyOverflow(enable) {
-    if (enable && !bodyOverflowEnabled) {
-        bodyOverflowEnabled = 1;
-        bodyCheckScrollbar();
-        bodySetScrollbar();
-        $body.css('overflow', 'hidden');
-    } else if (!enable && bodyOverflowEnabled) {
-        bodyOverflowEnabled = 0;
-        $body.css('overflow', '');
-        bodyResetScrollbar();
-    }
+  if (enable && !bodyOverflowEnabled) {
+    bodyOverflowEnabled = 1
+    bodyCheckScrollbar()
+    bodySetScrollbar()
+    $body.css('overflow', 'hidden')
+  } else if (!enable && bodyOverflowEnabled) {
+    bodyOverflowEnabled = 0
+    $body.css('overflow', '')
+    bodyResetScrollbar()
+  }
 }
 
 /**
@@ -205,70 +209,89 @@ function bodyOverflow(enable) {
  * return visible percent from 0 to 1
  */
 function isInViewport($item, returnRect) {
-    const rect = $item[0].getBoundingClientRect();
-    let result = 1;
+  const rect = $item[0].getBoundingClientRect()
+  let result = 1
 
-    if (rect.right <= 0 || rect.left >= wndW) {
-        result = 0;
-    } else if (rect.bottom < 0 && rect.top <= wndH) {
-        result = 0;
-    } else {
-        const beforeTopEnd = Math.max(0, rect.height + rect.top);
-        const beforeBottomEnd = Math.max(0, rect.height - (rect.top + rect.height - wndH));
-        const afterTop = Math.max(0, -rect.top);
-        const beforeBottom = Math.max(0, rect.top + rect.height - wndH);
-        if (rect.height < wndH) {
-            result = 1 - (afterTop || beforeBottom) / rect.height;
-        } else if (beforeTopEnd <= wndH) {
-            result = beforeTopEnd / wndH;
-        } else if (beforeBottomEnd <= wndH) {
-            result = beforeBottomEnd / wndH;
-        }
-        result = result < 0 ? 0 : result;
+  if (rect.right <= 0 || rect.left >= wndW) {
+    result = 0
+  } else if (rect.bottom < 0 && rect.top <= wndH) {
+    result = 0
+  } else {
+    const beforeTopEnd = Math.max(0, rect.height + rect.top)
+    const beforeBottomEnd = Math.max(
+      0,
+      rect.height - (rect.top + rect.height - wndH)
+    )
+    const afterTop = Math.max(0, -rect.top)
+    const beforeBottom = Math.max(0, rect.top + rect.height - wndH)
+    if (rect.height < wndH) {
+      result = 1 - (afterTop || beforeBottom) / rect.height
+    } else if (beforeTopEnd <= wndH) {
+      result = beforeTopEnd / wndH
+    } else if (beforeBottomEnd <= wndH) {
+      result = beforeBottomEnd / wndH
     }
-    if (returnRect) {
-        return [result, rect];
-    }
-    return result;
+    result = result < 0 ? 0 : result
+  }
+  if (returnRect) {
+    return [result, rect]
+  }
+  return result
 }
-
 
 /**
  * Scroll To
  */
 function scrollTo($to, callback) {
-    let scrollPos = false;
-    const speed = this.options.scrollToAnchorSpeed / 1000;
+  let scrollPos = false
+  const speed = this.options.scrollToAnchorSpeed / 1000
 
-    if ($to === 'top') {
-        scrollPos = 0;
-    } else if ($to === 'bottom') {
-        scrollPos = Math.max(0, docH - wndH);
-    } else if (typeof $to === 'number') {
-        scrollPos = $to;
-    } else {
-        scrollPos = $to.offset ? $to.offset().top : false;
+  if ($to === 'top') {
+    scrollPos = 0
+  } else if ($to === 'bottom') {
+    scrollPos = Math.max(0, docH - wndH)
+  } else if (typeof $to === 'number') {
+    scrollPos = $to
+  } else {
+    scrollPos = $to.offset ? $to.offset().top : false
+  }
+
+  if (scrollPos !== false && $wnd.scrollTop() !== scrollPos) {
+    tween.to($wnd, speed, {
+      scrollTo: {
+        y: scrollPos,
+
+        // disable autokill on iOs (buggy scrolling)
+        autoKill: !isIOs,
+      },
+      ease: Power2.easeOut,
+      overwrite: 5,
+    })
+    if (callback) {
+      tween.delayedCall(speed, callback)
     }
-
-    if (scrollPos !== false && $wnd.scrollTop() !== scrollPos) {
-        tween.to($wnd, speed, {
-            scrollTo: {
-                y: scrollPos,
-
-                // disable autokill on iOs (buggy scrolling)
-                autoKill: !isIOs,
-            },
-            ease: Power2.easeOut,
-            overwrite: 5,
-        });
-        if (callback) {
-            tween.delayedCall(speed, callback);
-        }
-    } else if (typeof callback === 'function') {
-        callback();
-    }
+  } else if (typeof callback === 'function') {
+    callback()
+  }
 }
 
 export {
-    $, tween, isIOs, isMobile, isFireFox, isTouch, $wnd, $doc, $body, wndW, wndH, docH, debounceResize, throttleScroll, bodyOverflow, isBodyOverflowed, isInViewport, scrollTo,
-};
+  $,
+  tween,
+  isIOs,
+  isMobile,
+  isFireFox,
+  isTouch,
+  $wnd,
+  $doc,
+  $body,
+  wndW,
+  wndH,
+  docH,
+  debounceResize,
+  throttleScroll,
+  bodyOverflow,
+  isBodyOverflowed,
+  isInViewport,
+  scrollTo,
+}
