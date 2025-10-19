@@ -22,21 +22,23 @@ const PortfolioPage = () => {
                 data-filter="Design"
               >
                 <div className="rb-portfolio-item rb-portfolio-item-square rb-portfolio-item-info-style-1">
-                  <Link
-                    href={item.route}
-                    className="rb-portfolio-item-link"
-                  ></Link>
-                  <div className="rb-portfolio-item-image">
-                    <div
-                      style={{ backgroundImage: `url('${item.thumbnail}')` }}
-                    />
-                  </div>
-                  <div className="rb-portfolio-item-info rb-portfolio-item-info-center text-center">
-                    <div>
-                      <h2 className="portfolio-item-title h3">{item.title}</h2>
-                      <div className="portfolio-item-category">{item.type}</div>
+                  <Link href={item.route}>
+                    <div className="rb-portfolio-item-image">
+                      <div
+                        style={{ backgroundImage: `url('${item.thumbnail}')` }}
+                      />
                     </div>
-                  </div>
+                    <div className="rb-portfolio-item-info rb-portfolio-item-info-center text-center">
+                      <div>
+                        <h2 className="portfolio-item-title h3">
+                          {item.title}
+                        </h2>
+                        <div className="portfolio-item-category">
+                          {item.type}
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
                 </div>
               </div>
             )
