@@ -5,7 +5,6 @@ import Image from "next/image";
 
 import { Button } from "@/components/Button";
 import { Text } from "@/components/Text";
-import ContactSection from "./ContactSection";
 
 import { getNumberOfYearsSinceDate } from "@/utils/getNumberOfYearsSinceDate";
 import { skillIcons } from "./skillIcons";
@@ -15,7 +14,7 @@ export default function Home() {
 
   const breakpointCheckRef = useRef(null);
   const aboutRef = useRef(null);
-  const contactRef = useRef(null);
+  // contactRef removed while ContactSection is hidden; re-enable when restoring contact section
 
   const getBreakpoint = (checkerEle: HTMLElement): string => {
     const breakpointOpacity = Number(
@@ -142,7 +141,7 @@ export default function Home() {
                   web&nbsp;developer.
                 </span>
               </h1>
-              <Button onClick={btnHandler} className="mt-15 hero-btn">
+              <Button onClick={btnHandler} className="mt-15 hero-btn rb-btn">
                 View My Work
               </Button>
               <div className="rb-gap"></div>
@@ -169,7 +168,7 @@ export default function Home() {
           <div className="row">
             <div className="col-md-8 order-md-2 text-left about-me-text">
               <div className="rb-gap-1"></div>
-              <Text variant="h2" className="text-center">
+              <Text as="h2" className="text-center">
                 {numberOfYearsSinceIStartedWorking} Years of Professional
                 Experience.
               </Text>
@@ -200,22 +199,23 @@ export default function Home() {
         <div className="container">
           <div className="row">
             <div className="col-12">
-              <h1 className="text-center text-white">Skills</h1>
+              <Text as="h2" variant="h1" className="text-center text-white">Skills</Text>
             </div>
           </div>
-          <div className="row">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
             {skillIcons.map(({ fileName, title, altText, className }) => (
-              <div className="col-6 col-lg-4 skill-box" key={className}>
-                <div className="rb-ibox-1">
+              <div className="skill-box" key={title}>
+                <div className="flex flex-col items-center justify-center text-center p-4 h-full">
                   <div className="rb-ibox-cont">
-                    <div className="rb-ibox-title">{title}</div>
+                    <div className="rb-ibox-title mb-2">{title}</div>
                   </div>
-                  <div className={`rb-ibox-icon ${className}`}>
+                  <div className={`rb-ibox-icon ${className} flex items-center justify-center`}>
                     <Image
-                      width="200"
-                      height="200"
+                      width={120}
+                      height={120}
                       src={`/images/icons/${fileName}`}
                       alt={altText}
+                      className="mx-auto"
                     />
                   </div>
                 </div>
@@ -224,9 +224,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
-      <ContactSection ref={contactRef} />
-
       <div className="breakpoint-check" ref={breakpointCheckRef} />
     </div>
   );

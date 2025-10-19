@@ -21,10 +21,8 @@ export const Nav: React.FC<NavProps> = ({
       return 0;
     } else if (pathname.substring(0, 10) == "/portfolio") {
       return 1;
-    } else if (pathname == "/contact/" || pathname == "/contact") {
-      return 2;
     }
-    return 3;
+    return -1;
   };
 
   const [selectedNavIndex /*, setSelectedNavIndex*/] = useState(
@@ -92,13 +90,7 @@ export const Nav: React.FC<NavProps> = ({
             >
               <Link href="/portfolio/">Portfolio</Link>
             </li>
-            <li
-              className={`rb-drop-item ${
-                selectedNavIndex == 2 ? "active" : ""
-              }`}
-            >
-              <Link href="/contact/">Contact</Link>
-            </li>
+            {/* Contact removed from nav while ContactSection is hidden */}
           </ul>
           <ul className="rb-nav rb-nav-right rb-nav-icons">
             <li className="single-icon d-lg-none">
