@@ -117,10 +117,14 @@ export const MobileNav: React.FC<MobileNavProps> = ({
                 <div className="rb-nav-row rb-nav-row-full rb-nav-row-center rb-navbar-mobile-content">
                   <ul className="rb-nav">
                     <li>
-                      <Link href="/">Home</Link>
+                      <Link href="/" onClick={closeBtnHandler}>
+                        Home
+                      </Link>
                     </li>
                     <li>
-                      <Link href="/portfolio/">Portfolio</Link>
+                      <Link href="/portfolio/" onClick={closeBtnHandler}>
+                        Portfolio
+                      </Link>
                     </li>
                   </ul>
                 </div>
