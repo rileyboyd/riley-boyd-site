@@ -1,11 +1,11 @@
 'use client'
+
 import React, { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTwitter, faLinkedin } from '@fortawesome/free-brands-svg-icons'
-
-import tween from 'gsap'
+import gsap from 'gsap'
 
 interface MobileNavProps {
   closeBtnHandler: () => void
@@ -24,65 +24,59 @@ export const MobileNav: React.FC<MobileNavProps> = ({
 
   const navbarFullRef = useRef<HTMLElement | null>(null)
   const navSocialRef = useRef<HTMLDivElement | null>(null)
-
-  // When the "isOpened" prop on the parent changes, call the appropriate menu function
   useEffect(() => {
-    // Use Refs to get the DOM elements needed for the menu animations
     const navbar = navbarFullRef.current
     const navbarSocial = navSocialRef.current
 
-    if (!navbar || !navbarSocial) {
+    if (!navbar || !navbarSocial) return
+
+    const navbarMenuItems = navbar.querySelectorAll(
+      '.rb-navbar-mobile-content .rb-nav > li > a'
+    )
+
+    if (!isOpened) {
+      gsap.set([navbarMenuItems, navbarSocial], {
+        opacity: 0,
+        force3D: true,
+      })
       return
     }
 
-    const navbarMenuItems = navbar.querySelectorAll(
-      '.rb-navbar-mobile-content >.rb-nav > li > a'
-    )
+    // Set initial states
+    gsap.set([navbarMenuItems, navbarSocial], {
+      opacity: 0,
+      y: 20,
+      force3D: true,
+    })
 
-    const openFullscreenNavbar = () => {
-      // Animate in the links in the menu
-      tween.set(navbarMenuItems, {
-        opacity: 0,
-        force3D: true,
-      })
+    // Animate navbar fade-in
+    gsap.to(navbar, {
+      duration: 0.4,
+      opacity: 1,
+      display: 'block',
+    })
 
-      tween.set(navbarSocial, {
-        opacity: 0,
-        force3D: true,
-      })
+    // Animate nav links with stagger
+    gsap.to(navbarMenuItems, {
+      duration: 0.4,
+      opacity: 1,
+      y: 0,
+      stagger: 0.1,
+      delay: 0.2,
+    })
 
-      tween.to(navbar, 0.5, {
-        opacity: 1,
-        force3D: true,
-        display: 'block',
-        onComplete() {},
-      })
-
-      tween.to(navbarSocial, 0.3, {
-        y: 0,
-        opacity: 1,
-        delay: 0.4,
-      })
-    }
-
-    const closeFullscreenNavbar = () => {
-      // Set the opacity of the links in the menu back to 0
-      tween.set([navbarMenuItems, navbarSocial], {
-        opacity: 0,
-        force3D: true,
-      })
-    }
-
-    if (isOpened) {
-      openFullscreenNavbar()
-    } else {
-      closeFullscreenNavbar()
-    }
+    // Animate social icons
+    gsap.to(navbarSocial, {
+      duration: 0.3,
+      y: 0,
+      opacity: 1,
+      delay: 0.4,
+    })
 
     return () => {
-      tween.killTweensOf([navbar, navbarMenuItems, navbarSocial])
+      gsap.killTweensOf([navbar, navbarMenuItems, navbarSocial])
     }
-  }, [isOpened, navbarFullRef.current, navSocialRef.current])
+  }, [isOpened])
 
   return (
     <nav
@@ -100,8 +94,8 @@ export const MobileNav: React.FC<MobileNavProps> = ({
                   <Image
                     src="/images/rb-logo-light.svg"
                     alt=""
-                    width="85"
-                    height="85"
+                    width={85}
+                    height={85}
                   />
                 </Link>
               </div>

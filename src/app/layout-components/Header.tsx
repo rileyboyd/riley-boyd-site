@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 import { Nav } from './Nav'
 import { MobileNav } from './MobileNav'
 
-export const Header: React.FC<HeaderProps> = () => {
+export const Header: React.FC = () => {
   const pathname = usePathname()
 
   const [fullscreenMenuIsOpened, setFullscreenMenuIsOpened] = useState(false)
