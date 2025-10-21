@@ -1,3 +1,4 @@
+'use client'
 import React, { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -90,12 +91,6 @@ export const MobileNav: React.FC<MobileNavProps> = ({
       id="rb-nav-mobile"
       style={isOpened ? showNavbarStyles : {}}
     >
-      <div className="rb-navbar-bg">
-        <div
-          className="bg-image"
-          style={{ backgroundImage: "url('assets/images/bg-menu.jpg')" }}
-        ></div>
-      </div>
       <div className="rb-nav-table">
         <div className="rb-nav-row">
           <div className="container">
@@ -103,7 +98,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({
               <div className="rb-nav-logo">
                 <Link href="/" className="rb-nav-logo">
                   <Image
-                    src="/images/logo-light.svg"
+                    src="/images/rb-logo-light.svg"
                     alt=""
                     width="85"
                     height="85"

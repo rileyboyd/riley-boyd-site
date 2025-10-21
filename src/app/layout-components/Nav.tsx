@@ -58,13 +58,18 @@ export const Nav: React.FC<NavProps> = ({
         <div className="rb-nav-table">
           <Link href="/" className="rb-nav-logo">
             <Image
-              src="/images/rb-logo-light.svg"
+              src="../images/rb-logo-light.svg"
               alt=""
               width="140"
               height="140"
               className="rb-nav-logo-onscroll"
             />
-            <Image src="/images/rb-logo.svg" alt="" width="140" height="140" />
+            <Image
+              src="../images/rb-logo.svg"
+              alt=""
+              width="140"
+              height="140"
+            />
           </Link>
           <ul
             className="rb-nav rb-nav-right d-none d-lg-block"
