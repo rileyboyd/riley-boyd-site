@@ -111,7 +111,7 @@ export default function Home() {
       <div className="rb-header-title rb-header-title-full rb-header-title-parallax-opacity">
         <div className="rb-header-table">
           <div className="rb-header-table-cell">
-            <div className="container">
+            <div className="container mx-auto px-4">
               <h1 className="rb-title display-3">
                 <span id="hero-text-1" className="hero-text-line">
                   Hello, I&apos;m{' '}
@@ -146,28 +146,27 @@ export default function Home() {
       </div>
       <div id="rb-header-title-scroll-down"></div>
       <div className="bg-white" id="about" ref={aboutRef}>
-        <div className="container">
-          <div className="row">
-            <div className="col-md-8 order-md-2 text-left about-me-text">
-              <div className="rb-gap-1"></div>
-              <Text as="h2" className="text-center">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="flex flex-col md:flex-row md:gap-8 items-start">
+            <div className="basis-full md:basis-1/3 shrink-0 about-me-photo-col p-8">
+              <Text as="h2" className="text-center md:hidden mb-8">
                 {numberOfYearsSinceIStartedWorking} Years of Professional
                 Experience.
               </Text>
-              <div className="rb-gap-1"></div>
-              <div className="d-none d-md-block">{mainContent}</div>
-            </div>
-            <div className="col-md-4 order-md-1 pull-md-8 text-left about-me-photo-col">
-              <div className="rb-gap-3 mnt-6 d-none d-md-block d-lg-none" />
               <Image
-                width="200"
-                height="200"
+                width={400}
+                height={400}
                 src="/images/personal-photo-about-section-md.jpg"
                 alt="Photo of Riley"
-                className="about-me-photo"
+                className="about-me-photo w-full h-auto"
               />
             </div>
-            <div className="col-md-12 text-left d-md-none">
+            <div className="basis-full md:basis-2/3 shrink about-me-text">
+              <div className="rb-gap-1 hidden md:block"></div>
+              <Text as="h2" className="text-center hidden md:block">
+                {numberOfYearsSinceIStartedWorking} Years of Professional
+                Experience.
+              </Text>
               <div className="rb-gap-1"></div>
               {mainContent}
               <div className="rb-gap-1"></div>
@@ -178,9 +177,9 @@ export default function Home() {
 
       <div className="rb-box bg-dark-1 text-white" id="skills">
         <div className="rb-gap-3 mnt-6" />
-        <div className="container">
-          <div className="row">
-            <div className="col-12">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-wrap">
+            <div className="w-full">
               <Text as="h2" variant="h1" className="text-center text-white">
                 Skills
               </Text>

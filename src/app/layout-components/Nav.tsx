@@ -54,7 +54,7 @@ export const Nav: React.FC<NavProps> = ({
           : ''
       } ${useSticky && isSticky ? 'rb-navbar-solid rb-navbar-fixed' : ''}`}
     >
-      <div className="container">
+      <div className="container mx-auto px-4">
         <div className="rb-nav-table">
           <Link href="/" className="rb-nav-logo">
             <Image
@@ -72,7 +72,7 @@ export const Nav: React.FC<NavProps> = ({
             />
           </Link>
           <ul
-            className="rb-nav rb-nav-right d-none d-lg-block"
+            className="rb-nav rb-nav-right hidden lg:block"
             data-nav-mobile="#rb-nav-mobile"
           >
             <li
@@ -91,7 +91,7 @@ export const Nav: React.FC<NavProps> = ({
             </li>
           </ul>
           <ul className="rb-nav rb-nav-right rb-nav-icons">
-            <li className="single-icon d-lg-none">
+            <li className="single-icon lg:hidden">
               <button
                 className="rb-navbar-full-toggle"
                 onClick={menuIconClickHandler}

@@ -45,10 +45,10 @@ const PortfolioItemPage = () => {
 
   return (
     <>
-      <div className="container-fluid">
+      <div className="w-full px-4">
         <div className="rb-portfolio-single rb-portfolio-single-half">
-          <div className="row">
-            <div className="col-lg-6 order-lg-2">
+          <div className="flex flex-wrap">
+            <div className="w-full lg:w-1/2 lg:order-2">
               <div className="rb-sidebar-sticky" data-offset-top={0}>
                 <div className="rb-portfolio-info">
                   <h1 className="rb-portfolio-title display-4">
@@ -105,7 +105,7 @@ const PortfolioItemPage = () => {
                 </div>
               </div>
             </div>
-            <div className="col-lg-6">
+            <div className="w-full lg:w-1/2">
               <div className="rb-portfolio-images">
                 {currentItem.images.map((image, index) => (
                   <Image
@@ -123,7 +123,7 @@ const PortfolioItemPage = () => {
         </div>
       </div>
       <div className="rb-pagination rb-pagination-center">
-        <div className="container">
+        <div className="container mx-auto px-4">
           {itemIndex > 0 && (
             <Link
               href={portfolioData[itemIndex - 1].route}

@@ -7,7 +7,7 @@ const PortfolioPage = () => {
 
   return (
     <div className="page-portfolio">
-      <div className="container">
+      <div className="container mx-auto px-4">
         <h1 className="text-center mt-60 mb-50">Portfolio</h1>
 
         <div

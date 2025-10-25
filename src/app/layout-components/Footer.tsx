@@ -17,9 +17,9 @@ export const Footer: React.FC = () => {
       </div>
 
       <div className="rb-footer-widgets text-white">
-        <div className="container">
-          <div className="row vertical-gap">
-            <div className="col-lg-12">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-wrap vertical-gap">
+            <div className="w-full">
               <div className="rb-widget">
                 <h4 className="rb-widget-title text-white">About Me</h4>
                 <p className="rb-heading-font">
@@ -35,7 +35,7 @@ export const Footer: React.FC = () => {
         </div>
       </div>
       <div className="rb-footer-cont rb-footer-cont-sm">
-        <div className="container text-center">
+        <div className="container mx-auto px-4 text-center">
           <div className="rb-footer-text text-white">
             <p>&copy;{currentYear} Riley Boyd</p>
           </div>
