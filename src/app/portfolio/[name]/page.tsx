@@ -145,8 +145,10 @@ const PortfolioItemPage = () => {
                 goToItemHandler(event, portfolioData[itemIndex - 1].route)
               }
             >
-              <span className="pe-7s-angle-left arrow"></span> Prev
-              <span className="hide-text">ious Work</span>
+              <svg className="inline w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              Previous Work
             </Link>
           )}
           {portfolioData.length > itemIndex + 1 && (
@@ -157,8 +159,10 @@ const PortfolioItemPage = () => {
                 goToItemHandler(event, portfolioData[itemIndex + 1].route)
               }
             >
-              Next<span className="hide-text"> Work </span>
-              <span className="pe-7s-angle-right arrow" />
+              Next Work
+              <svg className="inline w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
             </Link>
           )}
         </div>

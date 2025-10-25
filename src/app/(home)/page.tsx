@@ -158,7 +158,7 @@ export default function Home() {
       <div className="bg-white" id="about" ref={aboutRef}>
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-col md:flex-row md:gap-8 items-start">
-            <div className="basis-full md:basis-1/3 shrink-0 about-me-photo-col p-8">
+            <div className="basis-full md:basis-1/3 shrink-0 p-8">
               <Text as="h2" className="text-center md:hidden mb-8">
                 {numberOfYearsSinceIStartedWorking} Years of Professional
                 Experience.
@@ -168,10 +168,10 @@ export default function Home() {
                 height={400}
                 src="/images/personal-photo-about-section-md.jpg"
                 alt="Photo of Riley"
-                className="about-me-photo w-full h-auto"
+                className="w-full h-auto"
               />
             </div>
-            <div className="basis-full md:basis-2/3 shrink about-me-text">
+            <div className="basis-full md:basis-2/3 shrink">
               <div className="hidden md:block h-[30px]"></div>
               <Text as="h2" className="text-center hidden md:block">
                 {numberOfYearsSinceIStartedWorking} Years of Professional
@@ -196,7 +196,7 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
             {skillIcons.map(({ fileName, title, altText, className }) => (
-              <div className="skill-box" key={title}>
+              <div className="pt-10" key={title}>
                 <div className="flex flex-col items-center justify-center text-center p-4 h-full">
                   <div className="ml-0">
                     <div className="text-2xl font-medium mb-2">{title}</div>
@@ -218,7 +218,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="breakpoint-check" ref={breakpointCheckRef} />
+      <div className="h-0 w-0 overflow-hidden opacity-0 md:opacity-60 lg:opacity-80 xl:opacity-100" ref={breakpointCheckRef} />
     </div>
   )
 }

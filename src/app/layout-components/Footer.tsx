@@ -9,16 +9,16 @@ export const Footer: React.FC = () => {
 
   return (
     <footer className="relative overflow-hidden bg-[#0c0c0c] z-1">
-      <div className="bg-image">
+      <div className="absolute inset-0 bg-center bg-cover -z-1">
         <div
-          className="bg-image-overlay"
+          className="absolute inset-0"
           style={{ backgroundColor: 'rgba(12, 12, 12, 0.9)' }}
         ></div>
       </div>
 
       <div className="py-24 text-white border-b border-white/20">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="flex flex-wrap vertical-gap">
+          <div className="flex flex-wrap">
             <div className="w-full">
               <div>
                 <h4 className="text-white mb-4 font-bold">About Me</h4>
