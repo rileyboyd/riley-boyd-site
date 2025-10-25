@@ -1,9 +1,10 @@
 'use client'
-import React, { useRef, MutableRefObject, UIEvent } from 'react'
+import React, { useRef, MutableRefObject, UIEvent, useState } from 'react'
 import Image from 'next/image'
 
 import { Button } from '@/components/Button'
 import { Text } from '@/components/Text'
+import { HeroCanvas } from '@/components/HeroCanvas'
 
 import { getNumberOfYearsSinceDate } from '@/utils/getNumberOfYearsSinceDate'
 import { skillIcons } from './skillIcons'
@@ -11,6 +12,7 @@ import { skillIcons } from './skillIcons'
 export default function Home() {
   const breakpointCheckRef = useRef(null)
   const aboutRef = useRef(null)
+  const [canvasReady, setCanvasReady] = useState(false)
   // contactRef removed while ContactSection is hidden; re-enable when restoring contact section
 
   const getBreakpoint = (checkerEle: HTMLElement): string => {
@@ -94,20 +96,21 @@ export default function Home() {
   return (
     <div className="page-home">
       <div className="rb-header-title rb-header-title-full rb-header-title-parallax-opacity relative">
-        <div className="rb-header-table">
+        <HeroCanvas onReady={() => setCanvasReady(true)} />
+        <div className="rb-header-table relative" style={{ zIndex: 1 }}>
           <div className="rb-header-table-cell">
             <div className="container mx-auto px-4">
               <h1 className="rb-title display-3">
                 <span
                   id="hero-text-1"
-                  className="hero-text-line animate-fade-in-up animation-delay-500"
+                  className={`hero-text-line ${canvasReady ? 'animate-fade-in-up animation-delay-500' : 'opacity-0'}`}
                 >
                   Hello, I&apos;m{' '}
                   <span className="hero-text-name">Riley&nbsp;Boyd</span>.
                 </span>
                 <span
                   id="hero-text-2"
-                  className="hero-text-line animate-fade-in-up animation-delay-1750"
+                  className={`hero-text-line ${canvasReady ? 'animate-fade-in-up animation-delay-1750' : 'opacity-0'}`}
                 >
                   I&apos;m a senior{' '}
                   <span className="whitespace-nowrap">front-end</span>{' '}
@@ -116,7 +119,7 @@ export default function Home() {
               </h1>
               <Button
                 onClick={btnHandler}
-                className="hero-btn rb-btn animate-fade-in-up animation-delay-3000 mt-8"
+                className={`hero-btn rb-btn mt-8 ${canvasReady ? 'animate-fade-in-up animation-delay-3000' : 'opacity-0'}`}
               >
                 View My Work
               </Button>
@@ -130,7 +133,7 @@ export default function Home() {
         <button
           onClick={scrollDownHandler}
           id="scroll-btn"
-          className="absolute bottom-16 left-1/2 -translate-x-1/2 w-12 h-12 text-white inline-flex items-center justify-center border border-white rounded-full opacity-60 hover:opacity-100 transition-opacity duration-500 animate-fade-in animation-delay-3500 cursor-pointer"
+          className={`absolute bottom-16 left-1/2 -translate-x-1/2 w-12 h-12 text-white inline-flex items-center justify-center border border-white rounded-full opacity-60 hover:opacity-100 transition-opacity duration-500 cursor-pointer ${canvasReady ? 'animate-fade-in animation-delay-3500' : 'opacity-0'}`}
           aria-label="Scroll down to content"
         >
           <svg
