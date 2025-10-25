@@ -1,11 +1,5 @@
 'use client'
-import React, {
-  useRef,
-  MutableRefObject,
-  UIEvent,
-  useState,
-  useEffect,
-} from 'react'
+import React, { useRef, MutableRefObject, UIEvent, useState } from 'react'
 import Image from 'next/image'
 
 import { Button } from '@/components/Button'
@@ -102,15 +96,16 @@ export default function Home() {
   return (
     <div className="page-home">
       <div className="rb-header-title rb-header-title-full rb-header-title-parallax-opacity relative">
-        <div className="hero-css-bg" />
-        <div className="hero-css-particles">
+        <div className={`hero-css-bg ${canvasReady ? 'fade-out' : ''}`} />
+        <div className={canvasReady ? 'hero-canvas-fade-in' : 'opacity-0'}>
+          <HeroCanvas onReady={() => setCanvasReady(true)} />
+        </div>
+        <div className={`hero-css-particles ${canvasReady ? 'fade-out' : ''}`}>
           <div className="hero-css-particle-1" />
           <div className="hero-css-particle-2" />
           <div className="hero-css-particle-3" />
         </div>
-        <div className={canvasReady ? 'hero-canvas-fade-in' : 'opacity-0'}>
-          <HeroCanvas onReady={() => setCanvasReady(true)} />
-        </div>
+
         <div className="rb-header-table relative" style={{ zIndex: 1 }}>
           <div className="rb-header-table-cell">
             <div className="container mx-auto px-4">

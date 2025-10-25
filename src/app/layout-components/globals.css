@@ -117,45 +117,36 @@ body {
 @keyframes particleFloat1 {
   0%, 100% {
     transform: translate(0, 0) scale(1);
-    opacity: 0.3;
   }
   33% {
-    transform: translate(30vw, -20vh) scale(1.2);
-    opacity: 0.6;
+    transform: translate(20vw, 15vh) scale(1.2);
   }
   66% {
-    transform: translate(-20vw, 30vh) scale(0.8);
-    opacity: 0.4;
+    transform: translate(-15vw, 20vh) scale(0.8);
   }
 }
 
 @keyframes particleFloat2 {
   0%, 100% {
     transform: translate(0, 0) scale(1);
-    opacity: 0.4;
   }
   33% {
-    transform: translate(-25vw, 25vh) scale(1.1);
-    opacity: 0.7;
+    transform: translate(-18vw, 18vh) scale(1.1);
   }
   66% {
-    transform: translate(35vw, -15vh) scale(0.9);
-    opacity: 0.5;
+    transform: translate(22vw, 12vh) scale(0.9);
   }
 }
 
 @keyframes particleFloat3 {
   0%, 100% {
     transform: translate(0, 0) scale(1);
-    opacity: 0.35;
   }
   33% {
-    transform: translate(15vw, 30vh) scale(1.3);
-    opacity: 0.5;
+    transform: translate(12vw, 20vh) scale(1.3);
   }
   66% {
-    transform: translate(-30vw, -20vh) scale(0.7);
-    opacity: 0.6;
+    transform: translate(-20vw, 15vh) scale(0.7);
   }
 }
 
@@ -183,7 +174,6 @@ body {
 .hero-css-particles {
   position: absolute;
   inset: 0;
-  overflow: hidden;
   z-index: 0;
 }
 
@@ -192,7 +182,8 @@ body {
   content: '';
   position: absolute;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 70%);
+  transition: opacity 1.5s ease-out;
 }
 
 .hero-css-particles::before {
@@ -216,8 +207,9 @@ body {
 .hero-css-particle-3 {
   position: absolute;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 70%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 70%);
   pointer-events: none;
+  transition: opacity 1.5s ease-out;
 }
 
 .hero-css-particle-1 {
@@ -242,6 +234,19 @@ body {
   top: 10%;
   right: 40%;
   animation: particleFloat2 11s ease-in-out infinite 1s;
+}
+
+.hero-css-particles.fade-out::before,
+.hero-css-particles.fade-out::after,
+.hero-css-particles.fade-out .hero-css-particle-1,
+.hero-css-particles.fade-out .hero-css-particle-2,
+.hero-css-particles.fade-out .hero-css-particle-3 {
+  opacity: 0;
+}
+
+.hero-css-bg.fade-out {
+  transition: opacity 1.5s ease-out;
+  opacity: 0;
 }
 
 .hero-canvas-fade-in {
