@@ -1,19 +1,16 @@
 'use client'
-import React, { useRef, MutableRefObject, UIEvent, useState } from 'react'
+import React, { useRef, MutableRefObject } from 'react'
 import Image from 'next/image'
 
-import { Button } from '@/components/Button'
 import { Text } from '@/components/Text'
-import { HeroCanvas } from './HeroCanvas'
+import { HeroSection } from './HeroSection'
 
-import { getNumberOfYearsSinceDate } from '@/app/(home)/getNumberOfYearsSinceDate'
+import { getNumberOfYearsSinceDate } from '@/app/utils/date.utils'
 import { skillIcons } from './skillIcons'
 
 export default function Home() {
   const breakpointCheckRef = useRef(null)
   const aboutRef = useRef(null)
-  const [canvasReady, setCanvasReady] = useState(false)
-  // contactRef removed while ContactSection is hidden; re-enable when restoring contact section
 
   const getBreakpoint = (checkerEle: HTMLElement): string => {
     const breakpointOpacity = Number(
@@ -51,12 +48,11 @@ export default function Home() {
     })
   }
 
-  const btnHandler = () => {
+  const handleViewWork = () => {
     window.location.href = '/portfolio'
   }
 
-  const scrollDownHandler = (event: UIEvent<HTMLElement>): void => {
-    event.preventDefault()
+  const handleScrollToAbout = (): void => {
     scrollToRef(aboutRef)
   }
 
@@ -95,66 +91,10 @@ export default function Home() {
 
   return (
     <div className="bg-white">
-      <div className="relative overflow-hidden text-center min-h-screen bg-linear-to-br from-[#1faeaa] via-[#1a9894] to-[#15837f]">
-        <div className={canvasReady ? 'hero-canvas-fade-in' : 'opacity-0'}>
-          <HeroCanvas onReady={() => setCanvasReady(true)} />
-        </div>
-        <div className="hero-text-glow" />
-        <div className="flex items-center w-full min-h-screen pt-[75px] relative">
-          <div className="flex-1 w-full py-20">
-            <div className="max-w-7xl mx-auto px-4">
-              <Text as="h1" className="text-white">
-                <span
-                  id="hero-text-1"
-                  className="block animate-fade-in-up animation-delay-500"
-                >
-                  Hello, I&apos;m{' '}
-                  <span className="text-[#252b33]">Riley&nbsp;Boyd</span>.
-                </span>
-                <span
-                  id="hero-text-2"
-                  className="block animate-fade-in-up animation-delay-1750"
-                >
-                  I&apos;m a senior{' '}
-                  <span className="whitespace-nowrap">front-end</span>{' '}
-                  web&nbsp;developer.
-                </span>
-              </Text>
-              <Button
-                onClick={btnHandler}
-                size="lg"
-                className="uppercase mt-8 animate-fade-in-up animation-delay-3000"
-              >
-                View My Work
-              </Button>
-              <div className="block h-5"></div>
-              <div className="text-white">
-                <div className="block h-20"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <button
-          onClick={scrollDownHandler}
-          id="scroll-btn"
-          className="absolute bottom-16 left-1/2 -translate-x-1/2 w-12 h-12 text-white inline-flex items-center justify-center border border-white rounded-full opacity-60 hover:opacity-100 transition-opacity duration-500 cursor-pointer animate-fade-in animation-delay-3500"
-          aria-label="Scroll down to content"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-hidden="true"
-            className="w-6 h-6 shrink-0 inline"
-          >
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </button>
-      </div>
+      <HeroSection
+        onScrollToAbout={handleScrollToAbout}
+        onViewWork={handleViewWork}
+      />
       <div id="rb-header-title-scroll-down"></div>
       <div className="bg-white" id="about" ref={aboutRef}>
         <div className="max-w-7xl mx-auto px-4">

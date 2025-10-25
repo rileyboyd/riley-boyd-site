@@ -1,0 +1,52 @@
+/* Mobile Navigation Styles */
+
+.nav {
+  position: fixed;
+  inset: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #252b33;
+  z-index: 1002;
+  transition: opacity 0.3s;
+}
+
+.navHidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.navVisible {
+  opacity: 1;
+}
+
+/* Animation Classes */
+.itemAnimate {
+  animation: fadeInUp 0.4s ease-out forwards;
+  opacity: 0;
+}
+
+.itemDelay1 {
+  animation-delay: 0.2s;
+}
+
+.itemDelay2 {
+  animation-delay: 0.3s;
+}
+
+.socialAnimate {
+  animation: fadeInUp 0.3s ease-out forwards;
+  animation-delay: 0.4s;
+  opacity: 0;
+}
+
+/* Keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

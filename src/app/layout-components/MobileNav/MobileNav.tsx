@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTwitter, faLinkedin } from '@fortawesome/free-brands-svg-icons'
+import styles from './MobileNav.module.css'
 
 interface MobileNavProps {
   closeBtnHandler: () => void
@@ -61,7 +62,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({
                 <div className="my-auto">
                   <ul className="relative w-full p-0 pt-6 mx-auto overflow-hidden text-center">
                     <li
-                      className={`block static max-w-[450px] mx-auto ${isOpened ? 'mobile-nav-item-animate mobile-nav-item-delay-1' : 'opacity-0'}`}
+                      className={`block static max-w-[450px] mx-auto ${isOpened ? `${styles.itemAnimate} ${styles.itemDelay1}` : 'opacity-0'}`}
                     >
                       <Link
                         href="/"
@@ -72,7 +73,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({
                       </Link>
                     </li>
                     <li
-                      className={`block static max-w-[450px] mx-auto ${isOpened ? 'mobile-nav-item-animate mobile-nav-item-delay-2' : 'opacity-0'}`}
+                      className={`block static max-w-[450px] mx-auto ${isOpened ? `${styles.itemAnimate} ${styles.itemDelay2}` : 'opacity-0'}`}
                     >
                       <Link
                         href="/portfolio/"
@@ -91,7 +92,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({
         <div className="flex-none">
           <div className="max-w-7xl mx-auto px-4">
             <div
-              className={`py-12 px-5 text-center ${isOpened ? 'mobile-nav-social-animate' : 'opacity-0'}`}
+              className={`py-12 px-5 text-center ${isOpened ? styles.socialAnimate : 'opacity-0'}`}
             >
               <ul className="p-0 m-0 list-none">
                 <li className="inline-block">

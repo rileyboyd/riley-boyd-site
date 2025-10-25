@@ -1,0 +1,61 @@
+.textGlow {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0.08) 40%,
+    transparent 70%
+  );
+  mix-blend-mode: overlay;
+}
+
+.canvasFadeIn {
+  animation: fadeIn 0.5s ease-in forwards;
+  opacity: 0;
+}
+
+.fadeInUp {
+  animation: fadeInUp 1s ease-out forwards;
+  opacity: 0;
+}
+
+.fadeIn {
+  animation: fadeIn 0.15s ease-out forwards;
+  opacity: 0;
+}
+
+.delay500 {
+  animation-delay: 0.5s;
+}
+
+.delay1750 {
+  animation-delay: 1.75s;
+}
+
+.delay3000 {
+  animation-delay: 3s;
+}
+
+.delay3500 {
+  animation-delay: 3.5s;
+}
+
+/* Keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
