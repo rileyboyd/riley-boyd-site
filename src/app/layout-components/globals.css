@@ -1,5 +1,30 @@
 @import "tailwindcss";
 
+@theme {
+  /* Custom Colors */
+  --color-background: #ffffff;
+  --color-foreground: #171717;
+  --color-dark-1: #252525;
+  --color-dark-2: #3a3a3a;
+  --color-dark-3: #4f4f4f;
+  --color-dark-4: #636363;
+
+  /* Custom Font Families */
+  --font-family-body: 'Lato', sans-serif;
+  --font-family-heading: 'Arvo', serif;
+
+  /* Custom Font Sizes */
+  --font-size-display-1: 4.1rem;
+  --font-size-display-2: 3.6rem;
+  --font-size-display-3: 3.4rem;
+  --font-size-display-4: 2.6rem;
+  --font-size-h2: 2.1rem;
+  --font-size-h3: 1.69rem;
+  --font-size-h4: 1.4rem;
+  --font-size-lead: 1.68rem;
+  --font-size-lead-sm: 1.25rem;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
