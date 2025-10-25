@@ -46,6 +46,8 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --ring: #252525;
+  --ring-offset: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -64,6 +66,21 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+/* Remove default browser focus outline everywhere */
+*:focus {
+  outline: none;
+}
+
+/* Default focus ring for links and interactive elements without custom Tailwind focus states */
+a:focus-visible:not([class*="ring"]),
+button:focus-visible:not([class*="ring"]),
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
 }
 
 @keyframes fadeInUp {

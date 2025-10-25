@@ -178,8 +178,7 @@ export const HeroCanvas: React.FC<HeroCanvasProps> = ({ onReady }) => {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 w-full h-full"
-      style={{ zIndex: 0 }}
+      className="absolute inset-0 w-full h-full z-0"
     />
   )
 }

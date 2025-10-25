@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 import { Button } from '@/components/Button'
 import { Text } from '@/components/Text'
-import { HeroCanvas } from '@/components/HeroCanvas'
+import { HeroCanvas } from './HeroCanvas'
 
 import { getNumberOfYearsSinceDate } from '@/app/(home)/getNumberOfYearsSinceDate'
 import { skillIcons } from './skillIcons'
@@ -122,7 +122,8 @@ export default function Home() {
               </Text>
               <Button
                 onClick={btnHandler}
-                className="inline-block px-[25px] py-[18px] text-[0.96rem] font-medium leading-[1.2] text-center uppercase whitespace-nowrap align-middle cursor-pointer select-none bg-[#252b33] border-0 text-white transition-all duration-500 hover:bg-[#3f4850] mt-8 animate-fade-in-up animation-delay-3000"
+                size="lg"
+                className="uppercase mt-8 animate-fade-in-up animation-delay-3000"
               >
                 View My Work
               </Button>
