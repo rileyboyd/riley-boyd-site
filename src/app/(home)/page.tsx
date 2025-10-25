@@ -6,7 +6,7 @@ import { Button } from '@/components/Button'
 import { Text } from '@/components/Text'
 import { HeroCanvas } from '@/components/HeroCanvas'
 
-import { getNumberOfYearsSinceDate } from '@/utils/getNumberOfYearsSinceDate'
+import { getNumberOfYearsSinceDate } from '@/app/(home)/getNumberOfYearsSinceDate'
 import { skillIcons } from './skillIcons'
 
 export default function Home() {

@@ -3,8 +3,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-import { debounce } from '@/utils/debounce'
-
 interface NavProps {
   useSticky: boolean
   menuIconClickHandler: (event: React.MouseEvent) => void

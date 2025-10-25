@@ -1,4 +1,4 @@
-import { getNumberOfYearsSinceDate } from '@/utils/getNumberOfYearsSinceDate'
+import { getNumberOfYearsSinceDate } from '@/app/(home)/getNumberOfYearsSinceDate'
 
 describe('getNumberOfYearsSinceDate', () => {
   beforeEach(() => {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { getNumberOfYearsSinceDate } from '@/utils/getNumberOfYearsSinceDate'
+import { getNumberOfYearsSinceDate } from '@/app/(home)/getNumberOfYearsSinceDate'
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear()
