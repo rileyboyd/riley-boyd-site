@@ -1,4 +1,4 @@
-/* Font Families */
+/* Display Font Sizes - Component-specific sizes for Text component */
 .fontBody {
   font-family: var(--font-lato), Lato, sans-serif;
 }
@@ -7,7 +7,6 @@
   font-family: var(--font-arvo), Arvo, serif;
 }
 
-/* Harmonious Typescale (Perfect Fourth – 1.25 ratio) */
 .textDisplay1 {
   font-size: 2.44rem; /* h1 */
 }

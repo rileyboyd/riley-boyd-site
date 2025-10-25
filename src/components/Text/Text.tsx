@@ -9,14 +9,14 @@ type TextProps = {
   children: ReactNode
 }
 const baseStyles = 'text-gray-800'
-const headingStyles = 'font-bold mb-4'
+const headingStyles = `font-bold mb-4 ${styles.fontHeading}`
 
 const variants = {
   p: `${styles.fontBody} text-lg leading-relaxed mb-6`,
-  h1: `${styles.fontHeading} ${styles.textDisplay1} ${headingStyles}`,
-  h2: `${styles.fontHeading} ${styles.textDisplay2} ${headingStyles}`,
-  h3: `${styles.fontHeading} ${styles.textDisplay3} ${headingStyles}`,
-  h4: `${styles.fontHeading} ${styles.textDisplay4} ${headingStyles}`,
+  h1: `${styles.textDisplay1} ${headingStyles}`,
+  h2: `${styles.textDisplay2} ${headingStyles}`,
+  h3: `${styles.textDisplay3} ${headingStyles}`,
+  h4: `${styles.textDisplay4} ${headingStyles}`,
 }
 
 export const Text = ({ as = 'p', variant, className, children }: TextProps) => {

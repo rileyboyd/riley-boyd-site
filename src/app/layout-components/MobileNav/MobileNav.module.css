@@ -1,25 +1,4 @@
-/* Mobile Navigation Styles */
-
-.nav {
-  position: fixed;
-  inset: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #252b33;
-  z-index: 1002;
-  transition: opacity 0.3s;
-}
-
-.navHidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.navVisible {
-  opacity: 1;
-}
-
-/* Animation Classes */
+/* Mobile Navigation Animation Classes */
 .itemAnimate {
   animation: fadeInUp 0.4s ease-out forwards;
   opacity: 0;

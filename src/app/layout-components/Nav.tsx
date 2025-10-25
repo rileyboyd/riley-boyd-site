@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
 
 interface NavProps {
   useSticky: boolean
@@ -107,17 +109,17 @@ export const Nav: React.FC<NavProps> = ({
               </Link>
             </li>
           </ul>
-          <div className="lg:hidden text-right whitespace-nowrap -mr-4 ml-auto">
+          <div className="lg:hidden text-right whitespace-nowrap ml-auto">
             <button
-              className="p-4 sm:mr-0 md:mr-4"
+              className={`p-4 sm:mr-0 md:mr-4 text-xl transition-colors duration-300 ${
+                useSticky && !isSticky
+                  ? 'text-white hover:text-[#d8d8d8]'
+                  : 'text-[#252b33] hover:text-black'
+              }`}
               onClick={menuIconClickHandler}
               aria-label="Open menu"
             >
-              <span className="relative inline-block w-5 h-[18px] text-[#252b33]">
-                <span className="absolute block top-1/2 w-5 h-0 border-b-2 border-current -mt-2 transition-all duration-300 delay-200"></span>
-                <span className="absolute block top-1/2 w-5 h-0 border-b-2 border-current -mt-px transition-all duration-300"></span>
-                <span className="absolute block top-1/2 w-5 h-0 border-b-2 border-current mt-1.5 transition-all duration-300 delay-200"></span>
-              </span>
+              <FontAwesomeIcon icon={faBars} />
             </button>
           </div>
         </div>
