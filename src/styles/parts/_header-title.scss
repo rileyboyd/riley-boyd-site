@@ -128,14 +128,6 @@
     left: 0;
   }
 
-  // scroll down button - all styles migrated to Tailwind classes in component
-
-  .hero-btn {
-    opacity: 0;
-    position: relative;
-    top: 40px;
-  }
-
   // title
   h1.rb-title {
     color: #ffffff;
@@ -144,9 +136,6 @@
 
     .hero-text-line {
       display: block;
-      opacity: 0;
-      position: relative;
-      top: 100px;
     }
 
     span.hero-text-name {

@@ -90,8 +90,8 @@ export const Nav: React.FC<NavProps> = ({
               <Link href="/portfolio/">Portfolio</Link>
             </li>
           </ul>
-          <ul className="rb-nav rb-nav-right rb-nav-icons">
-            <li className="single-icon lg:hidden">
+          <ul className="rb-nav rb-nav-right rb-nav-icons lg:hidden">
+            <li className="single-icon">
               <button
                 className="rb-navbar-full-toggle"
                 onClick={menuIconClickHandler}

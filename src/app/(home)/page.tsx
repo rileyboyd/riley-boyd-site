@@ -1,6 +1,5 @@
 'use client'
-import React, { useEffect, useRef, MutableRefObject, UIEvent } from 'react'
-import gsap from 'gsap'
+import React, { useRef, MutableRefObject, UIEvent } from 'react'
 import Image from 'next/image'
 
 import { Button } from '@/components/Button'
@@ -10,8 +9,6 @@ import { getNumberOfYearsSinceDate } from '@/utils/getNumberOfYearsSinceDate'
 import { skillIcons } from './skillIcons'
 
 export default function Home() {
-  const timeline = gsap.timeline({ repeat: 0 })
-
   const breakpointCheckRef = useRef(null)
   const aboutRef = useRef(null)
   // contactRef removed while ContactSection is hidden; re-enable when restoring contact section
@@ -61,18 +58,6 @@ export default function Home() {
     scrollToRef(aboutRef)
   }
 
-  useEffect(() => {
-    // Hero text animation:
-    // Animate in text, then animate in button
-
-    timeline
-      .to('#hero-text-1', 1, { top: 0, opacity: 1 }, 0)
-      .to('#hero-text-2', 1, { top: 0, opacity: 1 }, 1.75)
-      .to('.hero-btn', 0.15, { top: 0, opacity: 1 }, 3)
-      .to('#scroll-btn', 0, { display: 'block' }, 3)
-      .to('#scroll-btn', 0.15, { opacity: 1 }, 3.5)
-  }, [timeline])
-
   const numberOfYearsSinceIStartedWorking = getNumberOfYearsSinceDate(
     '2011-07-11T00:00:00'
   )
@@ -108,22 +93,31 @@ export default function Home() {
 
   return (
     <div className="page-home">
-      <div className="rb-header-title rb-header-title-full rb-header-title-parallax-opacity">
+      <div className="rb-header-title rb-header-title-full rb-header-title-parallax-opacity relative">
         <div className="rb-header-table">
           <div className="rb-header-table-cell">
             <div className="container mx-auto px-4">
               <h1 className="rb-title display-3">
-                <span id="hero-text-1" className="hero-text-line">
+                <span
+                  id="hero-text-1"
+                  className="hero-text-line animate-fade-in-up animation-delay-500"
+                >
                   Hello, I&apos;m{' '}
                   <span className="hero-text-name">Riley&nbsp;Boyd</span>.
                 </span>
-                <span id="hero-text-2" className="hero-text-line">
-                  I&apos;m a senior front-end
-                  <br />
+                <span
+                  id="hero-text-2"
+                  className="hero-text-line animate-fade-in-up animation-delay-1750"
+                >
+                  I&apos;m a senior{' '}
+                  <span className="whitespace-nowrap">front-end</span>{' '}
                   web&nbsp;developer.
                 </span>
               </h1>
-              <Button onClick={btnHandler} className="mt-15 hero-btn rb-btn">
+              <Button
+                onClick={btnHandler}
+                className="hero-btn rb-btn animate-fade-in-up animation-delay-3000 mt-8"
+              >
                 View My Work
               </Button>
               <div className="rb-gap"></div>
@@ -133,28 +127,26 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="relative">
-          <button
-            onClick={scrollDownHandler}
-            id="scroll-btn"
-            className="absolute bottom-16 left-1/2 -translate-x-1/2 w-12 h-12 text-white inline-flex items-center justify-center border border-white rounded-full opacity-60 hover:opacity-100 transition-opacity duration-500"
-            aria-label="Scroll down to content"
+        <button
+          onClick={scrollDownHandler}
+          id="scroll-btn"
+          className="absolute bottom-16 left-1/2 -translate-x-1/2 w-12 h-12 text-white inline-flex items-center justify-center border border-white rounded-full opacity-60 hover:opacity-100 transition-opacity duration-500 animate-fade-in animation-delay-3500 cursor-pointer"
+          aria-label="Scroll down to content"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+            className="w-6 h-6 shrink-0 inline"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-              className="w-6 h-6 shrink-0 inline"
-            >
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-          </button>
-        </div>
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
       </div>
       <div id="rb-header-title-scroll-down"></div>
       <div className="bg-white" id="about" ref={aboutRef}>
