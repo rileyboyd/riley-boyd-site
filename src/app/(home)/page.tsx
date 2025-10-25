@@ -1,5 +1,11 @@
 'use client'
-import React, { useRef, MutableRefObject, UIEvent, useState } from 'react'
+import React, {
+  useRef,
+  MutableRefObject,
+  UIEvent,
+  useState,
+  useEffect,
+} from 'react'
 import Image from 'next/image'
 
 import { Button } from '@/components/Button'
@@ -96,21 +102,29 @@ export default function Home() {
   return (
     <div className="page-home">
       <div className="rb-header-title rb-header-title-full rb-header-title-parallax-opacity relative">
-        <HeroCanvas onReady={() => setCanvasReady(true)} />
+        <div className="hero-css-bg" />
+        <div className="hero-css-particles">
+          <div className="hero-css-particle-1" />
+          <div className="hero-css-particle-2" />
+          <div className="hero-css-particle-3" />
+        </div>
+        <div className={canvasReady ? 'hero-canvas-fade-in' : 'opacity-0'}>
+          <HeroCanvas onReady={() => setCanvasReady(true)} />
+        </div>
         <div className="rb-header-table relative" style={{ zIndex: 1 }}>
           <div className="rb-header-table-cell">
             <div className="container mx-auto px-4">
               <h1 className="rb-title display-3">
                 <span
                   id="hero-text-1"
-                  className={`hero-text-line ${canvasReady ? 'animate-fade-in-up animation-delay-500' : 'opacity-0'}`}
+                  className="hero-text-line animate-fade-in-up animation-delay-500"
                 >
                   Hello, I&apos;m{' '}
                   <span className="hero-text-name">Riley&nbsp;Boyd</span>.
                 </span>
                 <span
                   id="hero-text-2"
-                  className={`hero-text-line ${canvasReady ? 'animate-fade-in-up animation-delay-1750' : 'opacity-0'}`}
+                  className="hero-text-line animate-fade-in-up animation-delay-1750"
                 >
                   I&apos;m a senior{' '}
                   <span className="whitespace-nowrap">front-end</span>{' '}
@@ -119,7 +133,7 @@ export default function Home() {
               </h1>
               <Button
                 onClick={btnHandler}
-                className={`hero-btn rb-btn mt-8 ${canvasReady ? 'animate-fade-in-up animation-delay-3000' : 'opacity-0'}`}
+                className="hero-btn rb-btn mt-8 animate-fade-in-up animation-delay-3000"
               >
                 View My Work
               </Button>
@@ -133,7 +147,7 @@ export default function Home() {
         <button
           onClick={scrollDownHandler}
           id="scroll-btn"
-          className={`absolute bottom-16 left-1/2 -translate-x-1/2 w-12 h-12 text-white inline-flex items-center justify-center border border-white rounded-full opacity-60 hover:opacity-100 transition-opacity duration-500 cursor-pointer ${canvasReady ? 'animate-fade-in animation-delay-3500' : 'opacity-0'}`}
+          className="absolute bottom-16 left-1/2 -translate-x-1/2 w-12 h-12 text-white inline-flex items-center justify-center border border-white rounded-full opacity-60 hover:opacity-100 transition-opacity duration-500 cursor-pointer animate-fade-in animation-delay-3500"
           aria-label="Scroll down to content"
         >
           <svg
