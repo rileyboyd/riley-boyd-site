@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useEffectEvent, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
 
 import { Nav } from './Nav'
@@ -26,7 +26,9 @@ export const Header: React.FC = () => {
   }, [fullscreenMenuIsOpened])
 
   return (
-    <header className={`rb-header ${hasStickyNav ? 'rb-header-over' : ''}`}>
+    <header
+      className={`w-full ${hasStickyNav ? 'fixed top-0 left-0 bg-transparent z-100' : ''}`}
+    >
       <Nav
         useSticky={hasStickyNav}
         menuIconClickHandler={() => setFullscreenMenuIsOpened(true)}

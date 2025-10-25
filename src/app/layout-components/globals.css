@@ -9,20 +9,38 @@
   --color-dark-3: #4f4f4f;
   --color-dark-4: #636363;
 
-  /* Custom Font Families */
-  --font-family-body: 'Lato', sans-serif;
-  --font-family-heading: 'Arvo', serif;
+  /* Harmonious Typescale (Perfect Fourth – 1.25 ratio) */
+  --font-size-display-1: 2.44rem; /* h1 */
+  --font-size-display-2: 1.95rem; /* h2 */
+  --font-size-display-3: 1.56rem; /* h3 */
+  --font-size-display-4: 1.25rem; /* h4 */
+  --font-size-lead: 1.25rem; /* large body text */
+  --font-size-lead-sm: 0.8rem; /* small text */
+}
 
-  /* Custom Font Sizes */
-  --font-size-display-1: 4.1rem;
-  --font-size-display-2: 3.6rem;
-  --font-size-display-3: 3.4rem;
-  --font-size-display-4: 2.6rem;
-  --font-size-h2: 2.1rem;
-  --font-size-h3: 1.69rem;
-  --font-size-h4: 1.4rem;
-  --font-size-lead: 1.68rem;
-  --font-size-lead-sm: 1.25rem;
+/* Custom utility classes for fonts */
+.font-body {
+  font-family: var(--font-lato), Lato, sans-serif;
+}
+
+.font-heading {
+  font-family: var(--font-arvo), Arvo, serif;
+}
+
+.text-display-1 {
+  font-size: var(--font-size-display-1);
+}
+
+.text-display-2 {
+  font-size: var(--font-size-display-2);
+}
+
+.text-display-3 {
+  font-size: var(--font-size-display-3);
+}
+
+.text-display-4 {
+  font-size: var(--font-size-display-4);
 }
 
 :root {
@@ -40,7 +58,7 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-lato), 'Lato', sans-serif;
 }
 
 a {

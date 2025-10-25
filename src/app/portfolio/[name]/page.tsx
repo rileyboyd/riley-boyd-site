@@ -4,6 +4,7 @@ import { useRouter, useParams } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 import getPortfolioData from '../../../data/portfolioData'
+import { Text } from '@/components/Text'
 
 const PortfolioItemPage = () => {
   const router = useRouter()
@@ -51,12 +52,12 @@ const PortfolioItemPage = () => {
             <div className="w-full lg:w-1/2 lg:order-2">
               <div data-offset-top={0}>
                 <div className="max-w-[540px] pt-24 pr-16 pb-24 pl-24 md:p-20 sm:p-12">
-                  <h1 className="mb-8 tracking-wide text-4xl">
+                  <Text as="h1" className="mb-8 tracking-wide text-4xl">
                     {currentItem.title}
-                  </h1>
+                  </Text>
                   <div className="mb-12">
-                    <h4>{currentItem.subheading}</h4>
-                    {currentItem.description}
+                    <Text as="h4">{currentItem.subheading}</Text>
+                    <Text>{currentItem.description}</Text>
                   </div>
                   <table className="w-full">
                     <tbody>
@@ -140,13 +141,23 @@ const PortfolioItemPage = () => {
           {itemIndex > 0 && (
             <Link
               href={portfolioData[itemIndex - 1].route}
-              className="text-inherit no-underline transition-opacity duration-500 hover:opacity-60"
+              className="flex flex-row items-center justify-center text-inherit no-underline transition-opacity duration-500 hover:opacity-60"
               onClick={(event) =>
                 goToItemHandler(event, portfolioData[itemIndex - 1].route)
               }
             >
-              <svg className="inline w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              <svg
+                className="inline w-4 h-4 mr-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
               </svg>
               Previous Work
             </Link>
@@ -154,14 +165,24 @@ const PortfolioItemPage = () => {
           {portfolioData.length > itemIndex + 1 && (
             <Link
               href={portfolioData[itemIndex + 1].route}
-              className="text-inherit no-underline transition-opacity duration-500 hover:opacity-60"
+              className="flex flex-row items-center justify-center text-inherit no-underline transition-opacity duration-500 hover:opacity-60"
               onClick={(event) =>
                 goToItemHandler(event, portfolioData[itemIndex + 1].route)
               }
             >
               Next Work
-              <svg className="inline w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              <svg
+                className="inline w-4 h-4 ml-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
               </svg>
             </Link>
           )}

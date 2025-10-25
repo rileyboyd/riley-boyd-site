@@ -95,15 +95,15 @@ export default function Home() {
 
   return (
     <div className="bg-white">
-      <div className="relative overflow-hidden text-center min-h-screen bg-gradient-to-br from-[#1faeaa] via-[#1a9894] to-[#15837f]">
+      <div className="relative overflow-hidden text-center min-h-screen bg-linear-to-br from-[#1faeaa] via-[#1a9894] to-[#15837f]">
         <div className={canvasReady ? 'hero-canvas-fade-in' : 'opacity-0'}>
           <HeroCanvas onReady={() => setCanvasReady(true)} />
         </div>
         <div className="hero-text-glow" />
-        <div className="flex items-center w-full min-h-screen pt-[75px] relative z-[1]">
+        <div className="flex items-center w-full min-h-screen pt-[75px] relative">
           <div className="flex-1 w-full py-20">
             <div className="max-w-7xl mx-auto px-4">
-              <h1 className="text-white text-[2.2em] md:text-[3.4em] lg:text-[3.6em] leading-[1.18]">
+              <Text as="h1" className="text-white">
                 <span
                   id="hero-text-1"
                   className="block animate-fade-in-up animation-delay-500"
@@ -119,7 +119,7 @@ export default function Home() {
                   <span className="whitespace-nowrap">front-end</span>{' '}
                   web&nbsp;developer.
                 </span>
-              </h1>
+              </Text>
               <Button
                 onClick={btnHandler}
                 className="inline-block px-[25px] py-[18px] text-[0.96rem] font-medium leading-[1.2] text-center uppercase whitespace-nowrap align-middle cursor-pointer select-none bg-[#252b33] border-0 text-white transition-all duration-500 hover:bg-[#3f4850] mt-8 animate-fade-in-up animation-delay-3000"
@@ -157,8 +157,8 @@ export default function Home() {
       <div id="rb-header-title-scroll-down"></div>
       <div className="bg-white" id="about" ref={aboutRef}>
         <div className="max-w-7xl mx-auto px-4">
-          <div className="flex flex-col md:flex-row md:gap-8 items-start">
-            <div className="basis-full md:basis-1/3 shrink-0 p-8">
+          <div className="flex flex-col md:flex-row md:gap-8 items-start p-8">
+            <div className="basis-full md:basis-1/3 shrink-0">
               <Text as="h2" className="text-center md:hidden mb-8">
                 {numberOfYearsSinceIStartedWorking} Years of Professional
                 Experience.
@@ -172,21 +172,18 @@ export default function Home() {
               />
             </div>
             <div className="basis-full md:basis-2/3 shrink">
-              <div className="hidden md:block h-[30px]"></div>
               <Text as="h2" className="text-center hidden md:block">
                 {numberOfYearsSinceIStartedWorking} Years of Professional
                 Experience.
               </Text>
-              <div className="block h-[30px]"></div>
               {mainContent}
-              <div className="block h-[30px]"></div>
             </div>
           </div>
         </div>
       </div>
 
       <div className="bg-[#252b33] text-white" id="skills">
-        <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="px-4 py-8">
           <div className="flex flex-wrap">
             <div className="w-full">
               <Text as="h2" variant="h1" className="text-center text-white">
@@ -194,9 +191,9 @@ export default function Home() {
               </Text>
             </div>
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {skillIcons.map(({ fileName, title, altText, className }) => (
-              <div className="pt-10" key={title}>
+              <div className="pb-8" key={title}>
                 <div className="flex flex-col items-center justify-center text-center p-4 h-full">
                   <div className="ml-0">
                     <div className="text-2xl font-medium mb-2">{title}</div>
@@ -218,7 +215,10 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="h-0 w-0 overflow-hidden opacity-0 md:opacity-60 lg:opacity-80 xl:opacity-100" ref={breakpointCheckRef} />
+      <div
+        className="h-0 w-0 overflow-hidden opacity-0 md:opacity-60 lg:opacity-80 xl:opacity-100"
+        ref={breakpointCheckRef}
+      />
     </div>
   )
 }

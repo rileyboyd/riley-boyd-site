@@ -16,13 +16,13 @@ export const Footer: React.FC = () => {
         ></div>
       </div>
 
-      <div className="py-24 text-white border-b border-white/20">
+      <div className="p-8 md:p-16 text-white border-b border-white/20">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-wrap">
             <div className="w-full">
               <div>
                 <h4 className="text-white mb-4 font-bold">About Me</h4>
-                <p className="font-[family-name:var(--font-arvo)]">
+                <p>
                   My name&apos;s Riley Boyd, I&apos;m a senior front-end web
                   developer with {numberOfYearsSinceIStartedWorking} years of
                   professional experience. I have an M.A. in Humanities
@@ -34,9 +34,9 @@ export const Footer: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="pt-6 pb-1">
+      <div className="py-6">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <div className="text-white text-[0.95rem]">
+          <div className="text-white">
             <p>&copy;{currentYear} Riley Boyd</p>
           </div>
         </div>

@@ -50,7 +50,7 @@ export const Nav: React.FC<NavProps> = ({
       className={`py-8 text-[0.96rem] transition-all duration-300 z-[1000] ${
         useSticky
           ? `${isSticky ? 'fixed top-0 left-0 right-0 bg-white shadow-md' : 'relative bg-transparent'}`
-          : 'relative'
+          : 'relative bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4">
