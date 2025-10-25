@@ -72,7 +72,7 @@ export const Nav: React.FC<NavProps> = ({
             />
           </Link>
           <ul
-            className="rb-nav rb-nav-right hidden lg:block"
+            className="rb-nav rb-nav-right hidden lg:block text-lg"
             data-nav-mobile="#rb-nav-mobile"
           >
             <li
@@ -80,14 +80,14 @@ export const Nav: React.FC<NavProps> = ({
                 selectedNavIndex == 0 ? 'active' : ''
               }`}
             >
-              <Link href="/">Home</Link>
+              <Link href="/" className="text-lg">Home</Link>
             </li>
             <li
               className={`rb-drop-item ${
                 selectedNavIndex == 1 ? 'active' : ''
               }`}
             >
-              <Link href="/portfolio/">Portfolio</Link>
+              <Link href="/portfolio/" className="text-lg">Portfolio</Link>
             </li>
           </ul>
           <ul className="rb-nav rb-nav-right rb-nav-icons lg:hidden">

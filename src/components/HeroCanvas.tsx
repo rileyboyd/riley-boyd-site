@@ -60,17 +60,19 @@ export const HeroCanvas: React.FC<HeroCanvasProps> = ({ onReady }) => {
     }
     window.addEventListener('mousemove', handleMouseMove)
 
-    // Mark as ready after first frame renders
-    requestAnimationFrame(() => {
-      onReady()
-    })
-
     // Animation
     let time = 0
+    let frameCount = 0
     const animate = () => {
       if (!ctx || !canvas) return
 
       time += 0.01
+      frameCount++
+
+      // Mark as ready after a few frames have rendered
+      if (frameCount === 3 && onReady) {
+        onReady()
+      }
 
       // Create gradient background
       const gradient = ctx.createLinearGradient(

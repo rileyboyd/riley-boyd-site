@@ -96,15 +96,10 @@ export default function Home() {
   return (
     <div className="page-home">
       <div className="rb-header-title rb-header-title-full rb-header-title-parallax-opacity relative">
-        <div className={`hero-css-bg ${canvasReady ? 'fade-out' : ''}`} />
         <div className={canvasReady ? 'hero-canvas-fade-in' : 'opacity-0'}>
           <HeroCanvas onReady={() => setCanvasReady(true)} />
         </div>
-        <div className={`hero-css-particles ${canvasReady ? 'fade-out' : ''}`}>
-          <div className="hero-css-particle-1" />
-          <div className="hero-css-particle-2" />
-          <div className="hero-css-particle-3" />
-        </div>
+        <div className="hero-text-glow" />
 
         <div className="rb-header-table relative" style={{ zIndex: 1 }}>
           <div className="rb-header-table-cell">
