@@ -27,7 +27,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({
     >
       <div className="rb-nav-table">
         <div className="rb-nav-row">
-          <div className="container">
+          <div className="max-w-7xl mx-auto px-4">
             <div className="rb-nav-header">
               <div className="rb-nav-logo">
                 <Link href="/" className="rb-nav-logo">
@@ -73,7 +73,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({
           </div>
         </div>
         <div className="rb-nav-row">
-          <div className="container">
+          <div className="max-w-7xl mx-auto px-4">
             <div className={`rb-nav-social ${isOpened ? 'mobile-nav-social-animate' : ''}`}>
               <ul>
                 <li>

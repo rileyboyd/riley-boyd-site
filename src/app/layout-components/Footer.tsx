@@ -8,7 +8,7 @@ export const Footer: React.FC = () => {
   )
 
   return (
-    <footer className="rb-footer">
+    <footer className="relative overflow-hidden bg-[#0c0c0c] z-1">
       <div className="bg-image">
         <div
           className="bg-image-overlay"
@@ -16,13 +16,13 @@ export const Footer: React.FC = () => {
         ></div>
       </div>
 
-      <div className="rb-footer-widgets text-white">
-        <div className="container mx-auto px-4">
+      <div className="py-24 text-white border-b border-white/20">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-wrap vertical-gap">
             <div className="w-full">
-              <div className="rb-widget">
-                <h4 className="rb-widget-title text-white">About Me</h4>
-                <p className="rb-heading-font">
+              <div>
+                <h4 className="text-white mb-4 font-bold">About Me</h4>
+                <p className="font-[family-name:var(--font-arvo)]">
                   My name&apos;s Riley Boyd, I&apos;m a senior front-end web
                   developer with {numberOfYearsSinceIStartedWorking} years of
                   professional experience. I have an M.A. in Humanities
@@ -34,9 +34,9 @@ export const Footer: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="rb-footer-cont rb-footer-cont-sm">
-        <div className="container mx-auto px-4 text-center">
-          <div className="rb-footer-text text-white">
+      <div className="pt-6 pb-1">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <div className="text-white text-[0.95rem]">
             <p>&copy;{currentYear} Riley Boyd</p>
           </div>
         </div>

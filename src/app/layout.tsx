@@ -29,7 +29,7 @@ export default function RootLayout({
       <body>
         <div className="wrapper">
           <Header />
-          <div className="rb-main">{children}</div>
+          <div className="relative overflow-hidden bg-white z-1">{children}</div>
           <Footer />
         </div>
       </body>

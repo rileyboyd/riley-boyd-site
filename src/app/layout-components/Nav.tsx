@@ -54,7 +54,7 @@ export const Nav: React.FC<NavProps> = ({
           : ''
       } ${useSticky && isSticky ? 'rb-navbar-solid rb-navbar-fixed' : ''}`}
     >
-      <div className="container mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-4">
         <div className="rb-nav-table">
           <Link href="/" className="rb-nav-logo">
             <Image
