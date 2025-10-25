@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { useRouter, useParams } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
-import getPortfolioData from '../portfolioItems'
+import { portfolioItems, PortfolioItem } from '../portfolioItems'
 import { Text } from '@/components/Text'
 
 const PortfolioItemPage = () => {
@@ -11,21 +11,11 @@ const PortfolioItemPage = () => {
   const params = useParams()
 
   // Load portfolio data directly
-  const portfolioData = getPortfolioData()
 
   // When the page loads, start the scroll at the top of the page
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
-
-  const getPortfolioItemData = (id: string): number => {
-    for (let i = 0; i < portfolioData.length; i++) {
-      if (portfolioData[i].id === id) {
-        return i
-      }
-    }
-    return -1 // Return -1 if not found
-  }
 
   const goToItemHandler = (event: React.MouseEvent, url: string) => {
     event.preventDefault()
@@ -33,16 +23,17 @@ const PortfolioItemPage = () => {
     window.scrollTo(0, 0)
   }
 
-  if (!params?.name) {
-    return <div>Loading...</div>
-  }
+  const portfolioItem = portfolioItems.find(
+    (item: PortfolioItem) => item.id === params.id
+  )
 
-  const itemIndex = getPortfolioItemData(params.name as string)
-  const currentItem = portfolioData[itemIndex]
-
-  if (!currentItem) {
+  if (!portfolioItem) {
     return <div>Portfolio item not found</div>
   }
+
+  const itemIndex = portfolioItems.findIndex(
+    (item: PortfolioItem) => item.id === params.id
+  )
 
   return (
     <>
@@ -53,11 +44,11 @@ const PortfolioItemPage = () => {
               <div data-offset-top={0}>
                 <div className="max-w-[540px] pt-24 pr-16 pb-24 pl-24 md:p-20 sm:p-12">
                   <Text as="h1" className="mb-8 tracking-wide text-4xl">
-                    {currentItem.title}
+                    {portfolioItem.title}
                   </Text>
                   <div className="mb-12">
-                    <Text as="h4">{currentItem.subheading}</Text>
-                    <Text>{currentItem.description}</Text>
+                    <Text as="h4">{portfolioItem.subheading}</Text>
+                    <Text>{portfolioItem.description}</Text>
                   </div>
                   <table className="w-full">
                     <tbody>
@@ -67,7 +58,7 @@ const PortfolioItemPage = () => {
                             Role:
                           </strong>
                         </td>
-                        <td className="w-auto pr-0">{currentItem.role}</td>
+                        <td className="w-auto pr-0">{portfolioItem.role}</td>
                       </tr>
                       <tr>
                         <td className="w-24 pt-1 pb-1 pr-2 align-top">
@@ -75,7 +66,9 @@ const PortfolioItemPage = () => {
                             Tech used:
                           </strong>
                         </td>
-                        <td className="w-auto pr-0 pt-1">{currentItem.tech}</td>
+                        <td className="w-auto pr-0 pt-1">
+                          {portfolioItem.tech}
+                        </td>
                       </tr>
                       <tr>
                         <td className="w-24 pt-1 pb-1 pr-2 align-top">
@@ -84,7 +77,7 @@ const PortfolioItemPage = () => {
                           </strong>
                         </td>
                         <td className="w-auto pr-0 pt-1">
-                          {currentItem.company}
+                          {portfolioItem.company}
                         </td>
                       </tr>
                       <tr>
@@ -93,9 +86,11 @@ const PortfolioItemPage = () => {
                             Year
                           </strong>
                         </td>
-                        <td className="w-auto pr-0 pt-1">{currentItem.year}</td>
+                        <td className="w-auto pr-0 pt-1">
+                          {portfolioItem.year}
+                        </td>
                       </tr>
-                      {currentItem.url && (
+                      {portfolioItem.url && (
                         <tr>
                           <td className="w-24 pt-1 pb-1 pr-2 align-top">
                             <strong className="font-medium text-[#252b33]">
@@ -104,12 +99,12 @@ const PortfolioItemPage = () => {
                           </td>
                           <td className="w-auto pr-0 pt-1">
                             <a
-                              href={currentItem.url}
+                              href={portfolioItem.url}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="text-inherit no-underline transition-opacity duration-500 hover:opacity-60"
                             >
-                              {currentItem.url}
+                              {portfolioItem.url}
                             </a>
                           </td>
                         </tr>
@@ -121,11 +116,11 @@ const PortfolioItemPage = () => {
             </div>
             <div className="w-full lg:w-1/2">
               <div>
-                {currentItem.images.map((image, index) => (
+                {portfolioItem.images.map((image, index) => (
                   <Image
                     key={`portfolio-item-img-${index}`}
                     src={image}
-                    alt={`${currentItem.title} - Image ${index + 1}`}
+                    alt={`${portfolioItem.title} - Image ${index + 1}`}
                     width={800}
                     height={600}
                     className="w-full h-auto mb-8 shadow-[0_0_4px_0_rgba(0,0,0,0.2)]"
@@ -140,10 +135,10 @@ const PortfolioItemPage = () => {
         <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
           {itemIndex > 0 && (
             <Link
-              href={portfolioData[itemIndex - 1].route}
+              href={portfolioItems[itemIndex - 1].route}
               className="flex flex-row items-center justify-center text-inherit no-underline transition-opacity duration-500 hover:opacity-60"
               onClick={(event) =>
-                goToItemHandler(event, portfolioData[itemIndex - 1].route)
+                goToItemHandler(event, portfolioItems[itemIndex - 1].route)
               }
             >
               <svg
@@ -162,12 +157,12 @@ const PortfolioItemPage = () => {
               Previous Work
             </Link>
           )}
-          {portfolioData.length > itemIndex + 1 && (
+          {portfolioItems.length > itemIndex + 1 && (
             <Link
-              href={portfolioData[itemIndex + 1].route}
+              href={portfolioItems[itemIndex + 1].route}
               className="flex flex-row items-center justify-center text-inherit no-underline transition-opacity duration-500 hover:opacity-60"
               onClick={(event) =>
-                goToItemHandler(event, portfolioData[itemIndex + 1].route)
+                goToItemHandler(event, portfolioItems[itemIndex + 1].route)
               }
             >
               Next Work
