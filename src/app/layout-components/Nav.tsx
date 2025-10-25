@@ -30,80 +30,98 @@ export const Nav: React.FC<NavProps> = ({
   const selectedNavIndex = getSelectedNavIndex(pathname)
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (!stickyRef.current) {
-        return
-      }
+    if (!useSticky) return
 
-      const shouldSetSticky = window.pageYOffset > stickyRef.current.offsetTop
+    const handleScroll = () => {
+      // Set sticky when scrolled down more than 50px
+      const shouldSetSticky = window.pageYOffset > 50
       setSticky(shouldSetSticky)
     }
 
-    window.addEventListener('scroll', debounce(handleScroll))
+    window.addEventListener('scroll', handleScroll)
     return () => {
-      window.removeEventListener('scroll', () => handleScroll)
+      window.removeEventListener('scroll', handleScroll)
     }
-  }, [])
+  }, [useSticky])
 
   return (
     <nav
       ref={stickyRef}
-      className={`rb-navbar rb-navbar-top ${
+      className={`py-8 text-[0.96rem] transition-all duration-300 z-[1000] ${
         useSticky
-          ? 'rb-navbar-autohide rb-navbar-transparent rb-navbar-white-text-on-top rb-onscroll-show'
-          : ''
-      } ${useSticky && isSticky ? 'rb-navbar-solid rb-navbar-fixed' : ''}`}
+          ? `${isSticky ? 'fixed top-0 left-0 right-0 bg-white shadow-md' : 'relative bg-transparent'}`
+          : 'relative'
+      }`}
     >
       <div className="max-w-7xl mx-auto px-4">
-        <div className="rb-nav-table">
-          <Link href="/" className="rb-nav-logo">
-            <Image
-              src="../images/rb-logo-light.svg"
-              alt=""
-              width="140"
-              height="140"
-              className="rb-nav-logo-onscroll"
-            />
-            <Image
-              src="../images/rb-logo.svg"
-              alt=""
-              width="140"
-              height="140"
-            />
+        <div className="flex flex-row items-center w-full">
+          <Link href="/" className="flex items-center flex-none ml-1">
+            {useSticky && !isSticky ? (
+              <Image
+                src="../images/rb-logo-light.svg"
+                alt=""
+                width="140"
+                height="140"
+              />
+            ) : (
+              <Image
+                src="../images/rb-logo.svg"
+                alt=""
+                width="140"
+                height="140"
+              />
+            )}
           </Link>
           <ul
-            className="rb-nav rb-nav-right hidden lg:block text-lg"
+            className="hidden lg:block text-lg text-right pl-5 ml-auto"
             data-nav-mobile="#rb-nav-mobile"
           >
             <li
-              className={`rb-drop-item ${
+              className={`inline-block align-middle ${
                 selectedNavIndex == 0 ? 'active' : ''
               }`}
             >
-              <Link href="/" className="text-lg">Home</Link>
+              <Link
+                href="/"
+                className={`block px-4 py-1.5 font-medium uppercase transition-colors duration-300 ${
+                  useSticky && !isSticky
+                    ? `${selectedNavIndex == 0 ? 'font-semibold text-white' : 'text-white hover:text-[#d8d8d8]'}`
+                    : `${selectedNavIndex == 0 ? 'font-semibold text-black' : 'text-black hover:text-[#0e0e0e]'}`
+                }`}
+              >
+                Home
+              </Link>
             </li>
             <li
-              className={`rb-drop-item ${
+              className={`inline-block align-middle ${
                 selectedNavIndex == 1 ? 'active' : ''
               }`}
             >
-              <Link href="/portfolio/" className="text-lg">Portfolio</Link>
-            </li>
-          </ul>
-          <ul className="rb-nav rb-nav-right rb-nav-icons lg:hidden">
-            <li className="single-icon">
-              <button
-                className="rb-navbar-full-toggle"
-                onClick={menuIconClickHandler}
+              <Link
+                href="/portfolio/"
+                className={`block px-4 py-1.5 font-medium uppercase transition-colors duration-300 ${
+                  useSticky && !isSticky
+                    ? `${selectedNavIndex == 1 ? 'font-semibold text-white' : 'text-white hover:text-[#d8d8d8]'}`
+                    : `${selectedNavIndex == 1 ? 'font-semibold text-black' : 'text-black hover:text-[#0e0e0e]'}`
+                }`}
               >
-                <span className="rb-icon-burger">
-                  <span className="rb-t-1"></span>
-                  <span className="rb-t-2"></span>
-                  <span className="rb-t-3"></span>
-                </span>
-              </button>
+                Portfolio
+              </Link>
             </li>
           </ul>
+          <div className="lg:hidden text-right whitespace-nowrap -mr-4 ml-auto">
+            <button
+              className="p-4 sm:mr-0 md:mr-4"
+              onClick={menuIconClickHandler}
+              aria-label="Open menu"
+            >
+              <span className="relative inline-block w-5 h-[18px] text-[#252b33]">
+                <span className="absolute block top-1/2 w-5 h-0 border-b-2 border-current -mt-2 transition-all duration-300 delay-200"></span>
+                <span className="absolute block top-1/2 w-5 h-0 border-b-2 border-current -mt-px transition-all duration-300"></span>
+                <span className="absolute block top-1/2 w-5 h-0 border-b-2 border-current mt-1.5 transition-all duration-300 delay-200"></span>
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </nav>

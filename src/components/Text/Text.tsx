@@ -8,7 +8,7 @@ type TextProps = {
 }
 const baseStyles = 'text-gray-800'
 const variants = {
-  p: 'font-body text-base mb-6',
+  p: 'font-body text-lg leading-relaxed mb-10',
   h1: 'font-heading font-bold text-display-1 mb-4',
   h2: 'font-heading font-bold text-display-2 mb-4',
   h3: 'font-heading font-bold text-display-3 mb-4',
