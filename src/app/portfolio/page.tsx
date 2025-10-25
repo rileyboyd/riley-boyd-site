@@ -1,11 +1,9 @@
 'use client'
 import Link from 'next/link'
-import getPortfolioData from '../../data/portfolioData'
+import { portfolioItems } from './portfolioItems'
 import { Text } from '@/components/Text'
 
 const PortfolioPage = () => {
-  const portfolioData = getPortfolioData()
-
   return (
     <div className="bg-white">
       <div className="container mx-auto px-4 max-w-7xl">
@@ -14,7 +12,7 @@ const PortfolioPage = () => {
         </Text>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 pb-16">
-          {portfolioData.map((item, index) => {
+          {portfolioItems.map((item, index) => {
             return (
               <div key={'portfolio-item-' + index} className="group">
                 <Link

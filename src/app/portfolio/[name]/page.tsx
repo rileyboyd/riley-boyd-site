@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { useRouter, useParams } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
-import getPortfolioData from '../../../data/portfolioData'
+import getPortfolioData from '../portfolioItems'
 import { Text } from '@/components/Text'
 
 const PortfolioItemPage = () => {
