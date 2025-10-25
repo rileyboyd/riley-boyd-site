@@ -1,6 +1,7 @@
 'use client'
 import React, { useRef, MutableRefObject } from 'react'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 import { Text } from '@/components/Text'
 import { HeroSection } from './HeroSection'
@@ -9,6 +10,7 @@ import { getNumberOfYearsSinceDate } from '@/app/utils/date.utils'
 import { skillIcons } from './skillIcons'
 
 export default function Home() {
+  const router = useRouter()
   const breakpointCheckRef = useRef(null)
   const aboutRef = useRef(null)
 
@@ -46,10 +48,6 @@ export default function Home() {
       top: refToScrollTo.current.offsetTop - offset,
       behavior: 'smooth',
     })
-  }
-
-  const handleViewWork = () => {
-    window.location.href = '/portfolio'
   }
 
   const handleScrollToAbout = (): void => {
@@ -93,7 +91,7 @@ export default function Home() {
     <div className="bg-white">
       <HeroSection
         onScrollToAbout={handleScrollToAbout}
-        onViewWork={handleViewWork}
+        onViewWork={() => router.push('/portfolio')}
       />
       <div id="rb-header-title-scroll-down"></div>
       <div className="bg-white" id="about" ref={aboutRef}>
