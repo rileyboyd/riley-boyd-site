@@ -94,26 +94,26 @@ export default function Home() {
   )
 
   return (
-    <div className="page-home">
-      <div className="rb-header-title rb-header-title-full rb-header-title-parallax-opacity relative">
+    <div className="bg-white">
+      <div className="relative overflow-hidden text-center min-h-screen bg-gradient-to-br from-[#1faeaa] via-[#1a9894] to-[#15837f]">
         <div className={canvasReady ? 'hero-canvas-fade-in' : 'opacity-0'}>
           <HeroCanvas onReady={() => setCanvasReady(true)} />
         </div>
         <div className="hero-text-glow" />
-        <div className="rb-header-table relative" style={{ zIndex: 1 }}>
-          <div className="rb-header-table-cell">
-            <div className="container mx-auto px-4">
-              <h1 className="rb-title display-3">
+        <div className="flex items-center w-full min-h-screen pt-[75px] relative z-[1]">
+          <div className="flex-1 w-full py-20">
+            <div className="max-w-7xl mx-auto px-4">
+              <h1 className="text-white text-[2.2em] md:text-[3.4em] lg:text-[3.6em] leading-[1.18]">
                 <span
                   id="hero-text-1"
-                  className="hero-text-line animate-fade-in-up animation-delay-500"
+                  className="block animate-fade-in-up animation-delay-500"
                 >
                   Hello, I&apos;m{' '}
-                  <span className="hero-text-name">Riley&nbsp;Boyd</span>.
+                  <span className="text-[#252b33]">Riley&nbsp;Boyd</span>.
                 </span>
                 <span
                   id="hero-text-2"
-                  className="hero-text-line animate-fade-in-up animation-delay-1750"
+                  className="block animate-fade-in-up animation-delay-1750"
                 >
                   I&apos;m a senior{' '}
                   <span className="whitespace-nowrap">front-end</span>{' '}
@@ -122,13 +122,13 @@ export default function Home() {
               </h1>
               <Button
                 onClick={btnHandler}
-                className="hero-btn rb-btn mt-8 animate-fade-in-up animation-delay-3000"
+                className="inline-block px-[25px] py-[18px] text-[0.96rem] font-medium leading-[1.2] text-center uppercase whitespace-nowrap align-middle cursor-pointer select-none bg-[#252b33] border-0 text-white transition-all duration-500 hover:bg-[#3f4850] mt-8 animate-fade-in-up animation-delay-3000"
               >
                 View My Work
               </Button>
-              <div className="rb-gap"></div>
-              <div className="rb-header-text text-white">
-                <div className="rb-gap-4"></div>
+              <div className="block h-5"></div>
+              <div className="text-white">
+                <div className="block h-20"></div>
               </div>
             </div>
           </div>
@@ -156,7 +156,7 @@ export default function Home() {
       </div>
       <div id="rb-header-title-scroll-down"></div>
       <div className="bg-white" id="about" ref={aboutRef}>
-        <div className="container mx-auto px-4 max-w-7xl">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-col md:flex-row md:gap-8 items-start">
             <div className="basis-full md:basis-1/3 shrink-0 about-me-photo-col p-8">
               <Text as="h2" className="text-center md:hidden mb-8">
@@ -172,22 +172,21 @@ export default function Home() {
               />
             </div>
             <div className="basis-full md:basis-2/3 shrink about-me-text">
-              <div className="rb-gap-1 hidden md:block"></div>
+              <div className="hidden md:block h-[30px]"></div>
               <Text as="h2" className="text-center hidden md:block">
                 {numberOfYearsSinceIStartedWorking} Years of Professional
                 Experience.
               </Text>
-              <div className="rb-gap-1"></div>
+              <div className="block h-[30px]"></div>
               {mainContent}
-              <div className="rb-gap-1"></div>
+              <div className="block h-[30px]"></div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="rb-box bg-dark-1 text-white" id="skills">
-        <div className="rb-gap-3 mnt-6" />
-        <div className="container mx-auto px-4">
+      <div className="bg-[#252b33] text-white" id="skills">
+        <div className="max-w-7xl mx-auto px-4 py-8">
           <div className="flex flex-wrap">
             <div className="w-full">
               <Text as="h2" variant="h1" className="text-center text-white">
@@ -199,11 +198,11 @@ export default function Home() {
             {skillIcons.map(({ fileName, title, altText, className }) => (
               <div className="skill-box" key={title}>
                 <div className="flex flex-col items-center justify-center text-center p-4 h-full">
-                  <div className="rb-ibox-cont">
-                    <div className="rb-ibox-title mb-2">{title}</div>
+                  <div className="ml-0">
+                    <div className="text-2xl font-medium mb-2">{title}</div>
                   </div>
                   <div
-                    className={`rb-ibox-icon ${className} flex items-center justify-center`}
+                    className={`${className} flex items-center justify-center w-[50px] h-[50px] mx-auto mt-1 mb-4 text-[3.3rem] leading-[50px] text-center`}
                   >
                     <Image
                       width={120}

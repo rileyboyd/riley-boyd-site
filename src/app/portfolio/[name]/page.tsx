@@ -46,54 +46,67 @@ const PortfolioItemPage = () => {
   return (
     <>
       <div className="w-full px-4">
-        <div className="rb-portfolio-single rb-portfolio-single-half">
+        <div className="bg-white">
           <div className="flex flex-wrap">
             <div className="w-full lg:w-1/2 lg:order-2">
-              <div className="rb-sidebar-sticky" data-offset-top={0}>
-                <div className="rb-portfolio-info">
-                  <h1 className="rb-portfolio-title display-4">
+              <div data-offset-top={0}>
+                <div className="max-w-[540px] pt-24 pr-16 pb-24 pl-24 md:p-20 sm:p-12">
+                  <h1 className="mb-8 tracking-wide text-4xl">
                     {currentItem.title}
                   </h1>
-                  <div className="rb-portfolio-text">
+                  <div className="mb-12">
                     <h4>{currentItem.subheading}</h4>
                     {currentItem.description}
                   </div>
-                  <table className="rb-portfolio-details">
+                  <table className="w-full">
                     <tbody>
                       <tr>
-                        <td>
-                          <strong>Role:</strong>
+                        <td className="w-24 pb-1 pr-2 align-top">
+                          <strong className="font-medium text-[#252b33]">
+                            Role:
+                          </strong>
                         </td>
-                        <td>{currentItem.role}</td>
+                        <td className="w-auto pr-0">{currentItem.role}</td>
                       </tr>
                       <tr>
-                        <td>
-                          <strong>Tech used:</strong>
+                        <td className="w-24 pt-1 pb-1 pr-2 align-top">
+                          <strong className="font-medium text-[#252b33]">
+                            Tech used:
+                          </strong>
                         </td>
-                        <td>{currentItem.tech}</td>
+                        <td className="w-auto pr-0 pt-1">{currentItem.tech}</td>
                       </tr>
                       <tr>
-                        <td>
-                          <strong>Company:</strong>
+                        <td className="w-24 pt-1 pb-1 pr-2 align-top">
+                          <strong className="font-medium text-[#252b33]">
+                            Company:
+                          </strong>
                         </td>
-                        <td>{currentItem.company}</td>
+                        <td className="w-auto pr-0 pt-1">
+                          {currentItem.company}
+                        </td>
                       </tr>
                       <tr>
-                        <td>
-                          <strong>Year</strong>
+                        <td className="w-24 pt-1 pb-1 pr-2 align-top">
+                          <strong className="font-medium text-[#252b33]">
+                            Year
+                          </strong>
                         </td>
-                        <td>{currentItem.year}</td>
+                        <td className="w-auto pr-0 pt-1">{currentItem.year}</td>
                       </tr>
                       {currentItem.url && (
                         <tr>
-                          <td>
-                            <strong>URL</strong>
+                          <td className="w-24 pt-1 pb-1 pr-2 align-top">
+                            <strong className="font-medium text-[#252b33]">
+                              URL
+                            </strong>
                           </td>
-                          <td>
+                          <td className="w-auto pr-0 pt-1">
                             <a
                               href={currentItem.url}
                               target="_blank"
                               rel="noopener noreferrer"
+                              className="text-inherit no-underline transition-opacity duration-500 hover:opacity-60"
                             >
                               {currentItem.url}
                             </a>
@@ -106,7 +119,7 @@ const PortfolioItemPage = () => {
               </div>
             </div>
             <div className="w-full lg:w-1/2">
-              <div className="rb-portfolio-images">
+              <div>
                 {currentItem.images.map((image, index) => (
                   <Image
                     key={`portfolio-item-img-${index}`}
@@ -114,7 +127,7 @@ const PortfolioItemPage = () => {
                     alt={`${currentItem.title} - Image ${index + 1}`}
                     width={800}
                     height={600}
-                    style={{ width: '100%', height: 'auto' }}
+                    className="w-full h-auto mb-8 shadow-[0_0_4px_0_rgba(0,0,0,0.2)]"
                   />
                 ))}
               </div>
@@ -122,12 +135,12 @@ const PortfolioItemPage = () => {
           </div>
         </div>
       </div>
-      <div className="rb-pagination rb-pagination-center">
-        <div className="container mx-auto px-4">
+      <div className="text-center py-8 bg-white">
+        <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
           {itemIndex > 0 && (
             <Link
               href={portfolioData[itemIndex - 1].route}
-              className="rb-pagination-prev"
+              className="text-inherit no-underline transition-opacity duration-500 hover:opacity-60"
               onClick={(event) =>
                 goToItemHandler(event, portfolioData[itemIndex - 1].route)
               }
@@ -139,7 +152,7 @@ const PortfolioItemPage = () => {
           {portfolioData.length > itemIndex + 1 && (
             <Link
               href={portfolioData[itemIndex + 1].route}
-              className="rb-pagination-next"
+              className="text-inherit no-underline transition-opacity duration-500 hover:opacity-60"
               onClick={(event) =>
                 goToItemHandler(event, portfolioData[itemIndex + 1].route)
               }

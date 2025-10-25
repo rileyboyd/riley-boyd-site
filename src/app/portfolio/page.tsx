@@ -6,9 +6,9 @@ const PortfolioPage = () => {
   const portfolioData = getPortfolioData()
 
   return (
-    <div className="page-portfolio">
+    <div className="bg-white">
       <div className="container mx-auto px-4 max-w-7xl">
-        <h1 className="text-center mt-60 mb-50">Portfolio</h1>
+        <h1 className="text-center pt-60 mb-50">Portfolio</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {portfolioData.map((item, index) => {
@@ -45,7 +45,7 @@ const PortfolioPage = () => {
             )
           })}
         </div>
-        <div className="rb-gap-4"></div>
+        <div className="pb-16"></div>
       </div>
     </div>
   )
