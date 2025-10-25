@@ -18,6 +18,29 @@ const nextConfig: NextConfig = {
     // Temporarily allow type errors during build so we can incrementally fix them
     ignoreBuildErrors: true,
   },
+  // Optimize Font Awesome and reduce bundle size
+  webpack: (config, { isServer }) => {
+    // Only apply to client bundles
+    if (!isServer) {
+      config.optimization = {
+        ...config.optimization,
+        splitChunks: {
+          ...config.optimization.splitChunks,
+          cacheGroups: {
+            ...config.optimization.splitChunks?.cacheGroups,
+            // Separate Font Awesome into its own chunk
+            fontawesome: {
+              test: /[\\/]node_modules[\\/]@fortawesome[\\/]/,
+              name: 'fontawesome',
+              chunks: 'all',
+              priority: 10,
+            },
+          },
+        },
+      }
+    }
+    return config
+  },
 }
 
 export default nextConfig
