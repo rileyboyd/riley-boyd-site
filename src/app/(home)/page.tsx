@@ -66,7 +66,7 @@ export default function Home() {
     // Animate in text, then animate in button
 
     timeline
-      .to('#hero-text-1', 1, { top: 0, opacity: 1 }, 0.5)
+      .to('#hero-text-1', 1, { top: 0, opacity: 1 }, 0)
       .to('#hero-text-2', 1, { top: 0, opacity: 1 }, 1.75)
       .to('.hero-btn', 0.15, { top: 0, opacity: 1 }, 3)
       .to('#scroll-btn', 0, { display: 'block' }, 3)
@@ -133,15 +133,27 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div>
-          <a
+        <div className="relative">
+          <button
             onClick={scrollDownHandler}
             id="scroll-btn"
-            className="rb-header-title-scroll-down text-white"
-            href="#rb-header-title-scroll-down"
+            className="absolute bottom-16 left-1/2 -translate-x-1/2 w-12 h-12 text-white inline-flex items-center justify-center border border-white rounded-full opacity-60 hover:opacity-100 transition-opacity duration-500"
+            aria-label="Scroll down to content"
           >
-            <span className="pe-7s-angle-down"></span>
-          </a>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+              className="w-6 h-6 shrink-0 inline"
+            >
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
         </div>
       </div>
       <div id="rb-header-title-scroll-down"></div>
