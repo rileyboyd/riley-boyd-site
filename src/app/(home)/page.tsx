@@ -100,7 +100,6 @@ export default function Home() {
           <HeroCanvas onReady={() => setCanvasReady(true)} />
         </div>
         <div className="hero-text-glow" />
-
         <div className="rb-header-table relative" style={{ zIndex: 1 }}>
           <div className="rb-header-table-cell">
             <div className="container mx-auto px-4">

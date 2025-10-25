@@ -7,39 +7,40 @@ const PortfolioPage = () => {
 
   return (
     <div className="page-portfolio">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 max-w-7xl">
         <h1 className="text-center mt-60 mb-50">Portfolio</h1>
 
-        <div
-          className="rb-portfolio-list rb-isotope rb-isotope-3-cols"
-          style={{ position: 'relative', height: '1109.95px' }}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {portfolioData.map((item, index) => {
             return (
               <div
                 key={'portfolio-item-' + index}
-                className="rb-isotope-item"
-                data-filter="Design"
+                className="group"
               >
-                <div className="rb-portfolio-item rb-portfolio-item-square rb-portfolio-item-info-style-1">
-                  <Link href={item.route}>
-                    <div className="rb-portfolio-item-image">
-                      <div
-                        style={{ backgroundImage: `url('${item.thumbnail}')` }}
-                      />
-                    </div>
-                    <div className="rb-portfolio-item-info rb-portfolio-item-info-center text-center">
-                      <div>
-                        <h2 className="portfolio-item-title h3">
-                          {item.title}
-                        </h2>
-                        <div className="portfolio-item-category">
-                          {item.type}
-                        </div>
+                <Link
+                  href={item.route}
+                  className="relative block overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                >
+                  {/* Image container with square aspect ratio */}
+                  <div className="relative w-full pb-[100%] overflow-hidden bg-gray-200">
+                    <div
+                      className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                      style={{ backgroundImage: `url('${item.thumbnail}')` }}
+                    />
+                  </div>
+
+                  {/* Hover overlay with info */}
+                  <div className="absolute inset-0 flex items-center justify-center p-12 bg-black/85 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <div className="text-center text-white">
+                      <h2 className="text-2xl font-bold mb-3 text-white transform translate-y-2.5 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-400 delay-200">
+                        {item.title}
+                      </h2>
+                      <div className="text-sm font-medium uppercase transform translate-y-2.5 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-400 delay-300">
+                        {item.type}
                       </div>
                     </div>
-                  </Link>
-                </div>
+                  </div>
+                </Link>
               </div>
             )
           })}
