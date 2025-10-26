@@ -45,7 +45,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({
   return (
     <nav
       className={`fixed inset-0 p-0 overflow-hidden bg-[#252b33] z-1002 lg:hidden transition-opacity duration-300 ${
-        isOpened ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        isOpened ? 'opacity-100' : 'opacity-0 pointer-events-none hidden'
       }`}
       id="rb-nav-mobile"
       style={isOpened ? showNavbarStyles : {}}
