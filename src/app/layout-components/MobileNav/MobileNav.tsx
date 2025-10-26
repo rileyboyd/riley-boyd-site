@@ -2,9 +2,7 @@
 
 import React from 'react'
 import Link from 'next/link'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTwitter, faLinkedin } from '@fortawesome/free-brands-svg-icons'
-import { faXmark } from '@fortawesome/free-solid-svg-icons'
+import { XMarkIcon, LinkedInIcon, TwitterIcon } from '@/components/icons'
 import styles from './MobileNav.module.css'
 
 interface MobileNavProps {
@@ -26,12 +24,12 @@ const navLinks = [
 const socialLinks = [
   {
     href: 'https://www.linkedin.com/in/rileyboyd/',
-    icon: faLinkedin,
+    icon: LinkedInIcon,
     label: 'LinkedIn',
   },
   {
     href: 'https://twitter.com/riley_boyd',
-    icon: faTwitter,
+    icon: TwitterIcon,
     label: 'Twitter',
   },
 ]
@@ -55,11 +53,11 @@ export const MobileNav: React.FC<MobileNavProps> = ({
       <div className="flex flex-col w-full h-full">
         <div className="w-full py-8">
           <button
-            className="text-[#d8d8d8] cursor-pointer float-right py-1.5 px-6 mr-2.5 hover:text-white transition-colors duration-300 text-xl mt-2"
+            className="text-[#d8d8d8] cursor-pointer float-right py-1.5 px-6 mr-2.5 hover:text-white transition-colors duration-300 mt-2"
             onClick={closeBtnHandler}
             aria-label="Close menu"
           >
-            <FontAwesomeIcon icon={faXmark} />
+            <XMarkIcon className="w-7 h-7" />
           </button>
         </div>
         <div className="flex-1 min-h-0 overflow-hidden">
@@ -99,10 +97,10 @@ export const MobileNav: React.FC<MobileNavProps> = ({
                     <Link
                       href={social.href}
                       target="_blank"
-                      className="text-white block my-1 mx-1.5 text-[1.75em] hover:text-[#d8d8d8] transition-colors duration-300"
+                      className="text-white block my-1 mx-1.5 hover:text-[#d8d8d8] transition-colors duration-300"
                       aria-label={social.label}
                     >
-                      <FontAwesomeIcon icon={social.icon} />
+                      <social.icon className="w-7 h-7" />
                     </Link>
                   </li>
                 ))}
