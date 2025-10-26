@@ -53,7 +53,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({
       <div className="flex flex-col w-full h-full">
         <div className="w-full py-8">
           <button
-            className="text-[#d8d8d8] cursor-pointer float-right py-1.5 px-6 mr-2.5 hover:text-white transition-colors duration-300 mt-2"
+            className="text-[#d8d8d8] cursor-pointer float-right py-1.5 px-6 mr-2 hover:text-white transition-colors duration-300 mt-2"
             onClick={closeBtnHandler}
             aria-label="Close menu"
           >
