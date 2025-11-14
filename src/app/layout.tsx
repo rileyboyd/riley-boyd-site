@@ -4,6 +4,7 @@ import './globals.css'
 
 import { Header, Footer } from './layout-components'
 import { Arvo, Lato } from 'next/font/google'
+import GoogleAnalytics from '@/components/GoogleAnalytics'
 
 const arvo = Arvo({
   subsets: ['latin'],
@@ -30,6 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${arvo.variable} ${lato.variable}`}>
       <body>
+        <GoogleAnalytics />
         <Header />
         <div className="relative overflow-hidden bg-white z-1">{children}</div>
         <Footer />
